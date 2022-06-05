@@ -45,45 +45,72 @@ function AddResearchPapers() {
               }}
             />
           </div>
-          <br />
-          <div style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+
+          <div
+            className="topnav"
+            style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+          >
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AdminDashboard"
+            >
               Profile
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AdminDashboard"
+            >
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AdminJournal"
+            >
               Journal
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AdminConference"
+            >
               Conference
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AdminArticle"
+            >
               Article
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: "20px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+              href="/Login/AddResearchPapers"
+            >
               Add Research Papers
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
             <br />
@@ -129,42 +156,64 @@ function AddResearchPapers() {
               <br />
               <div className="textBlock">
                 <div className="box">
-                  <div
+                  <a
                     style={{
                       borderRadius: "10px",
                       height: "50px",
-                      width: "90px",
-                      padding: "10px 10px 10px 30px",
+                      width: "100px",
+                      padding: "30px 15px 10px 15px",
                       border: "solid black",
                       backgroundColor: "#FFFACD",
+                      fontFamily: "Google Sans",
+                      fontWeight: "1000",
+                      fontSize: "20px",
+                      textAlign: "center",
+                      color: "black",
+                      textDecoration: "none",
                     }}
+                    href="/Login/AddResearchPapers/AddJournal"
                   >
                     Journal
-                  </div>
-                  <div
+                  </a>
+
+                  <a
                     style={{
                       borderRadius: "10px",
                       height: "50px",
-                      width: "90px",
-                      padding: "10px 10px 10px 30px",
+                      width: "100px",
+                      padding: "30px 15px 10px 15px",
                       border: "solid black",
                       backgroundColor: "#FFE4B5",
+                      fontFamily: "Google Sans",
+                      fontWeight: "1000",
+                      fontSize: "20px",
+                      textAlign: "center",
+                      color: "black",
+                      textDecoration: "none",
                     }}
+                    href="/Login/AddResearchPapers/AddConference"
                   >
                     Conference
-                  </div>
-                  <div
+                  </a>
+                  <a
                     style={{
                       borderRadius: "10px",
                       height: "50px",
-                      width: "90px",
-                      padding: "10px 10px 10px 30px",
+                      width: "100px",
+                      padding: "30px 15px 10px 15px",
                       border: "solid black",
                       backgroundColor: "#FFC0CB",
+                      fontFamily: "Google Sans",
+                      fontWeight: "1000",
+                      fontSize: "20px",
+                      textAlign: "center",
+                      color: "black",
+                      textDecoration: "none",
                     }}
+                    href="/Login/AddResearchPapers/AddArticle"
                   >
                     Article
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

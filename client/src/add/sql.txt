@@ -1,0 +1,29 @@
+db:research_info_sys
+tables:
+// journal_table
+// article_table
+//conference_table
+
+
+*journal*
+insert into journal_table values(1,'Mr.Ramesh','Dr.Srivatsan G,ECE','Evolutionary Algorithm for overlapping community detection using a merged maximal cliques representation scheme','Elsevier',2021);
+insert into journal_table values(2,'Dr.Karpagam G R','Ms.Swathi J  Anantharooban B R  Balasarath B S Sneha Sridharan Tharani Ganesh M','Leveraging Education through Mobile App and Chatbot-SKYLANOT','Null',2021);
+insert into journal_table values(3,'Dr.Sudha Sadasivam G','Harishmitha','Multimodal Screening of Dyslexia Using Handwriting and Eye Gaze','Huazhong University',2021);
+insert into journal_table values(4,'Mr.Praksh J','Dr.Vinoth Kumar B , IT Mr.E Vimal , ICE UG Scholar','Impact Analysis and Combating if Covid-19 Around the World','Journal of Analysis and Computation(JAC)',2020);
+insert into journal_table values(5,'Dr.Gopika Rani N','Mr.S.Shargunam','Detection of Brain Tumor Using Convolutional Neural Network in Medical Imaging','Sucharitha Publications',2020);
+
+*article*
+insert into article_table values(1,'Karen Butler-Purry','Teaching Digital Circuit Design With a 3-D Video Game: The Impact of Using In-Game Tools on Students Performance','IEEE',64,1,2022);
+insert into article_table values(2,'Yang Zhou','Wireless Performance Evaluation of Building Materials Integrated With Antennea Arrays','IEEE',26,4,2022);
+insert into article_table values(3,'Praveen K.Jain','Analysis of a Hybrid Variable-Frequency-Duty-Cycle-Modulated Low-Q LLC Resonant Converter for Improving the Light-Load Efficiency for a Wide Input Voltage Range','IEEE',36,7,2021);
+insert into article_table values(4,'Jie Zhag','Radio Sensing Using 5G Signals: Concepts, State of the Art, and Challenges','IEEE',9,2,2022);
+insert into article_table values(5,'Xiaoge Huang','Task Offloading Optimization for UAV-Assisted Fog-Enabled Internet of Things Networks Performance','IEEE',9,2,2022);
+
+*conference*
+insert into conference_table values(1,'Dr.Lovelyn Rose','Gokul E','Document Layout Analysis Using Deep Learning ','International Conference on Intelligence Computing, Smart Communication and Network Technologies',27/03/2021);
+insert into conference_table values(2,'Dr.Santhi V','Varshaa , Ms.Vigneshwary','IoT based Door Open or Close monitoring for home security with emergency notification system using LoRa Technologya ','Advanced Computing and Communication Systems',19/03/2021);
+insert into conference_table values(3,'Dr.Mrs.Anusha T','Dr.Venkatesan R','Shared Random Key Generation using Probabilistic Neural Networks for Energy Aware Trellis Coded Wireless Cryptosystems ','2021 8th International Conference on Computing for Sustainable Global Development, 17th - 19th March, 2021',17/03/2021);
+insert into conference_table values(4,'Mr.Prakash J','Dr. Vinoth Kumar B, IT','An Empirical Analysis of Hierarchical and Partition Based Clustering Techniques in Optic Disc Segmentation ','Congress on Intelligent Systems (CIS 2020)',05/09/2020);
+insert into conference_table values(5,'Dr.Karpagam G R','K.Eshwar , K.Kartjikeyan ,M.Syed Hameed','Case based Reasoning (CBR) for indoor Navigation ','International Conference on Artificial Intelligence, Smart Grid and Smart City Applications. AISGSC 2019',25/12/2019);
+
+s_no, author, title, category, article_name, year

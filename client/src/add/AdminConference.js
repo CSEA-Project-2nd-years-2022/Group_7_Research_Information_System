@@ -1,16 +1,27 @@
 import "./styles.css";
+import { useState } from "react";
+import Axios from "axios";
 
 const tableElements = {
   border: "1px solid black",
   borderCollapse: "collapse",
   columnHeight: "300px",
-  paddingTop: "5px",
+  paddingTop: "10px",
   paddingBottom: "5px",
-  paddingLeft: "5px",
-  paddingRight: "5px",
+  paddingLeft: "10px",
+  paddingRight: "10px",
 };
 
 function AdminConference() {
+  const [conferenceList, setConferenceList] = useState([]);
+  const getConference = () => {
+    Axios.get("http://localhost:3001/ShowConference").then((response) => {
+      console.log(response);
+      setConferenceList(response.data);
+    });
+  };
+  getConference();
+
   return (
     <div>
       <div className="columnLeft">
@@ -45,45 +56,46 @@ function AdminConference() {
               }}
             />
           </div>
-          <br />
-          <div style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+         
+          <div className="topnav" style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminDashboard">
               Profile
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminDashboard">
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminJournal">
               Journal
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none", fontSize: "20px",
+  fontWeight: "bold",textDecoration: "underline" }} href="/Login/AdminConference">
               Conference
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminArticle">
               Article
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AddResearchPapers">
               Add Research Papers
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
             <br />
@@ -158,19 +170,18 @@ function AdminConference() {
                     <th style={tableElements}>To</th>
                     <th style={tableElements}>Sponsoring Agency</th>
                   </tr>
-                  <tr>
-                    <td style={tableElements}>1</td>
-                    <td style={tableElements}>Mr.Ramesh</td>
-                    <td style={tableElements}>
-                      {" "}
-                      Evolutionary Algorithm for overlapping community detection
-                      using a merged maximal cliques representation scheme
-                    </td>
-                    <td style={tableElements}>22-08-22</td>
-                    <td style={tableElements}>22-08-22</td>
-
-                    <td style={tableElements}>2021</td>
-                  </tr>
+                  {conferenceList.map((val, key) => {
+                    return (
+                      <tr key={val.s_no}>
+                        <td style={tableElements}>{val.s_no}</td>
+                        <td style={tableElements}>{val.faculty}</td>
+                        <td style={tableElements}>{val.title}</td>
+                        <td style={tableElements}>{val.fromDate}</td>
+                        <td style={tableElements}>{val.toDate}</td>
+                        <td style={tableElements}>{val.sponsoring_agency}</td>
+                      </tr>
+                    );
+                  })}
                 </table>
               </div>
             </div>

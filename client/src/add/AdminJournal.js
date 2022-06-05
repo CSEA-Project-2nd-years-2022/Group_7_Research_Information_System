@@ -1,16 +1,27 @@
 import "./styles.css";
+import { useState } from "react";
+import Axios from "axios";
 
 const tableElements = {
   border: "1px solid black",
   borderCollapse: "collapse",
   columnHeight: "300px",
-  paddingTop: "5px",
+  paddingTop: "10px",
   paddingBottom: "5px",
-  paddingLeft: "5px",
-  paddingRight: "5px",
+  paddingLeft: "10px",
+  paddingRight: "10px",
 };
 
 function AdminJournal() {
+  const [journalList, setJournalList] = useState([]);
+  const getJournals = () => {
+    Axios.get("http://localhost:3001/ShowJournals").then((response) => {
+      console.log(response);
+      setJournalList(response.data);
+    });
+  };
+  getJournals();
+
   return (
     <div>
       <div className="columnLeft">
@@ -45,45 +56,46 @@ function AdminJournal() {
               }}
             />
           </div>
-          <br />
-          <div style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+         
+          <div className="topnav" style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminDashboard">
               Profile
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminDashboard">
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none", fontSize: "20px",
+  fontWeight: "bold",textDecoration: "underline" }} href="/Login/AdminJournal">
               Journal
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminConference">
               Conference
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AdminArticle">
               Article
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login/AddResearchPapers">
               Add Research Papers
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
             <br />
@@ -162,19 +174,18 @@ function AdminJournal() {
                     <th style={tableElements}>Journal Name</th>
                     <th style={tableElements}>Year</th>
                   </tr>
-                  <tr>
-                    <td style={tableElements}>1</td>
-                    <td style={tableElements}>Mr.Ramesh</td>
-                    <td style={tableElements}>
-                      {" "}
-                      Evolutionary Algorithm for overlapping community detection
-                      using a merged maximal cliques representation scheme
-                    </td>
-                    <td style={tableElements}>Category 1</td>
-                    <td style={tableElements}>Elsevier</td>
-
-                    <td style={tableElements}>2021</td>
-                  </tr>
+                  {journalList.map((val, key) => {
+                    return (
+                      <tr key={val.s_no}>
+                        <td style={tableElements}>{val.s_no}</td>
+                        <td style={tableElements}>{val.author}</td>
+                        <td style={tableElements}>{val.title}</td>
+                        <td style={tableElements}>{val.category}</td>
+                        <td style={tableElements}>{val.journal_name}</td>
+                        <td style={tableElements}>{val.year}</td>
+                      </tr>
+                    );
+                  })}
                 </table>
               </div>
             </div>

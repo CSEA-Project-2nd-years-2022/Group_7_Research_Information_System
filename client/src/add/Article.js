@@ -1,16 +1,27 @@
 import "./styles.css";
+import { useState } from "react";
+import Axios from "axios";
 
 const tableElements = {
   border: "1px solid black",
   borderCollapse: "collapse",
   columnHeight: "300px",
-  paddingTop: "5px",
+  paddingTop: "10px",
   paddingBottom: "5px",
-  paddingLeft: "5px",
-  paddingRight: "5px",
+  paddingLeft: "10px",
+  paddingRight: "10px",
 };
 
 function Article() {
+  const [articleList, setarticleList] = useState([]);
+  const getArticles = () => {
+    Axios.get("http://localhost:3001/ShowArticles").then((response) => {
+      console.log(response);
+      setarticleList(response.data);
+    });
+  };
+  getArticles();
+  
   return (
     <div>
       <div className="columnLeft">
@@ -45,33 +56,51 @@ function Article() {
               }}
             />
           </div>
-          <br />
-          <div style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+
+          <div
+            className="topnav"
+            style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+          >
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
               Login
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Journal"
+            >
               Journal
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Conference"
+            >
               Conference
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: "20px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+              href="/Article"
+            >
               Article
             </a>
             <br />
@@ -139,30 +168,30 @@ function Article() {
                   marginTop: "100px",
                   marginLeft: "0px",
                   marginRight: "250px",
+                  width: "500px",
                 }}
               >
                 <table style={tableElements}>
                   <tr>
-                    <th style={tableElements}>Sno</th>
+                    <th style={tableElements}>S.No</th>
                     <th style={tableElements}>Author</th>
                     <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Category</th>
-                    <th style={tableElements}>Article Name</th>
+                    <th style={tableElements}>Publisher</th>
+                    <th style={tableElements}>Volume</th>
                     <th style={tableElements}>Year</th>
                   </tr>
-                  <tr>
-                    <td style={tableElements}>1</td>
-                    <td style={tableElements}>Bagchi</td>
-                    <td style={tableElements}>
-                      {" "}
-                      Conflicting Nationalisms: The Voice of the Subaltern in
-                      Mahasweta Devi's Bashai Tudu.
-                    </td>
-                    <td style={tableElements}>Category 1</td>
-                    <td style={tableElements}>Elsevier</td>
-
-                    <td style={tableElements}>2021</td>
-                  </tr>
+                  {articleList.map((val, key) => {
+                    return (
+                      <tr key={val.s_no}>
+                        <td style={tableElements}>{val.s_no}</td>
+                        <td style={tableElements}>{val.author}</td>
+                        <td style={tableElements}>{val.title}</td>
+                        <td style={tableElements}>{val.publisher}</td>
+                        <td style={tableElements}>{val.volume}</td>
+                        <td style={tableElements}>{val.year}</td>
+                      </tr>
+                    );
+                  })}
                 </table>
               </div>
             </div>
