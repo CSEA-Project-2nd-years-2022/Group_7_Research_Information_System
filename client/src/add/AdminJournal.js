@@ -30,7 +30,7 @@ function AdminJournal() {
             <h2
               style={{
                 margin: "10px",
-                fontSize: "35px",
+                fontSize: "35px", 
                 opacity: "15%",
               }}
             >
