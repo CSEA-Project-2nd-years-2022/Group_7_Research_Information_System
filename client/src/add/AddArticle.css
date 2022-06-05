@@ -1,0 +1,124 @@
+.heading {
+  margin-right: 25px;
+  text-align: right;
+  font-size: 40px;
+  margin-left: 50px;
+  opacity: 75%;
+}
+.bg {
+  /* The image used */
+  background-image: url("dash_bg.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.text-block {
+  position: absolute;
+  top: 150px;
+  left: 450px;
+  color: black;
+
+  opacity: 75%;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 100%;
+  padding: 8px 15px;
+  border-radius: 14px 14px 14px 14px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background-color: #00bfff;
+  color: black;
+  padding: 10px 18px;
+  margin: 8px 0;
+  border: black;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+
+  opacity: 100%;
+}
+.topnav {
+  padding-left: 80px;
+  top: 270px;
+  color: black;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+  padding: 10px;
+}
+.aa {
+  color: black;
+  text-decoration: none;
+}
+.b1 {
+  background-color: white;
+  color: red;
+  padding: 10px 18px;
+  margin: 8px 0px;
+  margin-left: 30px;
+  border: 1px solid red;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+
+  opacity: 100%;
+}
+.b1:hover {
+  background: #f44336;
+  color: white;
+}
+.line {
+  padding: 0px;
+  bottom: 70%;
+  width: 170px;
+  text-align: right;
+  margin-left: 10px;
+  margin-top: 170px;
+  color: black;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tabletitle {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.tableplace {
+  margin-top: 40px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.show {
+  background-color: green;
+  color: black;
+  padding: 10px 18px;
+  margin: 8px 0;
+  margin-left: 50px;
+  border: black;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 100%;
+}

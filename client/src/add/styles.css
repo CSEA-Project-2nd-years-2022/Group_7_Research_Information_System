@@ -1,0 +1,250 @@
+/*Login......*/
+.bg {
+  /* The image used */
+  background-image: url("login_image.png");
+
+  /* Full height */
+  height: 670px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Position the navbar container inside the image */
+.containers {
+  position: absolute;
+  margin: 10px;
+  width: auto;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0);
+  right: 100px;
+}
+
+/* The navbar */
+.topnav2 {
+  overflow: hidden;
+}
+
+/* Navbar links */
+.topnav2 a {
+  float: right;
+  color: black;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav2 a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.text-block1 {
+  position: absolute;
+  top: 150px;
+  width: 300px;
+  border-radius: 18px 18px 18px 18px;
+  right: 40px;
+  position: center;
+  background-image: linear-gradient(
+    to right,
+    rgba(241, 240, 233, 3),
+    rgba(255, 0, 0, 0)
+  );
+  color: black;
+  text-opacity: 100%;
+  padding-left: 30px;
+  padding-right: 40px;
+  opacity: 75%;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 100%;
+  padding: 12px 15px;
+  border-radius: 14px 14px 14px 14px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.loginbutton {
+  background-color: #00bfff;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: black;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 100%;
+}
+/*.......Login*/
+
+/*journal......*/
+.heading {
+  right: 25px;
+  text-align: center;
+  font-size: 40px;
+  padding: 10px 0px 0px 500px;
+  opacity: 75%;
+}
+/*
+  .bg {
+    
+    background-image: url("dash_bg.png");
+  
+   
+    height: 100%;
+  
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }*/
+.topnav {
+  padding: 40px;
+  top: 300px;
+  color: black;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+  padding: 10px;
+}
+.text-block {
+  position: absolute;
+  top: 150px;
+  left: 300px;
+  color: black;
+  text-opacity: 100%;
+  opacity: 75%;
+}
+.aa {
+  color: black;
+  text-decoration: none;
+}
+.topnav1 .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  margin-left: 30px;
+
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav1 .search-container button:hover {
+  background: #ccc;
+}
+
+.button1 {
+  background-color: #00bfff;
+  padding: 8px 18px;
+  border-radius: 14px 14px 14px 14px;
+  position: absolute;
+  top: 243px;
+  left: 811px;
+  right: 20px;
+
+  cursor: pointer;
+
+  opacity: 70%;
+}
+
+.line {
+  padding: 0px;
+  bottom: 70%;
+  width: 170px;
+  text-align: right;
+  margin-left: 30px;
+  margin-top: 150px;
+  color: black;
+}
+
+.dropdown1 {
+  position: absolute;
+  top: 308px;
+  left: 300px;
+  color: black;
+  text-opacity: 100%;
+  opacity: 75%;
+}
+.dropdown2 {
+  position: absolute;
+
+  top: 308px;
+  left: 450px;
+  color: black;
+  text-opacity: 100%;
+  opacity: 75%;
+}
+.dropdown3 {
+  position: absolute;
+  padding: 2px;
+  top: 308px;
+  left: 600px;
+  color: black;
+  text-opacity: 100%;
+  opacity: 75%;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.tableplace {
+  position: absolute;
+  margin-top: 270px;
+  margin-right: 20px;
+  margin-left: 300px;
+}
+
+/*......journal*/
+
+/*2 column layout*/
+.box {
+  display: grid;
+  width: 540px;
+  grid-template-columns: 120px 120px 120px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.box :first-child {
+  align-self: center;
+}
+.column {
+  float: left;
+}
+
+.left {
+  width: 18%;
+  height: 100%;
+}
+
+.right {
+  width: 82%;
+  height: 100%;
+}
+/*2 column layout*/
+
+/*dashboard*/
+
+.atext {
+  color: black;
+  textdecoration: none;
+}
