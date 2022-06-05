@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Add_article from "./add/AddArticle";
+import AddArticle from "./add/AddArticle";
+import AddConference from "./add/AddConference";
+import AddJournal from "./add/AddJournal";
 import AddResearchPapers from "./add/AddReasearchPapers";
 import AdminArticle from "./add/AdminArticle";
 import AdminConference from "./add/AdminConference";
@@ -16,7 +18,46 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<AdminJournal />} />
+        <Route exact path="/" element={<Dashboard />} />
+
+        <Route path="/Journal" element={<Journal />} />
+        <Route exact path="/Conference" element={<Conference />} />
+        <Route exact path="/Article" element={<Article />} />
+
+        <Route exact path="/Login" element={<Login />} />
+        <Route exact path="/Login/SignUp" element={<SignUp />} />
+        <Route
+          exact
+          path="/Login/AdminDashboard"
+          element={<AdminDashboard />}
+        />
+        <Route exact path="/Login/AdminJournal" element={<AdminJournal />} />
+        <Route
+          exact
+          path="/Login/AdminConference"
+          element={<AdminConference />}
+        />
+        <Route exact path="/Login/AdminArticle" element={<AdminArticle />} />
+        <Route
+          exact
+          path="/Login/AddResearchPapers"
+          element={<AddResearchPapers />}
+        />
+        <Route
+          exact
+          path="/Login/AddResearchPapers/AddJournal"
+          element={<AddJournal />}
+        />
+        <Route
+          exact
+          path="/Login/AddResearchPapers/AddConference"
+          element={<AddConference />}
+        />
+        <Route
+          exact
+          path="/Login/AddResearchPapers/AddArticle"
+          element={<AddArticle />}
+        />
       </Routes>
     </Router>
   );

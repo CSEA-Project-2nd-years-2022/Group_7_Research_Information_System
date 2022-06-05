@@ -1,4 +1,6 @@
 import "./styles.css";
+import { useState } from "react";
+import Axios from "axios";
 
 const tableElements = {
   border: "1px solid black",
@@ -11,6 +13,31 @@ const tableElements = {
 };
 
 function Dashboard() {
+  const [journalList, setJournalList] = useState([]);
+  const getJournals = () => {
+    Axios.get("http://localhost:3001/ShowJournals").then((response) => {
+      console.log(response);
+      setJournalList(response.data);
+    });
+  };
+  getJournals();
+  const [conferenceList, setConferenceList] = useState([]);
+  const getConference = () => {
+    Axios.get("http://localhost:3001/ShowConference").then((response) => {
+      console.log(response);
+      setConferenceList(response.data);
+    });
+  };
+  getConference();
+  const [articleList, setarticleList] = useState([]);
+  const getArticles = () => {
+    Axios.get("http://localhost:3001/ShowArticles").then((response) => {
+      console.log(response);
+      setarticleList(response.data);
+    });
+  };
+  getArticles();
+
   return (
     <div>
       <div className="columnLeft">
@@ -45,33 +72,54 @@ function Dashboard() {
               }}
             />
           </div>
-          <br />
-          <div style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+
+          <div
+            className="topnav"
+            style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+          >
+            <a
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: "20px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+              href="/"
+            >
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
               Login
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Journal"
+            >
               Journal
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Conference"
+            >
               Conference
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Article"
+            >
               Article
             </a>
             <br />
@@ -109,11 +157,9 @@ function Dashboard() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>Welcome....</h2>
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                Welcome Back...
-              </h2>
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                RECENT PUBLICATIONS
+                RECENT PUBLICATIONS(Journals)
               </h2>
               <div
                 style={{
@@ -124,27 +170,25 @@ function Dashboard() {
               >
                 <table style={tableElements}>
                   <tr>
+                    <th style={tableElements}>Sno</th>
                     <th style={tableElements}>Author</th>
                     <th style={tableElements}>Title</th>
+                    <th style={tableElements}>Category</th>
+                    <th style={tableElements}>Journal Name</th>
                     <th style={tableElements}>Year</th>
                   </tr>
-                  <tr>
-                    <td style={tableElements}>Dr.Santhi.V</td>
-                    <td style={tableElements}>
-                      {" "}
-                      IoT based Door Open or Close monitoring for home security
-                      with emergency notification system using LoRa Technologya
-                    </td>
-                    <td style={tableElements}>2021</td>
-                  </tr>
-
-                  <tr>
-                    <td style={tableElements}>Dr.Lovelyn Rose</td>
-                    <td style={tableElements}>
-                      Case based Reasoning (CBR) for indoor Navigation
-                    </td>
-                    <td style={tableElements}>2021</td>
-                  </tr>
+                  {journalList.map((val, key) => {
+                    return (
+                      <tr key={val.s_no}>
+                        <td style={tableElements}>{val.s_no}</td>
+                        <td style={tableElements}>{val.author}</td>
+                        <td style={tableElements}>{val.title}</td>
+                        <td style={tableElements}>{val.category}</td>
+                        <td style={tableElements}>{val.journal_name}</td>
+                        <td style={tableElements}>{val.year}</td>
+                      </tr>
+                    );
+                  })}
                 </table>
               </div>
             </div>
@@ -165,9 +209,22 @@ function Dashboard() {
                     padding: "10px 10px 10px 30px",
                     border: "solid black",
                     backgroundColor: "#FFFACD",
+                    fontFamily: "Google Sans",
                   }}
                 >
-                  One
+                  <h1
+                    style={{
+                      marginTop: "5px",
+                      fontSize: "40px",
+                      marginBottom: "2px",
+                      marginLeft: "20px",
+                    }}
+                  >
+                    {journalList.length}
+                  </h1>
+                  <h3 style={{ marginTop: "0px", fontWeight: "bold" }}>
+                    Journals
+                  </h3>
                 </div>
                 <div
                   style={{
@@ -180,7 +237,19 @@ function Dashboard() {
                     backgroundColor: "#FFE4B5",
                   }}
                 >
-                  Two
+                  <h1
+                    style={{
+                      marginTop: "5px",
+                      fontSize: "40px",
+                      marginBottom: "2px",
+                      marginLeft: "25px",
+                    }}
+                  >
+                    {conferenceList.length}
+                  </h1>
+                  <h3 style={{ marginTop: "0px", fontWeight: "bold" }}>
+                    Conference
+                  </h3>
                 </div>
                 <div
                   style={{
@@ -193,7 +262,19 @@ function Dashboard() {
                     backgroundColor: "#FFC0CB",
                   }}
                 >
-                  Three
+                  <h1
+                    style={{
+                      marginTop: "5px",
+                      fontSize: "40px",
+                      marginBottom: "2px",
+                      marginLeft: "25px",
+                    }}
+                  >
+                    {articleList.length}
+                  </h1>
+                  <h3 style={{ marginTop: "0px", fontWeight: "bold",marginLeft:"10px" }}>
+                    Articles
+                  </h3>
                 </div>
               </div>
             </div>

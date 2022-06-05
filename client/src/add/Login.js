@@ -1,16 +1,21 @@
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  const navigateToAdminDashboard = () => {
+    navigate("/Login/AdminDashboard");
+  };
   return (
     <div>
       <div className="bg">
         <div className="containers">
           <div className="topnav2">
-            <a href="Article.html">Article</a>
-            <a href="conference.html">Conference</a>
-            <a href="journal.html">Journal</a>
-            <a href="login.html">Login</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="/Article">Article</a>
+            <a href="/Conference">Conference</a>
+            <a href="/Journal">Journal</a>
+            <a style={{textDecoration: "underline",fontSize:"20px",fontWeight: "bold"}} href="/Login">Login</a>
+            <a href="../">Dashboard</a>
           </div>
         </div>
         <div className="text-block1">
@@ -22,13 +27,13 @@ function Login() {
               <br />
               <input type="Password" placeholder="Password" />
               <br />
-              <a href="#">Forgot Password</a>
+              <a href="../">Forgot Password</a>
               <br />
               <br />
-              <button
+              <button 
                 className="loginbutton"
                 type="button"
-                // onClick="location.href='admin_dashboard.html'"
+                onClick={navigateToAdminDashboard}
               >
                 Sign in
               </button>
@@ -38,7 +43,7 @@ function Login() {
               <h4>
                 <b>
                   Don't have an account?
-                  <a href="signup.html">Sign Up</a>
+                  <a href="/Login/SignUp">Sign Up</a>
                 </b>
               </h4>
             </form>

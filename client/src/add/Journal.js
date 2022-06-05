@@ -1,16 +1,52 @@
 import "./styles.css";
+import { useState } from "react";
+import Axios from "axios";
 
 const tableElements = {
   border: "1px solid black",
   borderCollapse: "collapse",
   columnHeight: "300px",
-  paddingTop: "5px",
+  paddingTop: "10px",
   paddingBottom: "5px",
-  paddingLeft: "5px",
-  paddingRight: "5px",
+  paddingLeft: "10px",
+  paddingRight: "10px",
 };
 
 function Journal() {
+  const [journalList, setJournalList] = useState([]);
+  const getJournals = () => {
+    Axios.get("http://localhost:3001/ShowJournals").then((response) => {
+      console.log(response);
+      setJournalList(response.data);
+    });
+  };
+  getJournals();
+  //for author name filter
+  const [journalAuthorList, setJournalAuthorList] = useState([]);
+  const getJournalAuthor = () => {
+    Axios.get("http://localhost:3001/ShowJournalAuthors").then((response) => {
+      console.log(response);
+      setJournalAuthorList(response.data);
+    });
+  };
+  getJournalAuthor();
+  const [journalCategoryList, setJournalCategoryList] = useState([]);
+  const getJournalCategory = () => {
+    Axios.get("http://localhost:3001/ShowJournalCategory").then((response) => {
+      console.log(response);
+      setJournalCategoryList(response.data);
+    });
+  };
+  getJournalCategory();
+  const [journalYearList, setJournalYearList] = useState([]);
+  const getJournalYear = () => {
+    Axios.get("http://localhost:3001/ShowJournalYear").then((response) => {
+      console.log(response);
+      setJournalYearList(response.data);
+    });
+  };
+  getJournalYear();
+
   return (
     <div>
       <div className="columnLeft">
@@ -45,33 +81,51 @@ function Journal() {
               }}
             />
           </div>
-          <br />
-          <div style={{ paddingLeft: "40px", top: "270px", color: "black" }}>
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+
+          <div
+            className="topnav"
+            style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+          >
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
               Login
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: "20px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+              href="/Journal"
+            >
               Journal
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Conference"
+            >
               Conference
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="#home">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Article"
+            >
               Article
             </a>
             <br />
@@ -121,17 +175,28 @@ function Journal() {
               </form>
               <div class="dropdown1">
                 <select name="Author" id="Author">
-                  <option value="author name">Author</option>
+                  <option value="All" selected>Author </option>
+                  {journalAuthorList.map((val, key) => {
+                    return <option value={val.author}> {val.author} </option>;
+                  })}
                 </select>
               </div>
               <div class="dropdown2">
                 <select name="category" id="category">
-                  <option value="Category">Category</option>
+                  <option value="All" selected>Category</option>
+                  {journalCategoryList.map((val, key) => {
+                    return (
+                      <option value={val.category}> {val.category} </option>
+                    );
+                  })}
                 </select>
               </div>
               <div class="dropdown3">
                 <select name="year" id="year">
-                  <option value="Year">Year</option>
+                  <option value="All" selected>Year</option>
+                  {journalYearList.map((val, key) => {
+                    return <option value={val.year}> {val.year} </option>;
+                  })}
                 </select>
               </div>
               <div
@@ -150,19 +215,18 @@ function Journal() {
                     <th style={tableElements}>Journal Name</th>
                     <th style={tableElements}>Year</th>
                   </tr>
-                  <tr>
-                    <td style={tableElements}>1</td>
-                    <td style={tableElements}>Mr.Ramesh</td>
-                    <td style={tableElements}>
-                      {" "}
-                      Evolutionary Algorithm for overlapping community detection
-                      using a merged maximal cliques representation scheme
-                    </td>
-                    <td style={tableElements}>Category 1</td>
-                    <td style={tableElements}>Elsevier</td>
-
-                    <td style={tableElements}>2021</td>
-                  </tr>
+                  {journalList.map((val, key) => {
+                    return (
+                      <tr key={val.s_no}>
+                        <td style={tableElements}>{val.s_no}</td>
+                        <td style={tableElements}>{val.author}</td>
+                        <td style={tableElements}>{val.title}</td>
+                        <td style={tableElements}>{val.category}</td>
+                        <td style={tableElements}>{val.journal_name}</td>
+                        <td style={tableElements}>{val.year}</td>
+                      </tr>
+                    );
+                  })}
                 </table>
               </div>
             </div>

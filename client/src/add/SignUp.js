@@ -1,16 +1,31 @@
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate("/Login");
+  };
+
   return (
     <div>
       <div className="bg">
         <div className="containers">
           <div className="topnav2">
-            <a href="Article.html">Article</a>
-            <a href="conference.html">Conference</a>
-            <a href="journal.html">Journal</a>
-            <a href="login.html">Login</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="/Article">Article</a>
+            <a href="/Conference">Conference</a>
+            <a href="/Journal">Journal</a>
+            <a
+              style={{
+                textDecoration: "underline",
+                fontSize: "20px",
+                fontWeight: "bold",
+              }}
+              href="/Login"
+            >
+              Login
+            </a>
+            <a href="../">Dashboard</a>
           </div>
         </div>
         <div className="text-block1">
@@ -29,7 +44,7 @@ function SignUp() {
               <button
                 className="loginbutton"
                 type="button"
-                // onClick="location.href='admin_dashboard.html'"
+                onClick={navigateToLogin}
               >
                 Sign up
               </button>
@@ -39,7 +54,7 @@ function SignUp() {
               <h4>
                 <b>
                   Already have an account?
-                  <a href="signup.html">Sign In</a>
+                  <a href="./">Sign In</a>
                 </b>
               </h4>
             </form>
