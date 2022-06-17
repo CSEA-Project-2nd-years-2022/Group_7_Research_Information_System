@@ -16,23 +16,40 @@ function Article() {
   const [articleList, setarticleList] = useState([]);
   const getArticles = () => {
     Axios.get("http://localhost:3001/ShowArticles").then((response) => {
-      console.log(response);
+      // console.log(response);
       setarticleList(response.data);
     });
   };
   getArticles();
   //Search items
   const [searchItem, setSearchItem] = useState("");
-
   //Filters
   const [articleAuthorList, setArticleAuthorList] = useState([]);
+  const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
   const [authorFilterValue, setAuthorFilterValue] = useState("All");
   const getArticleAuthor = () => {
     Axios.get("http://localhost:3001/ShowArticleAuthors").then((response) => {
-      console.log(response);
-
+      // console.log(response);
       setArticleAuthorList(response.data);
     });
+    // console.log(articleAuthorList);
+    articleAuthorList.map((val) => {
+      if (val.author.includes(",")) {
+        var tempList = val.author.split(",");
+        tempList.map((value) => {
+          if (individualTempAuthorList.includes(value.trim())) {
+          } else {
+            individualTempAuthorList.push(value.trim());
+          }
+        });
+      } else {
+        if (individualTempAuthorList.includes(val.author)) {
+        } else {
+          individualTempAuthorList.push(val.author);
+        }
+      }
+    });
+    console.log(individualTempAuthorList);
   };
   getArticleAuthor();
 
@@ -41,7 +58,7 @@ function Article() {
   const getArticlePublisher = () => {
     Axios.get("http://localhost:3001/ShowArticlePublishers").then(
       (response) => {
-        console.log(response);
+        // console.log(response);
         setArticlePublisherList(response.data);
       }
     );
@@ -52,7 +69,7 @@ function Article() {
   const [yearFilterValue, setYearFilterValue] = useState("All");
   const getArticleYear = () => {
     Axios.get("http://localhost:3001/ShowArticleYear").then((response) => {
-      console.log(response);
+      // console.log(response);
       setArticleYearList(response.data);
     });
   };
@@ -199,8 +216,8 @@ function Article() {
                   <option value="All" selected>
                     All
                   </option>
-                  {articleAuthorList.map((val, key) => {
-                    return <option value={val.author}>{val.author}</option>;
+                  {individualTempAuthorList.map((val, key) => {
+                    return <option value={val}>{val}</option>;
                   })}
                 </select>
               </div>
@@ -279,7 +296,12 @@ function Article() {
                       } */
                       }
                       if (searchItem === "") {
-                        console.log(val.year);
+                        {
+                          /* console.log(val.year); */
+                        }
+                        {
+                          /* console.log(individualTempAuthorList); */
+                        }
                         if (
                           authorFilterValue === "All" &&
                           publisherFilterValue === "All" &&
@@ -287,19 +309,19 @@ function Article() {
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === val.publisher &&
                           yearFilterValue === val.year.toString()
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === val.publisher &&
                           yearFilterValue === "All"
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === "All" &&
                           yearFilterValue === val.year.toString()
                         ) {
@@ -311,7 +333,7 @@ function Article() {
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === "All" &&
                           yearFilterValue === "All"
                         ) {
@@ -347,19 +369,19 @@ function Article() {
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === val.publisher &&
                           yearFilterValue === val.year.toString()
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === val.publisher &&
                           yearFilterValue === "All"
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === "All" &&
                           yearFilterValue === val.year.toString()
                         ) {
@@ -371,7 +393,7 @@ function Article() {
                         ) {
                           return val;
                         } else if (
-                          authorFilterValue === val.author &&
+                          val.author.includes(authorFilterValue) &&
                           publisherFilterValue === "All" &&
                           yearFilterValue === "All"
                         ) {
