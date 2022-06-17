@@ -110,7 +110,7 @@ function AddResearchPapers() {
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            <a style={{ color: "black", textDecoration: "none" }} href="../">
               Logout
             </a>
             <br />
