@@ -105,7 +105,7 @@ app.get("/ShowJournals", (req, res) => {
     }
   });
 });
-
+// Journal Filters
 app.get("/ShowJournalAuthors", (req, res) => {
   db.query("SELECT DISTINCT author FROM journal_table", (err, result) => {
     if (err) {
@@ -134,6 +134,40 @@ app.get("/ShowJournalYear", (req, res) => {
     }
   });
 });
+// Conference Filters
+
+
+
+//Article Filters
+app.get("/ShowArticleAuthors", (req, res) => {
+  db.query("SELECT DISTINCT author FROM article_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+app.get("/ShowArticlePublishers", (req, res) => {
+  db.query("SELECT DISTINCT publisher FROM article_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+app.get("/ShowArticleYear", (req, res) => {
+  db.query("SELECT DISTINCT year FROM article_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+
 
 app.listen(3001, () => {
   console.log("yes server running");

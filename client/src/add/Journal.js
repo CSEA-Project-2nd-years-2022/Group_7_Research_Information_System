@@ -46,6 +46,12 @@ function Journal() {
     });
   };
   getJournalYear();
+  // For filters
+  const [authorFilterValue, setAuthorFilterValue] = useState("All");
+  const handleChangeAuthor = (event) => {
+    console.log(event.target.value);
+    setAuthorFilterValue(event.target.value);
+  };
 
   return (
     <div>
@@ -174,16 +180,22 @@ function Journal() {
                 </div>
               </form>
               <div class="dropdown1">
-                <select name="Author" id="Author">
-                  <option value="All" selected>Author </option>
+                <select name="Author" id="Author" onChange={handleChangeAuthor}>
+                  <option value="All" selected>
+                    Author
+                  </option>
                   {journalAuthorList.map((val, key) => {
-                    return <option value={val.author}> {val.author} </option>;
+                    if (authorFilterValue === "All") {
+                    }
+                    return <option value={val.author}>{val.author}</option>;
                   })}
                 </select>
               </div>
               <div class="dropdown2">
                 <select name="category" id="category">
-                  <option value="All" selected>Category</option>
+                  <option value="All" selected>
+                    Category
+                  </option>
                   {journalCategoryList.map((val, key) => {
                     return (
                       <option value={val.category}> {val.category} </option>
@@ -193,7 +205,9 @@ function Journal() {
               </div>
               <div class="dropdown3">
                 <select name="year" id="year">
-                  <option value="All" selected>Year</option>
+                  <option value="All" selected>
+                    Year
+                  </option>
                   {journalYearList.map((val, key) => {
                     return <option value={val.year}> {val.year} </option>;
                   })}
@@ -216,16 +230,29 @@ function Journal() {
                     <th style={tableElements}>Year</th>
                   </tr>
                   {journalList.map((val, key) => {
-                    return (
-                      <tr key={val.s_no}>
-                        <td style={tableElements}>{val.s_no}</td>
-                        <td style={tableElements}>{val.author}</td>
-                        <td style={tableElements}>{val.title}</td>
-                        <td style={tableElements}>{val.category}</td>
-                        <td style={tableElements}>{val.journal_name}</td>
-                        <td style={tableElements}>{val.year}</td>
-                      </tr>
-                    );
+                    if (authorFilterValue === "All") {
+                      return (
+                        <tr key={val.s_no}>
+                          <td style={tableElements}>{val.s_no}</td>
+                          <td style={tableElements}>{val.author}</td>
+                          <td style={tableElements}>{val.title}</td>
+                          <td style={tableElements}>{val.category}</td>
+                          <td style={tableElements}>{val.journal_name}</td>
+                          <td style={tableElements}>{val.year}</td>
+                        </tr>
+                      );
+                    } else if (authorFilterValue === val.author) {
+                      return (
+                        <tr key={val.s_no}>
+                          <td style={tableElements}>{val.s_no}</td>
+                          <td style={tableElements}>{val.author}</td>
+                          <td style={tableElements}>{val.title}</td>
+                          <td style={tableElements}>{val.category}</td>
+                          <td style={tableElements}>{val.journal_name}</td>
+                          <td style={tableElements}>{val.year}</td>
+                        </tr>
+                      );
+                    }
                   })}
                 </table>
               </div>

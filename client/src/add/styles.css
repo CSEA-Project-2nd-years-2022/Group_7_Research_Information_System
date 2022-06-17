@@ -197,7 +197,7 @@ input[type="password"] {
 .dropdown1 {
   position: absolute;
   top: 308px;
-  left: 300px;
+  left: 180px;
   color: black;
   text-opacity: 100%;
   opacity: 75%;
@@ -206,7 +206,7 @@ input[type="password"] {
   position: absolute;
 
   top: 308px;
-  left: 450px;
+  left: 350px;
   color: black;
   text-opacity: 100%;
   opacity: 75%;
@@ -215,7 +215,7 @@ input[type="password"] {
   position: absolute;
   padding: 2px;
   top: 308px;
-  left: 600px;
+  left: 550px;
   color: black;
   text-opacity: 100%;
   opacity: 75%;
