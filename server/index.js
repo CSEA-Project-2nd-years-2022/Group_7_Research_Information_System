@@ -167,6 +167,67 @@ app.get("/ShowArticleYear", (req, res) => {
   });
 });
 
+//Conference Filters
+app.get("/ShowConferenceFaculty", (req, res) => {
+  db.query("SELECT DISTINCT faculty FROM conference_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/ShowConferenceSponsoringAgency", (req, res) => {
+  db.query("SELECT DISTINCT sponsoring_agency FROM conference_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+// Login Page
+app.get("/ShowLoginDetails", (req, res) => {
+  db.query("SELECT * FROM login_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.post("/AddLogin", (req, res) => {
+  console.log(req.body);
+  const email = req.body.email;
+  const password = req.body.password;
+  const is_login = req.body.is_login;
+
+  db.query(
+    "INSERT INTO login_table(email,password,is_login) VALUES(?,?,?)",
+    [email,password,is_login],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.get("/ShowEmails", (req, res) => {
+  db.query("SELECT email FROM login_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 
 
 app.listen(3001, () => {

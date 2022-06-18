@@ -15,7 +15,7 @@ function AdminDashboard() {
   const [journalList, setJournalList] = useState([]);
   const getJournals = () => {
     Axios.get("http://localhost:3001/ShowJournals").then((response) => {
-      console.log(response);
+      // console.log(response);
       setJournalList(response.data);
     });
   };
@@ -23,7 +23,7 @@ function AdminDashboard() {
   const [conferenceList, setConferenceList] = useState([]);
   const getConference = () => {
     Axios.get("http://localhost:3001/ShowConference").then((response) => {
-      console.log(response);
+      // console.log(response);
       setConferenceList(response.data);
     });
   };
@@ -31,7 +31,7 @@ function AdminDashboard() {
   const [articleList, setarticleList] = useState([]);
   const getArticles = () => {
     Axios.get("http://localhost:3001/ShowArticles").then((response) => {
-      console.log(response);
+      // console.log(response);
       setarticleList(response.data);
     });
   };
