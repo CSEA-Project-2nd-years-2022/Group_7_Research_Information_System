@@ -21,6 +21,53 @@ function AdminConference() {
     });
   };
   getConference();
+  //Search items
+  const [searchItem, setSearchItem] = useState("");
+  //Filters
+  const [conferenceFacultyList, setConferenceFacultyList] = useState([]);
+  const [individualTempFacultyList, setIndividualTempFacultyList] = useState(
+    []
+  );
+  const [facultyFilterValue, setFacultyFilterValue] = useState("All");
+  const getConferenceFaculty = () => {
+    Axios.get("http://localhost:3001/ShowConferenceFaculty").then(
+      (response) => {
+        // console.log(response);
+        setConferenceFacultyList(response.data);
+      }
+    );
+    // console.log(conferenceFacultyList);
+    conferenceFacultyList.map((val) => {
+      if (val.faculty.includes(",")) {
+        var tempList = val.faculty.split(",");
+        tempList.map((value) => {
+          if (individualTempFacultyList.includes(value.trim()) === false) {
+            individualTempFacultyList.push(value.trim());
+          }
+        });
+      } else {
+        if (individualTempFacultyList.includes(val.faculty) === false) {
+          individualTempFacultyList.push(val.faculty);
+        }
+      }
+    });
+    // console.log(individualTempFacultyList);
+  };
+  getConferenceFaculty();
+
+  const [conferenceSponsoringAgencyList, setConferenceSponsoringAgencyList] =
+    useState([]);
+  const [sponsoringAgencyFilterValue, setSponsoringAgencyFilterValue] =
+    useState("All");
+  const getConferenceSponsoringAgency = () => {
+    Axios.get("http://localhost:3001/ShowConferenceSponsoringAgency").then(
+      (response) => {
+        // console.log(response);
+        setConferenceSponsoringAgencyList(response.data);
+      }
+    );
+  };
+  getConferenceSponsoringAgency();
 
   return (
     <div>
@@ -140,17 +187,44 @@ function AdminConference() {
                     style={{ width: "600px", borderRadius: "14px" }}
                     type="text"
                     placeholder="Type to search"
+                    onChange={(event) => {
+                      setSearchItem(event.target.value);
+                    }}
                   />
                 </div>
               </form>
               <div class="dropdown1">
-                <select name="Faculty" id="Faculty">
-                  <option value="author name">Faculty</option>
+                <label>Faculty : </label>
+                <select
+                  name="Faculty"
+                  id="Faculty"
+                  onChange={(event) => {
+                    setFacultyFilterValue(event.target.value);
+                  }}
+                >
+                  <option value="All">All</option>
+                  {individualTempFacultyList.map((val, key) => {
+                    return <option value={val}>{val}</option>;
+                  })}
                 </select>
               </div>
               <div class="dropdown2">
-                <select name="Sponsoring Agency" id="Sponsoring Agency">
-                  <option value="Sponsoring Agency">Sponsoring Agency</option>
+                <label>Sponsoring Agency : </label>
+                <select
+                  name="Sponsoring Agency"
+                  id="Sponsoring Agency"
+                  onChange={(event) => {
+                    setSponsoringAgencyFilterValue(event.target.value);
+                  }}
+                >
+                  <option value="All">All</option>
+                  {conferenceSponsoringAgencyList.map((val, key) => {
+                    return (
+                      <option value={val.sponsoring_agency}>
+                        {val.sponsoring_agency}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
 
@@ -170,7 +244,7 @@ function AdminConference() {
                     <th style={tableElements}>To</th>
                     <th style={tableElements}>Sponsoring Agency</th>
                   </tr>
-                  {conferenceList.map((val, key) => {
+                  {/* {conferenceList.map((val, key) => {
                     return (
                       <tr key={val.s_no}>
                         <td style={tableElements}>{val.s_no}</td>
@@ -181,7 +255,65 @@ function AdminConference() {
                         <td style={tableElements}>{val.sponsoring_agency}</td>
                       </tr>
                     );
-                  })}
+                  })} */}
+                  {conferenceList
+                    .filter((val) => {
+                      if (searchItem === "") {
+                        if (
+                          facultyFilterValue === "All" &&
+                          sponsoringAgencyFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          val.faculty.includes(facultyFilterValue) &&
+                          sponsoringAgencyFilterValue === val.sponsoring_agency
+                        ) {
+                          return val;
+                        }
+                        else if (
+                          facultyFilterValue === "All" &&
+                          sponsoringAgencyFilterValue === val.sponsoring_agency
+                        ) {
+                          return val;
+                        }
+                        else if (
+                          val.faculty.includes(facultyFilterValue) &&
+                          sponsoringAgencyFilterValue === "All"
+                        ) {
+                          return val;
+                        }
+                      } else if (
+                        val.faculty
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.title
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.fromDate
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.toDate
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.sponsoring_agency
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase())
+                      ) {
+                        return val;
+                      }
+                    })
+                    .map((val, key) => {
+                      return (
+                        <tr key={val.s_no}>
+                          <td style={tableElements}>{val.s_no}</td>
+                          <td style={tableElements}>{val.faculty}</td>
+                          <td style={tableElements}>{val.title}</td>
+                          <td style={tableElements}>{val.fromDate}</td>
+                          <td style={tableElements}>{val.toDate}</td>
+                          <td style={tableElements}>{val.sponsoring_agency}</td>
+                        </tr>
+                      );
+                    })}
                 </table>
               </div>
             </div>

@@ -20,7 +20,57 @@ function AdminArticle() {
       setarticleList(response.data);
     });
   };
-  getArticles();
+  getArticles();//Search items
+  const [searchItem, setSearchItem] = useState("");
+  //Filters
+  const [articleAuthorList, setArticleAuthorList] = useState([]);
+  const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
+  const [authorFilterValue, setAuthorFilterValue] = useState("All");
+  const getArticleAuthor = () => {
+    Axios.get("http://localhost:3001/ShowArticleAuthors").then((response) => {
+      // console.log(response);
+      setArticleAuthorList(response.data);
+    });
+    // console.log(articleAuthorList);
+    articleAuthorList.map((val) => {
+      if (val.author.includes(",")) {
+        var tempList = val.author.split(",");
+        tempList.map((value) => {
+          if (individualTempAuthorList.includes(value.trim()) === false) {
+            individualTempAuthorList.push(value.trim());
+          }
+        });
+      } else {
+        if (individualTempAuthorList.includes(val.author) === false) {
+          individualTempAuthorList.push(val.author);
+        }
+      }
+    });
+    console.log(individualTempAuthorList);
+  };
+  getArticleAuthor();
+
+  const [articlePublisherList, setArticlePublisherList] = useState([]);
+  const [publisherFilterValue, setPublisherFilterValue] = useState("All");
+  const getArticlePublisher = () => {
+    Axios.get("http://localhost:3001/ShowArticlePublishers").then(
+      (response) => {
+        // console.log(response);
+        setArticlePublisherList(response.data);
+      }
+    );
+  };
+  getArticlePublisher();
+
+  const [articleYearList, setArticleYearList] = useState([]);
+  const [yearFilterValue, setYearFilterValue] = useState("All");
+  const getArticleYear = () => {
+    Axios.get("http://localhost:3001/ShowArticleYear").then((response) => {
+      // console.log(response);
+      setArticleYearList(response.data);
+    });
+  };
+  getArticleYear();
 
   return (
     <div>
@@ -166,22 +216,63 @@ function AdminArticle() {
                     style={{ width: "600px", borderRadius: "14px" }}
                     type="text"
                     placeholder="Type to search"
+                    onChange={(event) => {
+                      setSearchItem(event.target.value);
+                    }}
                   />
                 </div>
               </form>
               <div className="dropdown1">
-                <select name="Author" id="Author">
-                  <option value="author name">Author</option>
+                <label>Author : </label>
+                <select
+                  name="Author"
+                  id="Author"
+                  onChange={(event) => {
+                    setAuthorFilterValue(event.target.value);
+                  }}
+                >
+                  <option value="All" selected>
+                    All
+                  </option>
+                  {individualTempAuthorList.map((val, key) => {
+                    return <option value={val}>{val}</option>;
+                  })}
                 </select>
               </div>
               <div className="dropdown2">
-                <select name="category" id="category">
-                  <option value="Category">Category</option>
+                <label>Publisher : </label>
+                <select
+                  name="Publisher"
+                  id="Publisher"
+                  onChange={(event) => {
+                    setPublisherFilterValue(event.target.value);
+                  }}
+                >
+                  <option value="All" selected>
+                    All
+                  </option>
+                  {articlePublisherList.map((val, key) => {
+                    return (
+                      <option value={val.publisher}>{val.publisher}</option>
+                    );
+                  })}
                 </select>
               </div>
               <div className="dropdown3">
-                <select name="year" id="year">
-                  <option value="Year">Year</option>
+                <label>Year : </label>
+                <select
+                  name="Year"
+                  id="year"
+                  onChange={(event) => {
+                    setYearFilterValue(event.target.value);
+                  }}
+                >
+                  <option value="All" selected>
+                    All
+                  </option>
+                  {articleYearList.map((val, key) => {
+                    return <option value={val.year}>{val.year}</option>;
+                  })}
                 </select>
               </div>
               <div
@@ -189,6 +280,7 @@ function AdminArticle() {
                   marginTop: "100px",
                   marginLeft: "0px",
                   marginRight: "250px",
+                  width: "500px",
                 }}
               >
                 <table style={tableElements}>
@@ -200,18 +292,157 @@ function AdminArticle() {
                     <th style={tableElements}>Volume</th>
                     <th style={tableElements}>Year</th>
                   </tr>
-                  {articleList.map((val, key) => {
-                    return (
-                      <tr key={val.s_no}>
-                        <td style={tableElements}>{val.s_no}</td>
-                        <td style={tableElements}>{val.author}</td>
-                        <td style={tableElements}>{val.title}</td>
-                        <td style={tableElements}>{val.publisher}</td>
-                        <td style={tableElements}>{val.volume}</td>
-                        <td style={tableElements}>{val.year}</td>
-                      </tr>
-                    );
-                  })}
+                  {articleList
+                    .filter((val) => {
+                      {
+                        /* if (searchItem === "" && authorFilterValue === "All") {
+                        return val;
+                      } else if (
+                        (val.author
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.title
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.publisher
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase())) &&
+                          (authorFilterValue === val.author && val.author!="All")
+                      )
+                       {
+                        return val;
+                      } */
+                      }
+                      if (searchItem === "") {
+                        {
+                          /* console.log(val.year); */
+                        }
+                        {
+                          /* console.log(individualTempAuthorList); */
+                        }
+                        if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        } else if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        }
+                      } else if (
+                        val.author
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.title
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase()) ||
+                        val.publisher
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase())
+                      ) {
+                        if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        } else if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        } else if (
+                          val.author.includes(authorFilterValue) &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === val.publisher &&
+                          yearFilterValue === "All"
+                        ) {
+                          return val;
+                        } else if (
+                          authorFilterValue === "All" &&
+                          publisherFilterValue === "All" &&
+                          yearFilterValue === val.year.toString()
+                        ) {
+                          return val;
+                        }
+                      }
+                    })
+                    .map((val, key) => {
+                      return (
+                        <tr key={val.s_no}>
+                          <td style={tableElements}>{val.s_no}</td>
+                          <td style={tableElements}>{val.author}</td>
+                          <td style={tableElements}>{val.title}</td>
+                          <td style={tableElements}>{val.publisher}</td>
+                          <td style={tableElements}>{val.volume}</td>
+                          <td style={tableElements}>{val.year}</td>
+                        </tr>
+                      );
+                    })}
                 </table>
               </div>
             </div>

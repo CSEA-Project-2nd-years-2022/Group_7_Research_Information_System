@@ -37,14 +37,12 @@ function Article() {
       if (val.author.includes(",")) {
         var tempList = val.author.split(",");
         tempList.map((value) => {
-          if (individualTempAuthorList.includes(value.trim())) {
-          } else {
+          if (individualTempAuthorList.includes(value.trim()) === false) {
             individualTempAuthorList.push(value.trim());
           }
         });
       } else {
-        if (individualTempAuthorList.includes(val.author)) {
-        } else {
+        if (individualTempAuthorList.includes(val.author) === false) {
           individualTempAuthorList.push(val.author);
         }
       }
@@ -276,32 +274,7 @@ function Article() {
                   </tr>
                   {articleList
                     .filter((val) => {
-                      {
-                        /* if (searchItem === "" && authorFilterValue === "All") {
-                        return val;
-                      } else if (
-                        (val.author
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.title
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.publisher
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase())) &&
-                          (authorFilterValue === val.author && val.author!="All")
-                      )
-                       {
-                        return val;
-                      } */
-                      }
                       if (searchItem === "") {
-                        {
-                          /* console.log(val.year); */
-                        }
-                        {
-                          /* console.log(individualTempAuthorList); */
-                        }
                         if (
                           authorFilterValue === "All" &&
                           publisherFilterValue === "All" &&
