@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
 import Popup from "./components/popup";
+import emailjs from "emailjs-com";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -47,6 +48,21 @@ function SignUp() {
     // console.log(uniqueEmailList);
   };
   getUniqueEmails();
+
+  //email
+  function sendEmail(e) {
+    //e.preventDefault();
+
+    emailjs.send("gmail", "template_majaexr", e, "9Y00204g_-GP8ugvv").then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+    //e.target.reset()
+  }
 
   return (
     <div>
@@ -125,20 +141,22 @@ function SignUp() {
                         );
                         setButtonPopup(true);
                         //TO-Do : Password and Confirm Password does not match
-                      } else if(uniqueEmailList.includes(emailStr) === false){
+                      } else if (uniqueEmailList.includes(emailStr) === false) {
                         console.log("create a new");
                         uniqueEmailList.push(emailStr);
                         return val;
-
-                      }
-                      else {
+                      } else {
                         //unwanted else
                       }
                     })
                     .map((value) => {
                       console.log("added login");
-                      addLogin();
-                      navigateToLogin();
+                      var emailObj = {
+                        emailUser: emailStr,
+                      };
+                      sendEmail(emailObj);
+                      //addLogin();
+                      //navigateToLogin();
                     });
                 }}
               >
