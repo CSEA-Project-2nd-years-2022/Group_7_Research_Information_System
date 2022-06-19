@@ -155,8 +155,8 @@ function SignUp() {
                         emailUser: emailStr,
                       };
                       sendEmail(emailObj);
-                      //addLogin();
-                      //navigateToLogin();
+                      addLogin();
+                      navigateToLogin();
                     });
                 }}
               >
