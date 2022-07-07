@@ -8,7 +8,7 @@ app.use(express.json());
 
 const db = mysql.createConnection({
   user: "root",
-  host: "psg-research-information-system.conxkkqho6fs.ap-south-1.rds.amazonaws.com",
+  host: "psg-research-info-system.conxkkqho6fs.ap-south-1.rds.amazonaws.com",
   password: "12345678",
   database: "research_info_sys",
 });
@@ -136,8 +136,6 @@ app.get("/ShowJournalYear", (req, res) => {
 });
 // Conference Filters
 
-
-
 //Article Filters
 app.get("/ShowArticleAuthors", (req, res) => {
   db.query("SELECT DISTINCT author FROM article_table", (err, result) => {
@@ -179,13 +177,16 @@ app.get("/ShowConferenceFaculty", (req, res) => {
 });
 
 app.get("/ShowConferenceSponsoringAgency", (req, res) => {
-  db.query("SELECT DISTINCT sponsoring_agency FROM conference_table", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
+  db.query(
+    "SELECT DISTINCT sponsoring_agency FROM conference_table",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
     }
-  });
+  );
 });
 
 // Login Page
@@ -207,7 +208,7 @@ app.post("/AddLogin", (req, res) => {
 
   db.query(
     "INSERT INTO login_table(email,password,is_login) VALUES(?,?,?)",
-    [email,password,is_login],
+    [email, password, is_login],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -227,8 +228,6 @@ app.get("/ShowEmails", (req, res) => {
     }
   });
 });
-
-
 
 app.listen(3001, () => {
   console.log("yes server running");
