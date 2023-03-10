@@ -13,17 +13,24 @@ import Dashboard from "./add/Dashboard";
 import Journal from "./add/Journal";
 import Login from "./add/Login";
 import SignUp from "./add/SignUp";
+import Books from "./add/Books";
+import Patents from "./add/Patents";
+import Citations from "./add/Citations";
+import ResearchPublicationCount from "./add/ResearchPublicationCount";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-
         <Route path="/Journal" element={<Journal />} />
         <Route exact path="/Conference" element={<Conference />} />
         <Route exact path="/Article" element={<Article />} />
-
+        <Route exact path="/Books" element={<Books />} />
+        <Route exact path="/Patents" element={<Patents />} />
+        <Route exact path="/Citations" element={<Citations />} />
+        <Route exact path="/ResearchPublicationCount" element={<ResearchPublicationCount />} />
+        
         <Route exact path="/Login" element={<Login />} />
         <Route exact path="/Login/SignUp" element={<SignUp />} />
         <Route

@@ -30,10 +30,10 @@ function Login() {
     });
   };
   getEmails();
-
+  
   //Popup Component
-  const [buttonPopup, setButtonPopup] = useState(false);
-  const [popupString, setPopupString] = useState("");
+  const [buttonPopup, setButtonPopup] = useState(false) ; 
+  const [popupString, setPopupString] = useState("") ;
 
   return (
     <div>

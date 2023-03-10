@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  user: "root",
-  host: "psg-research-info-system.conxkkqho6fs.ap-south-1.rds.amazonaws.com",
-  password: "12345678",
-  database: "research_info_sys",
+  user: "user",
+  host: "localhost",
+  password: "4321",
+  database: "psg_ris",
 });
 
 app.post("/AddArticle", (req, res) => {
@@ -231,4 +231,42 @@ app.get("/ShowEmails", (req, res) => {
 
 app.listen(3001, () => {
   console.log("yes server running");
+});
+/////////////////////////////////////////////////////////////////////////////////////////////
+app.get("/ShowBooks", (req, res) => {
+  db.query("SELECT * FROM books_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+app.get("/ShowPatents", (req, res) => {
+  db.query("SELECT * FROM patents_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+app.get("/ShowCitations", (req, res) => {
+  db.query("SELECT * FROM citations_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/ShowResearchPubCount", (req, res) => {
+  db.query("SELECT * FROM research_publication_count_table", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });

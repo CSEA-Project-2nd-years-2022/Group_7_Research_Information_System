@@ -12,15 +12,15 @@ const tableElements = {
   paddingRight: "10px",
 };
 
-function Article() {
-  const [articleList, setarticleList] = useState([]);
-  const getArticles = () => {
-    Axios.get("http://localhost:3001/ShowArticles").then((response) => {
+function Patents() {
+  const [patentList, setPatentList] = useState([]);
+  const getPatents = () => {
+    Axios.get("http://localhost:3001/ShowPatents").then((response) => {
       // console.log(response);
-      setarticleList(response.data);
+      setPatentList(response.data);
     });
-  };  
-  getArticles();
+  };
+  getPatents();
   //Search items
   const [searchItem, setSearchItem] = useState("");
   //Filters
@@ -143,6 +143,21 @@ function Article() {
             <br />
             <br />
             <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Article"
+            >
+              Article
+            </a>
+            <br />
+            <br />
+            <br />
+            <a style={{ color: "black", textDecoration: "none" }} href="/Books">
+              Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -150,9 +165,9 @@ function Article() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Article"
+              href="/Patents"
             >
-              Article
+              Patents
             </a>
             <br />
             <br />
@@ -189,7 +204,7 @@ function Article() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>ARTICLE</h2>
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>PATENTS</h2>
               <form>
                 <div>
                   <input
@@ -266,13 +281,16 @@ function Article() {
                 <table style={tableElements}>
                   <tr>
                     <th style={tableElements}>S.No</th>
-                    <th style={tableElements}>Author</th>
+                    <th style={tableElements}>Emp Id</th>
+                    <th style={tableElements}>Author Name</th>
+                    <th style={tableElements}>No. of patents filed</th>
+                    <th style={tableElements}>No. of patents granted</th>
+                    <th style={tableElements}>No. of patents licensed</th>
+                    <th style={tableElements}>Patent No.</th>
+                    <th style={tableElements}>Date</th>
                     <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Publisher</th>
-                    <th style={tableElements}>Volume</th>
-                    <th style={tableElements}>Year</th>
                   </tr>
-                  {articleList
+                  {patentList
                     .filter((val) => {
                       if (searchItem === "") {
                         if (
@@ -390,11 +408,18 @@ function Article() {
                       return (
                         <tr key={val.s_no}>
                           <td style={tableElements}>{val.s_no}</td>
-                          <td style={tableElements}>{val.author}</td>
+                          <td style={tableElements}>{val.emp_id}</td>
+                          <td style={tableElements}>{val.author_name}</td>
+                          <td style={tableElements}>{val.no_patents_filed}</td>
+                          <td style={tableElements}>
+                            {val.no_patents_granted}
+                          </td>
+                          <td style={tableElements}>
+                            {val.no_patents_licensed}
+                          </td>
+                          <td style={tableElements}>{val.patent_no}</td>
+                          <td style={tableElements}>{val.date}</td>
                           <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.publisher}</td>
-                          <td style={tableElements}>{val.volume}</td>
-                          <td style={tableElements}>{val.year}</td>
                         </tr>
                       );
                     })}
@@ -408,4 +433,4 @@ function Article() {
   );
 }
 
-export default Article;
+export default Patents;
