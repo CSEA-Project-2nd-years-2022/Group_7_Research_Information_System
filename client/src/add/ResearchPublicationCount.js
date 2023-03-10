@@ -12,15 +12,15 @@ const tableElements = {
   paddingRight: "10px",
 };
 
-function Article() {
-  const [articleList, setarticleList] = useState([]);
-  const getArticles = () => {
-    Axios.get("http://localhost:3001/ShowArticles").then((response) => {
+function ResearchPublicationCount() {
+  const [resPubList, setresPubList] = useState([]);
+  const getResPublications = () => {
+    Axios.get("http://localhost:3001/ShowResearchPubCount").then((response) => {
       // console.log(response);
-      setarticleList(response.data);
+      setresPubList(response.data);
     });
-  };  
-  getArticles();
+  };
+  getResPublications();
   //Search items
   const [searchItem, setSearchItem] = useState("");
   //Filters
@@ -143,6 +143,39 @@ function Article() {
             <br />
             <br />
             <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Article"
+            >
+              Article
+            </a>
+            <br />
+            <br />
+            <br />
+            <a style={{ color: "black", textDecoration: "none" }} href="/Books">
+              Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Patents"
+            >
+              Patents
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Citations"
+            >
+              Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -150,9 +183,9 @@ function Article() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Article"
+              href="/ResearchPublicationCount"
             >
-              Article
+              Research Publication Count
             </a>
             <br />
             <br />
@@ -189,7 +222,9 @@ function Article() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>ARTICLE</h2>
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>
+                RESEARCH PUBLICATIONS COUNT
+              </h2>
               <form>
                 <div>
                   <input
@@ -266,13 +301,18 @@ function Article() {
                 <table style={tableElements}>
                   <tr>
                     <th style={tableElements}>S.No</th>
-                    <th style={tableElements}>Author</th>
-                    <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Publisher</th>
-                    <th style={tableElements}>Volume</th>
-                    <th style={tableElements}>Year</th>
+                    <th style={tableElements}>Employee Id</th>
+                    <th style={tableElements}>Emp Name</th>
+                    <th style={tableElements}>
+                      No. of papers in international journals
+                    </th>
+                    <th style={tableElements}>In National Journals</th>
+                    <th style={tableElements}>In international COnference</th>
+                    <th style={tableElements}>National Conference</th>
+                    <th style={tableElements}>No. of books published</th>
+                    <th style={tableElements}>No. of Chapters published</th>
                   </tr>
-                  {articleList
+                  {resPubList
                     .filter((val) => {
                       if (searchItem === "") {
                         if (
@@ -390,11 +430,16 @@ function Article() {
                       return (
                         <tr key={val.s_no}>
                           <td style={tableElements}>{val.s_no}</td>
-                          <td style={tableElements}>{val.author}</td>
-                          <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.publisher}</td>
-                          <td style={tableElements}>{val.volume}</td>
-                          <td style={tableElements}>{val.year}</td>
+                          <td style={tableElements}>{val.emp_id}</td>
+                          <td style={tableElements}>{val.emp_name}</td>
+                          <td style={tableElements}>{val.num_int_journals}</td>
+                          <td style={tableElements}>
+                            {val.num_national_journals}
+                          </td>
+                          <td style={tableElements}>{val.num_int_conf}</td>
+                          <td style={tableElements}>{val.num_national_conf}</td>
+                          <td style={tableElements}>{val.num_books}</td>
+                          <td style={tableElements}>{val.num_chapters}</td>
                         </tr>
                       );
                     })}
@@ -408,4 +453,4 @@ function Article() {
   );
 }
 
-export default Article;
+export default ResearchPublicationCount;

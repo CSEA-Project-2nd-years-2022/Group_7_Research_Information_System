@@ -12,15 +12,15 @@ const tableElements = {
   paddingRight: "10px",
 };
 
-function Article() {
-  const [articleList, setarticleList] = useState([]);
-  const getArticles = () => {
-    Axios.get("http://localhost:3001/ShowArticles").then((response) => {
+function Citations() {
+  const [citationList, setCitationList] = useState([]);
+  const getCitations = () => {
+    Axios.get("http://localhost:3001/ShowCitations").then((response) => {
       // console.log(response);
-      setarticleList(response.data);
+      setCitationList(response.data);
     });
-  };  
-  getArticles();
+  };
+  getCitations();
   //Search items
   const [searchItem, setSearchItem] = useState("");
   //Filters
@@ -143,6 +143,30 @@ function Article() {
             <br />
             <br />
             <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Article"
+            >
+              Article
+            </a>
+            <br />
+            <br />
+            <br />
+            <a style={{ color: "black", textDecoration: "none" }} href="/Books">
+              Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Patents"
+            >
+              Patents
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -150,9 +174,9 @@ function Article() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Article"
+              href="/Citations"
             >
-              Article
+              Citations
             </a>
             <br />
             <br />
@@ -189,7 +213,7 @@ function Article() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>ARTICLE</h2>
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>CITATIONS</h2>
               <form>
                 <div>
                   <input
@@ -266,13 +290,11 @@ function Article() {
                 <table style={tableElements}>
                   <tr>
                     <th style={tableElements}>S.No</th>
-                    <th style={tableElements}>Author</th>
-                    <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Publisher</th>
-                    <th style={tableElements}>Volume</th>
-                    <th style={tableElements}>Year</th>
+                    <th style={tableElements}>Employee Name</th>
+                    <th style={tableElements}>No. of Citations</th>
+                    
                   </tr>
-                  {articleList
+                  {citationList
                     .filter((val) => {
                       if (searchItem === "") {
                         if (
@@ -390,11 +412,9 @@ function Article() {
                       return (
                         <tr key={val.s_no}>
                           <td style={tableElements}>{val.s_no}</td>
-                          <td style={tableElements}>{val.author}</td>
-                          <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.publisher}</td>
-                          <td style={tableElements}>{val.volume}</td>
-                          <td style={tableElements}>{val.year}</td>
+                          <td style={tableElements}>{val.emp_name}</td>
+                          <td style={tableElements}>{val.no_citations}</td>
+                          
                         </tr>
                       );
                     })}
@@ -408,4 +428,4 @@ function Article() {
   );
 }
 
-export default Article;
+export default Citations;

@@ -120,7 +120,43 @@ function Dashboard() {
               style={{ color: "black", textDecoration: "none" }}
               href="/Article"
             >
-              Article
+              Article----
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Books"
+            >
+              Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Patents"
+            >
+              Patents
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Citations"
+            >
+              Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/ResearchPublicationCount"
+            >
+              Research Publication Count
             </a>
             <br />
             <br />

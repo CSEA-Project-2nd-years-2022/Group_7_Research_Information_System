@@ -12,15 +12,15 @@ const tableElements = {
   paddingRight: "10px",
 };
 
-function Article() {
-  const [articleList, setarticleList] = useState([]);
-  const getArticles = () => {
-    Axios.get("http://localhost:3001/ShowArticles").then((response) => {
+function Books() {
+  const [bookList, setBookList] = useState([]);
+  const getBooks = () => {
+    Axios.get("http://localhost:3001/ShowBooks").then((response) => {
       // console.log(response);
-      setarticleList(response.data);
+      setBookList(response.data);
     });
   };  
-  getArticles();
+  getBooks();
   //Search items
   const [searchItem, setSearchItem] = useState("");
   //Filters
@@ -143,6 +143,15 @@ function Article() {
             <br />
             <br />
             <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Article"
+            >
+              Article
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -150,9 +159,9 @@ function Article() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Article"
+              href="/Books"
             >
-              Article
+              Books
             </a>
             <br />
             <br />
@@ -189,7 +198,7 @@ function Article() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>ARTICLE</h2>
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>Books</h2>
               <form>
                 <div>
                   <input
@@ -266,13 +275,15 @@ function Article() {
                 <table style={tableElements}>
                   <tr>
                     <th style={tableElements}>S.No</th>
-                    <th style={tableElements}>Author</th>
+                    <th style={tableElements}>Emp Id</th>
+                    <th style={tableElements}>Author Name</th>
                     <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Publisher</th>
-                    <th style={tableElements}>Volume</th>
+                    <th style={tableElements}>ISBN</th>
+                    <th style={tableElements}>Co-author</th>
                     <th style={tableElements}>Year</th>
+                    <th style={tableElements}>Name of Publisher</th>
                   </tr>
-                  {articleList
+                  {bookList
                     .filter((val) => {
                       if (searchItem === "") {
                         if (
@@ -390,11 +401,13 @@ function Article() {
                       return (
                         <tr key={val.s_no}>
                           <td style={tableElements}>{val.s_no}</td>
-                          <td style={tableElements}>{val.author}</td>
+                          <td style={tableElements}>{val.emp_id}</td>
+                          <td style={tableElements}>{val.author_name}</td>
                           <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.publisher}</td>
-                          <td style={tableElements}>{val.volume}</td>
+                          <td style={tableElements}>{val.isbn}</td>
+                          <td style={tableElements}>{val.co_author}</td>
                           <td style={tableElements}>{val.year}</td>
+                          <td style={tableElements}>{val.name_of_pub}</td>
                         </tr>
                       );
                     })}
@@ -408,4 +421,4 @@ function Article() {
   );
 }
 
-export default Article;
+export default Books;
