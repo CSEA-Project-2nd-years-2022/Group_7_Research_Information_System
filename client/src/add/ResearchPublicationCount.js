@@ -76,11 +76,11 @@ function ResearchPublicationCount() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1800px",
             background: "#ADD8E6",
           }}
         >
@@ -112,56 +112,30 @@ function ResearchPublicationCount() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
+              Profile
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
-              Login
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Journal"
-            >
-              Journal
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Conference"
-            >
-              Conference
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Article"
-            >
-              Article
-            </a>
-            <br />
-            <br />
-            <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Books">
-              Books
-            </a>
-            <br />
-            <br />
-            <br />
+           
             <a
               style={{ color: "black", textDecoration: "none" }}
               href="/Patents"
             >
-              Patents
+              Patent
             </a>
             <br />
             <br />
@@ -176,16 +150,105 @@ function ResearchPublicationCount() {
             <br />
             <br />
             <a
-              style={{
-                color: "black",
-                textDecoration: "none",
-                fontSize: "20px",
-                fontWeight: "bold",
-                textDecoration: "underline",
-              }}
+              style={{ color: "black",
+              textDecoration: "none",
+              fontSize: "20px",
+              fontWeight: "bold",
+              textDecoration: "underline", }}
               href="/ResearchPublicationCount"
             >
               Research Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/TechnologyTransfer"
+            >
+            Technology Transfer
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{color: "black", textDecoration: "none"
+                
+              }}
+              href="/Journal"
+            >
+              International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/SponsoredResearchProjects"
+            >
+              Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Books"
+            >
+             Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consultancy"
+            >
+              Consultancy
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/BookChapter"
+            >
+             Book Chapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/MoUsSigned"
+            >
+              MoUs Signed
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Conference"
+            >
+              International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consolidated"
+            >
+             Consolidated
+            </a>
+            <br />
+            <br />
+            <br />
+           
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            Login
             </a>
             <br />
             <br />
@@ -237,59 +300,7 @@ function ResearchPublicationCount() {
                   />
                 </div>
               </form>
-              <div className="dropdown1">
-                <label>Author : </label>
-                <select
-                  name="Author"
-                  id="Author"
-                  onChange={(event) => {
-                    setAuthorFilterValue(event.target.value);
-                  }}
-                >
-                  <option value="All" selected>
-                    All
-                  </option>
-                  {individualTempAuthorList.map((val, key) => {
-                    return <option value={val}>{val}</option>;
-                  })}
-                </select>
-              </div>
-              <div className="dropdown2">
-                <label>Publisher : </label>
-                <select
-                  name="Publisher"
-                  id="Publisher"
-                  onChange={(event) => {
-                    setPublisherFilterValue(event.target.value);
-                  }}
-                >
-                  <option value="All" selected>
-                    All
-                  </option>
-                  {articlePublisherList.map((val, key) => {
-                    return (
-                      <option value={val.publisher}>{val.publisher}</option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="dropdown3">
-                <label>Year : </label>
-                <select
-                  name="Year"
-                  id="year"
-                  onChange={(event) => {
-                    setYearFilterValue(event.target.value);
-                  }}
-                >
-                  <option value="All" selected>
-                    All
-                  </option>
-                  {articleYearList.map((val, key) => {
-                    return <option value={val.year}>{val.year}</option>;
-                  })}
-                </select>
-              </div>
+              
               <div
                 style={{
                   marginTop: "100px",
@@ -300,8 +311,7 @@ function ResearchPublicationCount() {
               >
                 <table style={tableElements}>
                   <tr>
-                    <th style={tableElements}>S.No</th>
-                    <th style={tableElements}>Employee Id</th>
+                    <th style={tableElements}>Emp Id</th>
                     <th style={tableElements}>Emp Name</th>
                     <th style={tableElements}>
                       No. of papers in international journals
@@ -365,15 +375,10 @@ function ResearchPublicationCount() {
                           return val;
                         }
                       } else if (
-                        val.author
+                        val.emp_name
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.title
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.publisher
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase())
+                          .includes(searchItem.toLowerCase()) 
+                       
                       ) {
                         if (
                           authorFilterValue === "All" &&
@@ -424,22 +429,21 @@ function ResearchPublicationCount() {
                         ) {
                           return val;
                         }
-                      }
+                      }else{}
                     })
-                    .map((val, key) => {
+                    .map((val) => {
                       return (
-                        <tr key={val.s_no}>
-                          <td style={tableElements}>{val.s_no}</td>
+                        <tr >
                           <td style={tableElements}>{val.emp_id}</td>
                           <td style={tableElements}>{val.emp_name}</td>
-                          <td style={tableElements}>{val.num_int_journals}</td>
+                          <td style={tableElements}>{val.num_int_jn}</td>
                           <td style={tableElements}>
-                            {val.num_national_journals}
+                            {val.num_nat_jn}
                           </td>
-                          <td style={tableElements}>{val.num_int_conf}</td>
-                          <td style={tableElements}>{val.num_national_conf}</td>
-                          <td style={tableElements}>{val.num_books}</td>
-                          <td style={tableElements}>{val.num_chapters}</td>
+                          <td style={tableElements}>{val.num_int_con}</td>
+                          <td style={tableElements}>{val.num_nat_con}</td>
+                          <td style={tableElements}>{val.num_book}</td>
+                          <td style={tableElements}>{val.num_chap}</td>
                         </tr>
                       );
                     })}

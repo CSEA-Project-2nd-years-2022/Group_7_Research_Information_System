@@ -17,6 +17,12 @@ import Books from "./add/Books";
 import Patents from "./add/Patents";
 import Citations from "./add/Citations";
 import ResearchPublicationCount from "./add/ResearchPublicationCount";
+import TechnologyTransfer from "./add/TechnologyTransfer";
+import SponsoredResearchProjects from "./add/SponsoredResearchProjects";
+import Consultancy from "./add/Consultancy";
+import BookChapter from "./add/BookChapter";
+import MoUsSigned from "./add/MoUsSigned";
+import Consolidated from "./add/Consolidated";
 
 function App() {
   return (
@@ -29,8 +35,26 @@ function App() {
         <Route exact path="/Books" element={<Books />} />
         <Route exact path="/Patents" element={<Patents />} />
         <Route exact path="/Citations" element={<Citations />} />
-        <Route exact path="/ResearchPublicationCount" element={<ResearchPublicationCount />} />
-        
+        <Route
+          exact
+          path="/ResearchPublicationCount"
+          element={<ResearchPublicationCount />}
+        />
+        <Route
+          exact
+          path="/TechnologyTransfer"
+          element={<TechnologyTransfer />}
+        />
+        <Route
+          exact
+          path="/SponsoredResearchProjects"
+          element={<SponsoredResearchProjects />}
+        />
+        <Route exact path="/Consultancy" element={<Consultancy />} />
+        <Route exact path="/BookChapter" element={<BookChapter />} />
+        <Route exact path="/MoUsSigned" element={<MoUsSigned />} />
+        <Route exact path="/Consolidated" element={<Consolidated />} />
+
         <Route exact path="/Login" element={<Login />} />
         <Route exact path="/Login/SignUp" element={<SignUp />} />
         <Route

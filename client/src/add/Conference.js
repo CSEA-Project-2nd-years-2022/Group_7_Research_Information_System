@@ -72,11 +72,11 @@ function Conference() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1800px",
             background: "#ADD8E6",
           }}
         >
@@ -108,47 +108,143 @@ function Conference() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
+              Profile
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
-              Login
+           
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Patents"
+            >
+              Patent
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
+              href="/Citations"
+            >
+              Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/ResearchPublicationCount"
+            >
+              Research Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/TechnologyTransfer"
+            >
+            Technology Transfer
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{color: "black", textDecoration: "none"
+                
+              }}
               href="/Journal"
             >
-              Journal
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{
-                color: "black",
-                textDecoration: "none",
-                fontSize: "20px",
-                fontWeight: "bold",
-                textDecoration: "underline",
-              }}
-              href="/Conference"
-            >
-              Conference
+              International Journal
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Article"
+              href="/SponsoredResearchProjects"
             >
-              Article
+              Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Books"
+            >
+             Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consultancy"
+            >
+              Consultancy
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/BookChapter"
+            >
+             Book Chapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/MoUsSigned"
+            >
+              MoUs Signed
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black",
+              textDecoration: "none",
+              fontSize: "20px",
+              fontWeight: "bold",
+              textDecoration: "underline", }}
+              href="/Conference"
+            >
+              International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consolidated"
+            >
+             Consolidated
+            </a>
+            <br />
+            <br />
+            <br />
+           
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            Login
             </a>
             <br />
             <br />
@@ -185,7 +281,7 @@ function Conference() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>CONFERENCE</h2>
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>INTERNATIONAL CONFERENCE</h2>
               <form>
                 <div>
                   <input
@@ -242,12 +338,17 @@ function Conference() {
               >
                 <table style={tableElements}>
                   <tr>
-                    <th style={tableElements}>Sno</th>
-                    <th style={tableElements}>Faculty</th>
-                    <th style={tableElements}>Title</th>
-                    <th style={tableElements}>From</th>
-                    <th style={tableElements}>To</th>
-                    <th style={tableElements}>Sponsoring Agency</th>
+                    <th style={tableElements}>Emp id</th>
+                    <th style={tableElements}>Emp Name</th>
+                    <th style={tableElements}>Paper Title</th>
+                    <th style={tableElements}>Co Author Name</th>
+                    <th style={tableElements}>Conference Title</th>
+                    <th style={tableElements}>Organising Institution</th>
+                    <th style={tableElements}>Paper Scopus</th>
+                    <th style={tableElements}>No. of Pages</th>
+                    <th style={tableElements}>Proceedings Title</th>
+                    <th style={tableElements}>Total no. published</th>
+                    <th style={tableElements}>Category</th>
                   </tr>
                   {/* {conferenceList.map((val, key) => {
                     return (
@@ -263,59 +364,31 @@ function Conference() {
                   })} */}
                   {conferenceList
                     .filter((val) => {
-                      if (searchItem === "") {
-                        if (
-                          facultyFilterValue === "All" &&
-                          sponsoringAgencyFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.faculty.includes(facultyFilterValue) &&
-                          sponsoringAgencyFilterValue === val.sponsoring_agency
-                        ) {
-                          return val;
-                        }
-                        else if (
-                          facultyFilterValue === "All" &&
-                          sponsoringAgencyFilterValue === val.sponsoring_agency
-                        ) {
-                          return val;
-                        }
-                        else if (
-                          val.faculty.includes(facultyFilterValue) &&
-                          sponsoringAgencyFilterValue === "All"
-                        ) {
-                          return val;
-                        }
+                      if (searchItem === "")
+                       { return val;
+                       
                       } else if (
-                        val.faculty
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.title
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.fromDate
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.toDate
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.sponsoring_agency
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase())
+                        val.emp_name.toLowerCase().includes(searchItem.toLowerCase()) 
                       ) {
+                        console.log(val);
                         return val;
                       }
                     })
-                    .map((val, key) => {
+                    .map((val) => {
                       return (
-                        <tr key={val.s_no}>
-                          <td style={tableElements}>{val.s_no}</td>
-                          <td style={tableElements}>{val.faculty}</td>
-                          <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.fromDate}</td>
-                          <td style={tableElements}>{val.toDate}</td>
-                          <td style={tableElements}>{val.sponsoring_agency}</td>
+                        <tr>
+                          <td style={tableElements}>{val.emp_id}</td>
+                          <td style={tableElements}>{val.emp_name}</td>
+                          <td style={tableElements}>{val.paper_title}</td>
+                          <td style={tableElements}>{val.coauthour_name}</td>
+                          <td style={tableElements}>{val.conference_title}</td>
+                          <td style={tableElements}>{val.organizing_institution}</td>
+                          <td style={tableElements}>{val.paper_scopus}</td>
+                          <td style={tableElements}>{val.no_pages}</td>
+                          <td style={tableElements}>{val.proceedings_title}</td>
+                          <td style={tableElements}>{val.total_num_published}</td>
+                          <td style={tableElements}>{val.category}</td>
+                          
                         </tr>
                       );
                     })}

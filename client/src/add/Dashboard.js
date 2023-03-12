@@ -20,6 +20,7 @@ function Dashboard() {
       setJournalList(response.data);
     });
   };
+
   getJournals();
   const [conferenceList, setConferenceList] = useState([]);
   const getConference = () => {
@@ -45,7 +46,7 @@ function Dashboard() {
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1800px",
             background: "#ADD8E6",
           }}
         >
@@ -77,87 +78,62 @@ function Dashboard() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a
-              style={{
-                color: "black",
-                textDecoration: "none",
-                fontSize: "20px",
-                fontWeight: "bold",
-                textDecoration: "underline",
-              }}
-              href="/"
-            >
-              Dashboard
-            </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
-              Login
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Journal"
-            >
-              Journal
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Conference"
-            >
-              Conference
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Article"
-            >
-              Article----
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Books"
-            >
-              Books
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Patents"
-            >
-              Patents
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Citations"
-            >
-              Citations
-            </a>
+
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/ResearchPublicationCount"
-            >
-              Research Publication Count
-            </a>
+
+            <br />
+            <br />
+            <br />
+
+            <br />
+            <br />
+            <br />
+
+            <br />
+            <br />
+            <br />
+
+            <br />
+            <br />
+            <br />
+
+            <br />
+            <br />
+            <br />
+
+            <br />
+            <br />
+            <br />
+
             <br />
             <br />
             <br />
@@ -194,123 +170,144 @@ function Dashboard() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>Welcome....</h2>
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                RECENT PUBLICATIONS(Journals)
-              </h2>
-              <div
-                style={{
-                  marginTop: "100px",
-                  marginLeft: "0px",
-                  marginRight: "250px",
-                }}
-              >
-                <table style={tableElements}>
-                  <tr>
-                    <th style={tableElements}>Sno</th>
-                    <th style={tableElements}>Author</th>
-                    <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Category</th>
-                    <th style={tableElements}>Journal Name</th>
-                    <th style={tableElements}>Year</th>
-                  </tr>
-                  {journalList.map((val, key) => {
-                    return (
-                      <tr key={val.s_no}>
-                        <td style={tableElements}>{val.s_no}</td>
-                        <td style={tableElements}>{val.author}</td>
-                        <td style={tableElements}>{val.title}</td>
-                        <td style={tableElements}>{val.category}</td>
-                        <td style={tableElements}>{val.journal_name}</td>
-                        <td style={tableElements}>{val.year}</td>
-                      </tr>
-                    );
-                  })}
-                </table>
-              </div>
-            </div>
-            <div>
-              <div
-                style={{
-                  top: "200px",
-                  position: "absolute",
-                  right: "60px",
-                }}
-              >
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    height: "80px",
-                    width: "90px",
-                    margin: "30px",
-                    padding: "10px 10px 10px 30px",
-                    border: "solid black",
-                    backgroundColor: "#FFFACD",
-                    fontFamily: "Google Sans",
-                  }}
-                >
-                  <h1
-                    style={{
-                      marginTop: "5px",
-                      fontSize: "40px",
-                      marginBottom: "2px",
-                      marginLeft: "20px",
-                    }}
-                  >
-                    {journalList.length}
-                  </h1>
-                  <h3 style={{ marginTop: "0px", fontWeight: "bold" }}>
-                    Journals
-                  </h3>
+              <div class="row">
+                <div className="column">
+                  <h2 className="box" style={{ backgroundColor: "#F6F3B5" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/"
+                    >
+                      Profile
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#F6F3B5" }}>
+                    {" "}
+                    <a
+                      style={{
+                        color: "black",
+                        textDecoration: "none",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        textDecoration: "underline",
+                      }}
+                      href="/"
+                    >
+                      Dashboard
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#F6F3B5" }}>
+                    {" "}
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Patents"
+                    >
+                      Patent
+                    </a>
+                  </h2>
                 </div>
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    height: "80px",
-                    width: "90px",
-                    margin: "30px",
-                    padding: "10px 10px 10px 30px",
-                    border: "solid black",
-                    backgroundColor: "#FFE4B5",
-                  }}
-                >
-                  <h1
-                    style={{
-                      marginTop: "5px",
-                      fontSize: "40px",
-                      marginBottom: "2px",
-                      marginLeft: "25px",
-                    }}
-                  >
-                    {conferenceList.length}
-                  </h1>
-                  <h3 style={{ marginTop: "0px", fontWeight: "bold" }}>
-                    Conference
-                  </h3>
+                <div className="column">
+                  <h2 className="box" style={{ backgroundColor: "#FFDCBE" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Citations"
+                    >
+                      Citations
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#FFDCBE" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/TechnologyTransfer"
+                    >
+                      Technology Transfer
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#FFDCBE" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/TechnologyTransfer"
+                    >
+                      Research Publication Count
+                    </a>
+                  </h2>
                 </div>
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    height: "80px",
-                    width: "90px",
-                    margin: "30px",
-                    padding: "10px 10px 10px 30px",
-                    border: "solid black",
-                    backgroundColor: "#FFC0CB",
-                  }}
-                >
-                  <h1
-                    style={{
-                      marginTop: "5px",
-                      fontSize: "40px",
-                      marginBottom: "2px",
-                      marginLeft: "25px",
-                    }}
-                  >
-                    {articleList.length}
-                  </h1>
-                  <h3 style={{ marginTop: "0px", fontWeight: "bold",marginLeft:"10px" }}>
-                    Articles
-                  </h3>
+                <div className="column">
+                  <h2 className="box" style={{ backgroundColor: "#FDB9C9" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Journal"
+                    >
+                      Journal
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#FDB9C9" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/SponsoredResearchProjects"
+                    >
+                      Sponsored Research Projects
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#FDB9C9" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Books"
+                    >
+                      Books
+                    </a>
+                  </h2>
+                </div>
+                <div className="column">
+                  <h2 className="box" style={{ backgroundColor: "#BBF6F3" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Consultancy"
+                    >
+                      Consultancy
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#BBF6F3" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/BookChapter"
+                    >
+                      Book Chapter
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#BBF6F3" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/MoUsSigned"
+                    >
+                      MoUs Signed
+                    </a>
+                  </h2>
+                </div>
+                <div className="column">
+                  <h2 className="box" style={{ backgroundColor: "#A7E0F4" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Conference"
+                    >
+                      Conference
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#A7E0F4" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="/Consolidated"
+                    >
+                      Consolidated
+                    </a>
+                  </h2>
+                  <h2 className="box" style={{ backgroundColor: "#A7E0F4" }}>
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href="./"
+                    >
+                      Login
+                    </a>
+                  </h2>
                 </div>
               </div>
             </div>
