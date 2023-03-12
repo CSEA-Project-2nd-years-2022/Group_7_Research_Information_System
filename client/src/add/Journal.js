@@ -75,12 +75,11 @@ function Journal() {
 
   return (
     <div>
-      <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1800px",
             background: "#ADD8E6",
           }}
         >
@@ -112,14 +111,57 @@ function Journal() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
+              Profile
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
-              Login
+           
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Patents"
+            >
+              Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Citations"
+            >
+              Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/ResearchPublicationCount"
+            >
+              Research Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/TechnologyTransfer"
+            >
+            Technology Transfer
             </a>
             <br />
             <br />
@@ -134,7 +176,52 @@ function Journal() {
               }}
               href="/Journal"
             >
-              Journal
+              International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/SponsoredResearchProjects"
+            >
+              Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Books"
+            >
+             Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consultancy"
+            >
+              Consultancy
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/BookChapter"
+            >
+             Book Chapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/MoUsSigned"
+            >
+              MoUs Signed
             </a>
             <br />
             <br />
@@ -143,22 +230,32 @@ function Journal() {
               style={{ color: "black", textDecoration: "none" }}
               href="/Conference"
             >
-              Conference
+              International Conference
             </a>
             <br />
             <br />
             <br />
+            
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Article"
+              href="/Consolidated"
             >
-              Article
+             Consolidated
+            </a>
+            <br />
+            <br />
+            <br />
+           
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            Login
             </a>
             <br />
             <br />
             <br />
           </div>
         </div>
+      <div className="columnLeft">
+        
         <div className="columnRight">
           <div>
             <div
@@ -236,21 +333,7 @@ function Journal() {
                   })}
                 </select>
               </div>
-              <div class="dropdown3">
-                <label>Year : </label>
-                <select name="year" id="year" 
-                onChange={(event) => {
-                    setYearFilterValue(event.target.value);
-                  }}
-                  >
-                  <option value="All" selected>
-                    All
-                  </option>
-                  {journalYearList.map((val, key) => {
-                    return <option value={val.year}>{val.year}</option>;
-                  })}
-                </select>
-              </div>
+              
               <div
                 style={{
                   marginTop: "100px",
@@ -260,12 +343,19 @@ function Journal() {
               >
                 <table style={tableElements}>
                   <tr>
-                    <th style={tableElements}>Sno</th>
-                    <th style={tableElements}>Author</th>
-                    <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Category</th>
+                    <th style={tableElements}>Emp Id</th>
+                    <th style={tableElements}>Emp Name</th>
+                    <th style={tableElements}>Title of Paper</th>
+                    <th style={tableElements}>Author Names</th>
                     <th style={tableElements}>Journal Name</th>
-                    <th style={tableElements}>Year</th>
+                    <th style={tableElements}>ISSN no</th>
+                    <th style={tableElements}>Date of Publication</th>
+                    <th style={tableElements}>page no</th>
+                    <th style={tableElements}>volume no</th>
+                    <th style={tableElements}>Issue No</th>
+                    <th style={tableElements}>Category</th>
+                    <th style={tableElements}>Scopus SNIP No.</th>
+                    <th style={tableElements}>UGC No.</th>
                   </tr>
                   {journalList
                     .filter((val) => {
@@ -320,18 +410,10 @@ function Journal() {
                           return val;
                         }
                       } else if (
-                        val.author
+                        val.emp_name
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.title
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.category
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.journal_name
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase())
+                          .includes(searchItem.toLowerCase()) 
+                       
                       ) {
                         if (
                           authorFilterValue === "All" &&
@@ -383,16 +465,24 @@ function Journal() {
                           return val;
                         }
                       }
+                      else{}
                     })
-                    .map((val, key) => {
+                    .map((val) => {
                       return (
-                        <tr key={val.s_no}>
-                          <td style={tableElements}>{val.s_no}</td>
-                          <td style={tableElements}>{val.author}</td>
-                          <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.category}</td>
+                        <tr>
+                          <td style={tableElements}>{val.emp_id}</td>
+                          <td style={tableElements}>{val.emp_name}</td>
+                          <td style={tableElements}>{val.title_of_paper}</td>
+                          <td style={tableElements}>{val.author_names}</td>
                           <td style={tableElements}>{val.journal_name}</td>
-                          <td style={tableElements}>{val.year}</td>
+                          <td style={tableElements}>{val.issn_no}</td>
+                          <td style={tableElements}>{val.dop}</td>
+                          <td style={tableElements}>{val.page_no}</td>
+                          <td style={tableElements}>{val.volume_no}</td>
+                          <td style={tableElements}>{val.int_issue_num}</td>
+                          <td style={tableElements}>{val.category}</td>
+                          <td style={tableElements}>{val.scopus_snip_number}</td>
+                          <td style={tableElements}>{val.ugc_list_number}</td>
                         </tr>
                       );
                     })}

@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  user: "user",
-  host: "localhost",
-  password: "4321",
-  database: "psg_ris",
+  user: "admin",
+  host: "psg-ris.c8qjejxbwt2k.us-east-1.rds.amazonaws.com",
+  password: "KiReSh2002",
+  database: "Research_info_system",
 });
 
 app.post("/AddArticle", (req, res) => {
@@ -86,25 +86,6 @@ app.get("/ShowArticles", (req, res) => {
   });
 });
 
-app.get("/ShowConference", (req, res) => {
-  db.query("SELECT * FROM conference_table", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
-
-app.get("/ShowJournals", (req, res) => {
-  db.query("SELECT * FROM journal_table", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
 // Journal Filters
 app.get("/ShowJournalAuthors", (req, res) => {
   db.query("SELECT DISTINCT author FROM journal_table", (err, result) => {
@@ -234,7 +215,7 @@ app.listen(3001, () => {
 });
 /////////////////////////////////////////////////////////////////////////////////////////////
 app.get("/ShowBooks", (req, res) => {
-  db.query("SELECT * FROM books_table", (err, result) => {
+  db.query("SELECT * FROM books NATURAL JOIN employees", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -243,7 +224,7 @@ app.get("/ShowBooks", (req, res) => {
   });
 });
 app.get("/ShowPatents", (req, res) => {
-  db.query("SELECT * FROM patents_table", (err, result) => {
+  db.query("SELECT * FROM patent NATURAL JOIN employees", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -252,7 +233,7 @@ app.get("/ShowPatents", (req, res) => {
   });
 });
 app.get("/ShowCitations", (req, res) => {
-  db.query("SELECT * FROM citations_table", (err, result) => {
+  db.query("SELECT * FROM citations NATURAL JOIN employees", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -262,11 +243,99 @@ app.get("/ShowCitations", (req, res) => {
 });
 
 app.get("/ShowResearchPubCount", (req, res) => {
-  db.query("SELECT * FROM research_publication_count_table", (err, result) => {
+  db.query(
+    "SELECT * FROM research_count NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+app.get("/ShowTechnologyTransfer", (req, res) => {
+  db.query(
+    "SELECT * FROM technology_transfer NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+app.get("/ShowJournals", (req, res) => {
+  db.query(
+    "SELECT * FROM international_journal NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+app.get("/ShowResearchProjects", (req, res) => {
+  db.query(
+    "SELECT * FROM sponsored_research_projects NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowConsultancy", (req, res) => {
+  db.query(
+    "SELECT * FROM consultancy NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowBookChapter", (req, res) => {
+  db.query(
+    "SELECT * FROM book_chapter NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowMou", (req, res) => {
+  db.query("SELECT * FROM mou NATURAL JOIN employees", (err, result) => {
     if (err) {
       console.log(err);
     } else {
       res.send(result);
     }
   });
+});
+
+app.get("/ShowConference", (req, res) => {
+  db.query(
+    "SELECT * FROM international_conference NATURAL JOIN employees",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
 });

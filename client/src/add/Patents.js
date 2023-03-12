@@ -49,7 +49,7 @@ function Patents() {
     });
     console.log(individualTempAuthorList);
   };
-  getArticleAuthor();
+  // getArticleAuthor();
 
   const [articlePublisherList, setArticlePublisherList] = useState([]);
   const [publisherFilterValue, setPublisherFilterValue] = useState("All");
@@ -61,7 +61,7 @@ function Patents() {
       }
     );
   };
-  getArticlePublisher();
+  // getArticlePublisher();
 
   const [articleYearList, setArticleYearList] = useState([]);
   const [yearFilterValue, setYearFilterValue] = useState("All");
@@ -71,7 +71,7 @@ function Patents() {
       setArticleYearList(response.data);
     });
   };
-  getArticleYear();
+  // getArticleYear();
 
   return (
     <div>
@@ -80,7 +80,7 @@ function Patents() {
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1800px",
             background: "#ADD8E6",
           }}
         >
@@ -112,14 +112,57 @@ function Patents() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            <a style={{ color: "black", textDecoration: "none" }} href="/">
+              Profile
+            </a>
+            <br />
+            <br />
+            <br />
+            <a style={{ color: "black", textDecoration: "none" }} href="/">
               Dashboard
             </a>
             <br />
             <br />
             <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
-              Login
+
+            <a
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: "20px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+              href="/Patents"
+            >
+              Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Citations"
+            >
+              Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/ResearchPublicationCount"
+            >
+              Research Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/TechnologyTransfer"
+            >
+              Technology Transfer
             </a>
             <br />
             <br />
@@ -128,25 +171,16 @@ function Patents() {
               style={{ color: "black", textDecoration: "none" }}
               href="/Journal"
             >
-              Journal
+              International Journal
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Conference"
+              href="/SponsoredResearchProjects"
             >
-              Conference
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Article"
-            >
-              Article
+              Sponsored Research Projects
             </a>
             <br />
             <br />
@@ -158,22 +192,61 @@ function Patents() {
             <br />
             <br />
             <a
-              style={{
-                color: "black",
-                textDecoration: "none",
-                fontSize: "20px",
-                fontWeight: "bold",
-                textDecoration: "underline",
-              }}
-              href="/Patents"
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consultancy"
             >
-              Patents
+              Consultancy
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/BookChapter"
+            >
+              Book Chapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/MoUsSigned"
+            >
+              MoUs Signed
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Conference"
+            >
+              International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consolidated"
+            >
+              Consolidated
+            </a>
+            <br />
+            <br />
+            <br />
+
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
+              Login
             </a>
             <br />
             <br />
             <br />
           </div>
         </div>
+
         <div className="columnRight">
           <div>
             <div
@@ -213,12 +286,13 @@ function Patents() {
                     placeholder="Type to search"
                     onChange={(event) => {
                       setSearchItem(event.target.value);
+                      console.log(event.target.value);
                     }}
                   />
                 </div>
               </form>
               <div className="dropdown1">
-                <label>Author : </label>
+                <label>Patent No : </label>
                 <select
                   name="Author"
                   id="Author"
@@ -234,42 +308,7 @@ function Patents() {
                   })}
                 </select>
               </div>
-              <div className="dropdown2">
-                <label>Publisher : </label>
-                <select
-                  name="Publisher"
-                  id="Publisher"
-                  onChange={(event) => {
-                    setPublisherFilterValue(event.target.value);
-                  }}
-                >
-                  <option value="All" selected>
-                    All
-                  </option>
-                  {articlePublisherList.map((val, key) => {
-                    return (
-                      <option value={val.publisher}>{val.publisher}</option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="dropdown3">
-                <label>Year : </label>
-                <select
-                  name="Year"
-                  id="year"
-                  onChange={(event) => {
-                    setYearFilterValue(event.target.value);
-                  }}
-                >
-                  <option value="All" selected>
-                    All
-                  </option>
-                  {articleYearList.map((val, key) => {
-                    return <option value={val.year}>{val.year}</option>;
-                  })}
-                </select>
-              </div>
+
               <div
                 style={{
                   marginTop: "100px",
@@ -280,7 +319,6 @@ function Patents() {
               >
                 <table style={tableElements}>
                   <tr>
-                    <th style={tableElements}>S.No</th>
                     <th style={tableElements}>Emp Id</th>
                     <th style={tableElements}>Author Name</th>
                     <th style={tableElements}>No. of patents filed</th>
@@ -343,15 +381,12 @@ function Patents() {
                           return val;
                         }
                       } else if (
-                        val.author
+                        val.emp_name
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.title
+                          .includes(searchItem.toLowerCase()) 
+                        /* val.patent_title
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.publisher
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase())
+                          .includes(searchItem.toLowerCase()) */
                       ) {
                         if (
                           authorFilterValue === "All" &&
@@ -402,24 +437,24 @@ function Patents() {
                         ) {
                           return val;
                         }
+                      } else {
                       }
                     })
-                    .map((val, key) => {
+                    .map((val) => {
                       return (
-                        <tr key={val.s_no}>
-                          <td style={tableElements}>{val.s_no}</td>
+                        <tr>
                           <td style={tableElements}>{val.emp_id}</td>
-                          <td style={tableElements}>{val.author_name}</td>
-                          <td style={tableElements}>{val.no_patents_filed}</td>
+                          <td style={tableElements}>{val.emp_name}</td>
+                          <td style={tableElements}>{val.num_patent}</td>
                           <td style={tableElements}>
-                            {val.no_patents_granted}
+                            {val.num_patent_granted}
                           </td>
                           <td style={tableElements}>
-                            {val.no_patents_licensed}
+                            {val.num_patent_liscenced}
                           </td>
-                          <td style={tableElements}>{val.patent_no}</td>
-                          <td style={tableElements}>{val.date}</td>
-                          <td style={tableElements}>{val.title}</td>
+                          <td style={tableElements}>{val.patent_number}</td>
+                          <td style={tableElements}>{val.date_award}</td>
+                          <td style={tableElements}>{val.patent_title}</td>
                         </tr>
                       );
                     })}

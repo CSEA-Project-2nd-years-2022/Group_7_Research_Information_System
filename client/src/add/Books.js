@@ -27,6 +27,7 @@ function Books() {
   const [articleAuthorList, setArticleAuthorList] = useState([]);
   const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
   const [authorFilterValue, setAuthorFilterValue] = useState("All");
+  
   const getArticleAuthor = () => {
     Axios.get("http://localhost:3001/ShowArticleAuthors").then((response) => {
       // console.log(response);
@@ -76,11 +77,11 @@ function Books() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1800px",
             background: "#ADD8E6",
           }}
         >
@@ -112,23 +113,117 @@ function Books() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
-              Dashboard
-            </a>
-            <br />
-            <br />
-            <br />
-            <a style={{ color: "black", textDecoration: "none" }} href="/Login">
-              Login
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
+              Profile
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
+              href="/"
+            >
+              Dashboard
+            </a>
+            <br />
+            <br />
+            <br />
+           
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Patents"
+            >
+              Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Citations"
+            >
+              Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/ResearchPublicationCount"
+            >
+              Research Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/TechnologyTransfer"
+            >
+            Technology Transfer
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{color: "black", textDecoration: "none"
+                
+              }}
               href="/Journal"
             >
-              Journal
+              International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/SponsoredResearchProjects"
+            >
+              Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black",
+              textDecoration: "none",
+              fontSize: "20px",
+              fontWeight: "bold",
+              textDecoration: "underline", }}
+              href="/Books"
+            >
+             Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Consultancy"
+            >
+              Consultancy
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/BookChapter"
+            >
+             Book Chapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/MoUsSigned"
+            >
+              MoUs Signed
             </a>
             <br />
             <br />
@@ -137,31 +232,24 @@ function Books() {
               style={{ color: "black", textDecoration: "none" }}
               href="/Conference"
             >
-              Conference
+              International Conference
             </a>
             <br />
             <br />
             <br />
+            
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Article"
+              href="/Consolidated"
             >
-              Article
+             Consolidated
             </a>
             <br />
             <br />
             <br />
-            <a
-              style={{
-                color: "black",
-                textDecoration: "none",
-                fontSize: "20px",
-                fontWeight: "bold",
-                textDecoration: "underline",
-              }}
-              href="/Books"
-            >
-              Books
+           
+            <a style={{ color: "black", textDecoration: "none" }} href="./">
+            Login
             </a>
             <br />
             <br />
@@ -229,7 +317,7 @@ function Books() {
                 </select>
               </div>
               <div className="dropdown2">
-                <label>Publisher : </label>
+                <label>Co-Author : </label>
                 <select
                   name="Publisher"
                   id="Publisher"
@@ -274,7 +362,7 @@ function Books() {
               >
                 <table style={tableElements}>
                   <tr>
-                    <th style={tableElements}>S.No</th>
+
                     <th style={tableElements}>Emp Id</th>
                     <th style={tableElements}>Author Name</th>
                     <th style={tableElements}>Title</th>
@@ -336,15 +424,10 @@ function Books() {
                           return val;
                         }
                       } else if (
-                        val.author
+                        val.emp_name
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.title
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
-                        val.publisher
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase())
+                          .includes(searchItem.toLowerCase()) 
+                        
                       ) {
                         if (
                           authorFilterValue === "All" &&
@@ -395,19 +478,18 @@ function Books() {
                         ) {
                           return val;
                         }
-                      }
+                      }else{}
                     })
-                    .map((val, key) => {
+                    .map((val) => {
                       return (
-                        <tr key={val.s_no}>
-                          <td style={tableElements}>{val.s_no}</td>
+                        <tr>
                           <td style={tableElements}>{val.emp_id}</td>
-                          <td style={tableElements}>{val.author_name}</td>
-                          <td style={tableElements}>{val.title}</td>
-                          <td style={tableElements}>{val.isbn}</td>
+                          <td style={tableElements}>{val.emp_name}</td>
+                          <td style={tableElements}>{val.title_of_book}</td>
+                          <td style={tableElements}>{val.isbn_number}</td>
                           <td style={tableElements}>{val.co_author}</td>
-                          <td style={tableElements}>{val.year}</td>
-                          <td style={tableElements}>{val.name_of_pub}</td>
+                          <td style={tableElements}>{val.yop}</td>
+                          <td style={tableElements}>{val.name_of_publisher}</td>
                         </tr>
                       );
                     })}
