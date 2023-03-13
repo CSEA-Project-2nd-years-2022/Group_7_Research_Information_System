@@ -40,9 +40,6 @@ function Login() {
       <div className="bg">
         <div className="containers">
           <div className="topnav2">
-            <a href="/Article">Article</a>
-            <a href="/Conference">Conference</a>
-            <a href="/Journal">Journal</a>
             <a
               style={{
                 textDecoration: "underline",

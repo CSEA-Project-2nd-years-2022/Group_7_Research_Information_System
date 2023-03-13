@@ -303,7 +303,7 @@ function Dashboard() {
                   <h2 className="box" style={{ backgroundColor: "#A7E0F4" }}>
                     <a
                       style={{ color: "black", textDecoration: "none" }}
-                      href="./"
+                      href="/Login"
                     >
                       Login
                     </a>
