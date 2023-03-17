@@ -102,9 +102,9 @@ function AdminDashboard() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddCitation"
             >
-              Journal
+              Add Citations
             </a>
             <br />
             <br />

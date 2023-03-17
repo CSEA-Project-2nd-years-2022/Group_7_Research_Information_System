@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "admin",
   host: "psg-ris.c8qjejxbwt2k.us-east-1.rds.amazonaws.com",
-  password: "",
+  password: "KiReSh2002",
   database: "Research_info_system",
 });
 
@@ -17,7 +17,7 @@ app.post("/AddArticle", (req, res) => {
   console.log(req.body);
   const author = req.body.author;
   const title = req.body.title;
-  const publisher = req.body.publisher;
+  const publisher = req.body.publisher;c
   const volume = req.body.volume;
   const year = req.body.year;
 
@@ -213,7 +213,7 @@ app.get("/ShowEmails", (req, res) => {
 app.listen(3001, () => {
   console.log("yes server running");
 });
-/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get("/ShowBooks", (req, res) => {
   db.query("SELECT * FROM books NATURAL JOIN employees", (err, result) => {
     if (err) {
@@ -335,6 +335,87 @@ app.get("/ShowConference", (req, res) => {
         console.log(err);
       } else {
         res.send(result);
+      }
+    }
+  );
+});
+
+
+app.post("/AddCitation", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const num_citations = req.body.num_citations;
+
+  db.query(
+    "INSERT INTO citations(emp_id,num_citations) VALUES (?,?)",
+    [emp_id, num_citations],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddPublicationCount", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const num_int_jn = req.body.num_int_jn;
+  const num_nat_jn = req.body.num_nat_jn;
+  const num_int_con = req.body.num_int_con;
+  const num_nat_con = req.body.num_nat_con;
+  const num_book = req.body.num_book;
+  const num_chap = req.body.num_chap;
+
+
+  db.query(
+    "INSERT INTO Research_Publication_Count(emp_id, num_int_jn,num_nat_jn,num_int_con,num_nat_con,num_book,num_chap) VALUES (?,?,?,?,?,?,?)",
+    [emp_id, num_int_jn,num_nat_jn,num_int_con,num_nat_con,num_book,num_chap],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddEmployee", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const emp_name = req.body.emp_name;
+
+
+  db.query(
+    "INSERT INTO employees(emp_id, emp_name) VALUES (?,?)",
+    [emp_id, emp_name],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddTechTransfer", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const emp_name = req.body.emp_name;
+
+
+  db.query(
+    "INSERT INTO technology_transfer(emp_id , num_tech_tran , title_tech_tran , industry_alliance , num_people_involved) VALUES (?,?,?,?,?)",
+    [emp_id , num_tech_tran , title_tech_tran , industry_alliance , num_people_involved],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
       }
     }
   );

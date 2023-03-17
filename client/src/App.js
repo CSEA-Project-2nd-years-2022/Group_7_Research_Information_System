@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AddEmployee from "./add/AddEmployee";
+import AddCitation from "./add/AddCitation";
+import AddPublicationCount from "./add/AddPublicationCount";
+import AddTechTransfer from "./add/AddTechTransfer";
 import AddArticle from "./add/AddArticle";
 import AddConference from "./add/AddConference";
 import AddJournal from "./add/AddJournal";
@@ -88,6 +92,26 @@ function App() {
           exact
           path="/Login/AddResearchPapers/AddArticle"
           element={<AddArticle />}
+        />
+        <Route
+          exact
+          path="/Login/AddEmployee"
+          element={<AddEmployee />}
+        />
+        <Route
+          exact
+          path="/Login/AddCitation"
+          element={<AddCitation />}
+        />
+        <Route
+          exact
+          path="/Login/AddPublicationCount"
+          element={<AddPublicationCount />}
+        />
+         <Route
+          exact
+          path="/Login/AddTechTransfer"
+          element={<AddTechTransfer />}
         />
       </Routes>
     </Router>
