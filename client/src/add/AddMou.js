@@ -2,38 +2,42 @@ import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
 
-function AddTechTransfer() {
-  const [emp_id, setEmp_ID] = useState("");
-  const [num_tech_tran, setNum_Tech_Tran] = useState(0);
-  const [title_tech_tran, setTitle_Tech_Tran] = useState("");
-  const [industry_alliance, setIndustry_Alliance] = useState("");
-  const [num_people_inloved, setNum_People_Inloved] = useState(0);
+function AddMou() {
+  const [emp_id, setEmp_Id] = useState("");
+  const [organization_name, setOrganization_Name] = useState("");
+  const [date_mou_signed, setDate_Mou_Signed] = useState("");
+  const [purpose_activities, setPurpose_Activities] = useState("");
+  const [num_participants, setNum_Participants] = useState("");
+  const [title_mou, setTitle_Mou] = useState("");
+  
 
-  const [techtransferList, settechtransferList] = useState([]);
+  const [mouList, setmouList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
+    console.log(emp_id	+ organization_name	 + date_mou_signed  +	purpose_activities + 	num_participants +	title_mou);
   };
 
 
   
-  const addTechTransfer = () => {
-    Axios.post("http://localhost:3001/AddTechTransfer", {
+  const addMou = () => {
+    Axios.post("http://localhost:3001/AddMou", {
       emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+      organization_name : organization_name ,
+      date_mou_signed :date_mou_signed ,
+      purpose_activities :purpose_activities ,
+      num_participants : num_participants ,
+      title_mou : title_mou ,
     }).then(() => {
       console.log("success");
-      settechtransferList([
-        ...techtransferList,
+      setmouList([
+        ...mouList,
         {
             emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+            organization_name : organization_name ,
+            date_mou_signed :date_mou_signed ,
+            purpose_activities :purpose_activities ,
+            num_participants : num_participants ,
+            title_mou : title_mou ,
         },
       ]);
     });
@@ -178,66 +182,78 @@ function AddTechTransfer() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                ADD TECHNOLOGY TRANSFER DETAILS
+                ADD MOU DETAILS
               </h2>
               <br />
               <div>
                 <div>
                   <form>
                     <div>
-                      <label>Employee ID: </label>
+                      <label>Employee Id </label>
                       <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setEmp_Id(event.target.value);
                         }}
-                        placeholder="Employee ID"
+                        placeholder="ID"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
-                        <input
-                          type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
-                          onChange={(event) => {
-                            setNum_Tech_Tran(event.target.value);
-                          }}
-                          placeholder="No. of technology transfers done"
-                        />
-                        &nbsp;
-                      </div>
-                      <div>
-                        Title of Technology Transfer:{""}
+                        Organization Name{""}
                         <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setTitle_Tech_Tran(event.target.value);
+                            setOrganization_Name(event.target.value);
                           }}
-                          placeholder="Title of Technology Transfer"
+                          placeholder="Organization Name"
                         />
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                       Date of MOU{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setIndustry_Alliance(event.target.value);
+                            setDate_Mou_Signed(event.target.value);
                           }}
-                          placeholder="Industry Alliance"
+                          placeholder="Date"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Number of People Involved:{}
+                      Purpose and Activities{""}
                         <input
-                          type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
                           onChange={(event) => {
-                            setNum_People_Inloved(event.target.value);
+                            setPurpose_Activities(event.target.value);
                           }}
-                          placeholder="No. of people involved "
+                          placeholder="Purpose"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Number of Participants:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setNum_Participants(event.target.value);
+                          }}
+                          placeholder="Number of Participants"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                      TITLE OF MOU :{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setTitle_Mou(event.target.value);
+                          }}
+                          placeholder="Title"
                         />
                         &nbsp;
                       </div>
@@ -248,7 +264,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={addMou}
                     >
                       Submit
                     </button>
@@ -267,4 +283,4 @@ function AddTechTransfer() {
   );
 }
 
-export default AddTechTransfer;
+export default AddMou;

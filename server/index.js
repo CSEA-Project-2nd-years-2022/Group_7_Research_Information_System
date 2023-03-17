@@ -405,12 +405,219 @@ app.post("/AddEmployee", (req, res) => {
 app.post("/AddTechTransfer", (req, res) => {
   console.log(req.body);
   const emp_id = req.body.emp_id;
-  const emp_name = req.body.emp_name;
+  const num_tech_tran =req.body.num_tech_tran;
+  const title_tech_tran = req.body.title_tech_tran;
+  const industry_alliance =req.body.industry_alliance;
+  const num_people_inloved =req.body.num_people_inloved;
 
 
   db.query(
-    "INSERT INTO technology_transfer(emp_id , num_tech_tran , title_tech_tran , industry_alliance , num_people_involved) VALUES (?,?,?,?,?)",
-    [emp_id , num_tech_tran , title_tech_tran , industry_alliance , num_people_involved],
+    "INSERT INTO technology_transfer(emp_id , num_tech_tran , title_tech_tran , industry_alliance , num_people_inloved) VALUES (?,?,?,?,?)",
+    [emp_id , num_tech_tran , title_tech_tran , industry_alliance , num_people_inloved],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddInternationalJournal", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const title_of_paper =req.body.title_of_paper;
+  const author_names = req.body.author_name;
+  const journal_name =req.body.journal_name;
+  const issn_no =req.body.issn_no;
+  const dop =req.body.dop;
+  const page_no =req.body.page_no;
+  const volume_no =req.body.volume_no;
+  const int_issue_num =req.body. int_issue_num;
+  const category =req.body.category;
+  const scopus_snip_number =req.body.scopus_snip_number;
+  const ugc_list_number =req.body.ugc_list_number;
+  
+db.query(
+    "INSERT INTO international_journal(emp_id	, title_of_paper	,author_names ,	journal_name ,	issn_no	, dop,	page_no	,volume_no	,int_issue_num	,category	,scopus_snip_number,	ugc_list_number) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+    [emp_id	, title_of_paper	,author_names ,	journal_name ,	issn_no	, dop,	page_no	,volume_no	,int_issue_num	,category	,scopus_snip_number,	ugc_list_number],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddSponsoredResearchProjects", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const project_name =req.body.project_name;
+  const funding_agency = req.body.funding_agency;
+  const total_grant_sanctioned =req.body.total_grant_sanctioned ;
+  const principal_investigator =req.body.principal_investigator;
+  const coprincipal_investigator =req.body.coprincipal_investigator;
+  const duration=req.body.duration;
+  const grant_released =req.body.grant_released;
+  const status =req.body.status;
+  
+  
+db.query(
+    "INSERT INTO sponsored_research_projects(emp_id	, project_name , funding_agency ,total_grant_sanctioned,	principal_investigator	, coprincipal_investigator, duration,grant_released	,status) VALUES (?,?,?,?,?,?,?,?,?)",
+    [emp_id	, project_name , funding_agency ,total_grant_sanctioned,	principal_investigator	, coprincipal_investigator, duration,grant_released	,status	],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddBooks", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const title_of_book =req.body.title_of_book;
+  const isbn_number = req.body.isbn_number;
+  const co_author =req.body.co_author ;
+  const yop=req.body.yop;
+  const name_of_publisher =req.body.name_of_publisher;
+  
+  
+db.query(
+    "INSERT INTO books(emp_id	 ,title_of_book	, isbn_number ,	co_auhtor ,	yop ,	name_of_publisher) VALUES (?,?,?,?,?,?)",
+    [emp_id	 ,title_of_book	, isbn_number ,	co_auhtor ,	yop ,	name_of_publisher],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddConsultancy", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const name_consultant_departement =req.body.name_consultant_departement;
+  const name_consultancy = req.body.name_consultancy;
+  const consulting_agency=req.body.consulting_agency ;
+  const revenue_generated=req.body.revenue_generated;
+  const grant_released =req.body.grant_released;
+  const status =req.body.status;
+  
+  
+db.query(
+    "INSERT INTO consultancy(emp_id , name_consultant_department ,name_consultancy , consulting_agency , revenue_generated , grant_released , status) VALUES (?,?,?,?,?,?,?)",
+    [emp_id , name_consultant_departement ,name_consultancy , consulting_agency , revenue_generated , grant_released , status],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddBookChapter", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const title_book_chapter =req.body.title_book_chapter;
+  const title_book= req.body.title_book;
+  const isbn_number=req.body.isbn_number ;
+  const co_author=req.body.co_auhtor;
+  const yop =req.body.yop;
+  const publisher_name=req.body.publisher_name;
+  
+  
+db.query(
+    "INSERT INTO book_chapter(emp_id , title_book_chapter ,title_book, isbn_number , co_author,yop ,publisher_name) VALUES (?,?,?,?,?,?,?)",
+    [emp_id , title_book_chapter ,title_book, isbn_number , co_author,yop ,publisher_name],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddMou", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const organization_name =req.body.organization_name;
+  const date_mou_signed= req.body.date_mou_signed;
+  const purpose_activities=req.body.purpose_activities ;
+  const num_participants=req.body.num_participants;
+  const title_mou=req.body.title_mou;
+ 
+  
+  
+db.query(
+    "INSERT INTO book_chapter(emp_id , organization_name , date_mou_signed, purpose_activities ,  num_participants , title_mou ) VALUES (?,?,?,?,?,?)",
+    [emp_id , organization_name , date_mou_signed, purpose_activities ,  num_participants , title_mou ],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddInternationalConference", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const paper_title =req.body.paper_title;
+  const coauthour_name= req.body.coauthour_name;
+  const conference_title=req.body.conference_title ;
+  const organizing_institution=req.body.organizing_institution;
+  const date=req.body.date;
+  const paper_scopus=req.body.paper_scopus;
+  const no_pages=req.body.no_pages;
+  const proceedings_title=req.body.proceedings_title;
+  const total_num_published=req.body.total_num_published;
+  const category=req.body.category;
+ 
+  
+  
+db.query(
+    "INSERT INTO international_conference(emp_id ,	paper_title	, coauthour_name	, conference_title ,	organizing_institution	, date ,	paper_scopus ,	no_pages ,	proceedings_title	, total_num_published	 ,category) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+    [emp_id ,	paper_title	, coauthour_name	, conference_title ,	organizing_institution	, date ,	paper_scopus ,	no_pages ,	proceedings_title	, total_num_published	 ,category],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
+
+app.post("/AddPatent", (req, res) => {
+  console.log(req.body);
+  const emp_id = req.body.emp_id;
+  const num_patent =req.body.num_patent;
+  const num_patent_granted= req.body.num_patent_granted;
+  const num_patent_liscenced=req.body.num_patent_liscenced;
+  const patent_number=req.body.patent_number;
+  const date_award=req.body.date_award;
+  const patent_title=req.body.patent_title;
+  
+ 
+  
+  
+db.query(
+    "INSERT INTO patent(emp_id	, num_patent	 , num_patent_granted ,	num_patent_liscenced	 , patent_number ,	date_award ,	patent_title) VALUES (?,?,?,?,?,?,?)",
+    [emp_id	, num_patent	 , num_patent_granted ,	num_patent_liscenced	 , patent_number ,	date_award ,	patent_title],
     (err, result) => {
       if (err) {
         console.log(err);

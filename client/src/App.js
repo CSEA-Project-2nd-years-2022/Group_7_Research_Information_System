@@ -3,6 +3,15 @@ import AddEmployee from "./add/AddEmployee";
 import AddCitation from "./add/AddCitation";
 import AddPublicationCount from "./add/AddPublicationCount";
 import AddTechTransfer from "./add/AddTechTransfer";
+import AddInternationalJournal from "./add/AddInternationalJournal";
+import AddSponsoredResearchProjects from "./add/AddSponsoredResearchProjets";
+import AddBooks from "./add/AddBooks";
+import AddConsultancy from "./add/AddConsultancy";
+import AddBookChapter from "./add/AddBookChapter";
+import AddMou from "./add/AddMou";
+import AddInternationalConference from "./add/AddInternationalConference";
+import AddPatent from "./add/AddPatent";
+
 import AddArticle from "./add/AddArticle";
 import AddConference from "./add/AddConference";
 import AddJournal from "./add/AddJournal";
@@ -112,6 +121,46 @@ function App() {
           exact
           path="/Login/AddTechTransfer"
           element={<AddTechTransfer />}
+        />
+         <Route
+          exact
+          path="/Login/AddInternationalJournal"
+          element={<AddInternationalJournal />}
+        />
+        <Route
+          exact
+          path="/Login/AddSponsoredResearchProjects"
+          element={<AddSponsoredResearchProjects />}
+        />
+         <Route
+          exact
+          path="/Login/AddBooks"
+          element={<AddBooks />}
+        />
+         <Route
+          exact
+          path="/Login/AddConsultancy"
+          element={<AddConsultancy />}
+        />
+         <Route
+          exact
+          path="/Login/AddBookChapter"
+          element={<AddBookChapter />}
+        />
+        <Route
+          exact
+          path="/Login/AddMou"
+          element={<AddMou />}
+        />
+         <Route
+          exact
+          path="/Login/AddInternationalConference"
+          element={<AddInternationalConference />}
+        />
+        <Route
+          exact
+          path="/Login/AddPatent"
+          element={<AddPatent />}
         />
       </Routes>
     </Router>

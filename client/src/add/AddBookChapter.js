@@ -2,38 +2,45 @@ import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
 
-function AddTechTransfer() {
-  const [emp_id, setEmp_ID] = useState("");
-  const [num_tech_tran, setNum_Tech_Tran] = useState(0);
-  const [title_tech_tran, setTitle_Tech_Tran] = useState("");
-  const [industry_alliance, setIndustry_Alliance] = useState("");
-  const [num_people_inloved, setNum_People_Inloved] = useState(0);
+function AddBookChapter() {
+  const [emp_id, setEmp_Id] = useState("");
+  const [title_book_chapter, setTitle_Book_Chapter] = useState("");
+  const [title_book, setTitle_Book] = useState("");
+  const [isbn_number, setIsbn_Number] = useState("");
+  const [co_author, setCo_Author] = useState("");
+  const [yop, setYop] = useState("");
+  const [publisher_name, setPublisher_Name] = useState("");
+ 
 
-  const [techtransferList, settechtransferList] = useState([]);
+  const [bookchapterList, setbookchapterList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
+    console.log(emp_id +	title_book_chapter +	title_book +	isbn_number	 + co_author	+ yop	 + publisher_name );																		
   };
 
 
   
-  const addTechTransfer = () => {
-    Axios.post("http://localhost:3001/AddTechTransfer", {
+  const addBookChapter = () => {
+    Axios.post("http://localhost:3001/AddBookChapter", {
       emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+      title_book_chapter : title_book_chapter ,
+      title_book : title_book ,
+      isbn_number : isbn_number ,
+      co_author : co_author ,
+      yop : yop ,
+      publisher_name : publisher_name ,
     }).then(() => {
       console.log("success");
-      settechtransferList([
-        ...techtransferList,
+      setbookchapterList([
+        ...bookchapterList,
         {
-            emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+          emp_id : emp_id ,
+      title_book_chapter : title_book_chapter ,
+      title_book : title_book ,
+      isbn_number : isbn_number ,
+      co_author : co_author ,
+      yop : yop ,
+      publisher_name : publisher_name ,
         },
       ]);
     });
@@ -178,66 +185,90 @@ function AddTechTransfer() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                ADD TECHNOLOGY TRANSFER DETAILS
+                ADD BOOK CHAPTER DETAILS
               </h2>
               <br />
               <div>
                 <div>
                   <form>
                     <div>
-                      <label>Employee ID: </label>
+                      <label>Employee Id </label>
                       <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setEmp_Id(event.target.value);
                         }}
-                        placeholder="Employee ID"
+                        placeholder="Id"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
-                        <input
-                          type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
-                          onChange={(event) => {
-                            setNum_Tech_Tran(event.target.value);
-                          }}
-                          placeholder="No. of technology transfers done"
-                        />
-                        &nbsp;
-                      </div>
-                      <div>
-                        Title of Technology Transfer:{""}
+                       Title of Book Chapter{""}
                         <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setTitle_Tech_Tran(event.target.value);
+                            setTitle_Book_Chapter(event.target.value);
                           }}
-                          placeholder="Title of Technology Transfer"
+                          placeholder=" Chapter Title"
                         />
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                       Title of Book:{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setIndustry_Alliance(event.target.value);
+                            setTitle_Book(event.target.value);
                           }}
-                          placeholder="Industry Alliance"
+                          placeholder="Book Title"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Number of People Involved:{}
+                       ISBN :{""}
                         <input
-                          type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
                           onChange={(event) => {
-                            setNum_People_Inloved(event.target.value);
+                            setIsbn_Number(event.target.value);
                           }}
-                          placeholder="No. of people involved "
+                          placeholder="ISBN"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Co-Author{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setCo_Author(event.target.value);
+                          }}
+                          placeholder="Co-Authors"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                     Year of Publication:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setYop(event.target.value);
+                          }}
+                          placeholder="Year"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Publisher Name:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setPublisher_Name(event.target.value);
+                          }}
+                          placeholder="Publisher"
                         />
                         &nbsp;
                       </div>
@@ -248,7 +279,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={addBookChapter}
                     >
                       Submit
                     </button>
@@ -267,4 +298,4 @@ function AddTechTransfer() {
   );
 }
 
-export default AddTechTransfer;
+export default AddBookChapter;

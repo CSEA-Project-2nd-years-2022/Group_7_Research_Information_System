@@ -2,38 +2,53 @@ import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
 
-function AddTechTransfer() {
-  const [emp_id, setEmp_ID] = useState("");
-  const [num_tech_tran, setNum_Tech_Tran] = useState(0);
-  const [title_tech_tran, setTitle_Tech_Tran] = useState("");
-  const [industry_alliance, setIndustry_Alliance] = useState("");
-  const [num_people_inloved, setNum_People_Inloved] = useState(0);
+function AddInternationalConference() {
+  const [emp_id, setEmp_Id] = useState("");
+  const [paper_title, setPaper_Title] = useState("");
+  const [coauthour_name, setCoauthour_Name] = useState("");
+  const [conference_title, setConference_Title] = useState("");
+  const [organizing_institution, setOrganizing_Institution] = useState("");
+  const [date, setDate] = useState("");
+  const [paper_scopus, setPaper_Scopus] = useState("");
+  const [no_pages, setNo_Pages] = useState("");
+  const [proceedings_title, setProceedings_Title] = useState("");
+  const [total_num_published, setTotal_Num_Published] = useState(0);
+  const [category, setCategory] = useState("");
 
-  const [techtransferList, settechtransferList] = useState([]);
+  const [internationalconferenceList, setinternationalconferenceList] = useState([]);
 
-  const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
-  };
-
+ 
 
   
-  const addTechTransfer = () => {
-    Axios.post("http://localhost:3001/AddTechTransfer", {
-      emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+  const addInternationalConference = () => {
+    Axios.post("http://localhost:3001/AddInternationalConference", {
+      emp_id : emp_id,
+      paper_title : paper_title ,
+      coauthour_name : coauthour_name ,
+      conference_title : conference_title ,
+      organizing_institution : organizing_institution ,
+      date : date ,
+      paper_scopus : paper_scopus ,
+      no_pages : no_pages ,
+      proceedings_title : proceedings_title ,
+      total_num_published : total_num_published ,
+      category :category,
     }).then(() => {
       console.log("success");
-      settechtransferList([
-        ...techtransferList,
+      setinternationalconferenceList([
+        ...internationalconferenceList,
         {
-            emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+            emp_id : emp_id,
+            paper_title : paper_title ,
+            coauthour_name : coauthour_name ,
+            conference_title : conference_title ,
+            organizing_institution : organizing_institution ,
+            date : date ,
+            paper_scopus : paper_scopus ,
+            no_pages : no_pages ,
+            proceedings_title : proceedings_title ,
+            total_num_published : total_num_published ,
+            category :category,
         },
       ]);
     });
@@ -178,66 +193,138 @@ function AddTechTransfer() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                ADD TECHNOLOGY TRANSFER DETAILS
+                ADD INTERNATIONAL CONFERENCE DETAILS
               </h2>
               <br />
               <div>
                 <div>
                   <form>
                     <div>
-                      <label>Employee ID: </label>
+                      <label>Employee ID </label>
                       <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setEmp_Id(event.target.value);
                         }}
-                        placeholder="Employee ID"
+                        placeholder="ID"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
-                        <input
-                          type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
-                          onChange={(event) => {
-                            setNum_Tech_Tran(event.target.value);
-                          }}
-                          placeholder="No. of technology transfers done"
-                        />
-                        &nbsp;
-                      </div>
-                      <div>
-                        Title of Technology Transfer:{""}
+                        Title of Paper:{""}
                         <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setTitle_Tech_Tran(event.target.value);
+                            setPaper_Title(event.target.value);
                           }}
-                          placeholder="Title of Technology Transfer"
+                          placeholder="Title"
                         />
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                       Names of Co-Authors:{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setIndustry_Alliance(event.target.value);
+                            setCoauthour_Name(event.target.value);
                           }}
-                          placeholder="Industry Alliance"
+                          placeholder="Names"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Number of People Involved:{}
+                      Title of Conference:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setConference_Title(event.target.value);
+                          }}
+                          placeholder="Title"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Organizing Institution:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setOrganizing_Institution(event.target.value);
+                          }}
+                          placeholder="Organizer"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                      Date of Conference:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setDate(event.target.value);
+                          }}
+                          placeholder="Date"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Paper Scopus:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setPaper_Scopus(event.target.value);
+                          }}
+                          placeholder="Paper"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                     Number of Pages:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setNo_Pages(event.target.value);
+                          }}
+                          placeholder="Pages"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                     Proceedings Title:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setProceedings_Title(event.target.value);
+                          }}
+                          placeholder="Title"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Total Number of Papers Published:{}
                         <input
                           type="number"
                           style={{ marginLeft: "83px", width: "400px" }}
                           onChange={(event) => {
-                            setNum_People_Inloved(event.target.value);
+                            setTotal_Num_Published(event.target.value);
                           }}
-                          placeholder="No. of people involved "
+                          placeholder="Total"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Category of Paper Published:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setCategory(event.target.value);
+                          }}
+                          placeholder="Category"
                         />
                         &nbsp;
                       </div>
@@ -248,7 +335,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={addInternationalConference}
                     >
                       Submit
                     </button>
@@ -267,4 +354,4 @@ function AddTechTransfer() {
   );
 }
 
-export default AddTechTransfer;
+export default AddInternationalConference;

@@ -2,38 +2,42 @@ import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
 
-function AddTechTransfer() {
-  const [emp_id, setEmp_ID] = useState("");
-  const [num_tech_tran, setNum_Tech_Tran] = useState(0);
-  const [title_tech_tran, setTitle_Tech_Tran] = useState("");
-  const [industry_alliance, setIndustry_Alliance] = useState("");
-  const [num_people_inloved, setNum_People_Inloved] = useState(0);
+function AddPatent() {
+  const [emp_id, setEmp_Id] = useState("");
+  const [num_patent, setNum_Patent] = useState(0);
+  const [num_patent_granted, setNum_Patent_Granted] = useState(0);
+  const [num_patent_liscenced, setNum_Patent_Lisenced] = useState(0);
+  const [patent_number, setPatent_Number] = useState("");
+  const [date_award, setDate_Award] = useState("");
+  const [patent_title, setPatent_Title] = useState("");
+  
 
-  const [techtransferList, settechtransferList] = useState([]);
+  const [patentList, setpatentList] = useState([]);
 
-  const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
-  };
-
+ 
 
   
-  const addTechTransfer = () => {
-    Axios.post("http://localhost:3001/AddTechTransfer", {
-      emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+  const addPatent = () => {
+    Axios.post("http://localhost:3001/AddPatent", {
+      emp_id : emp_id,
+      num_patent : num_patent ,
+      num_patent_granted : num_patent_granted ,
+      num_patent_liscenced : num_patent_liscenced ,
+      patent_number :  patent_number ,
+      date_award :  date_award ,
+      patent_title ,
     }).then(() => {
       console.log("success");
-      settechtransferList([
-        ...techtransferList,
+      setpatentList([
+        ...patentList,
         {
-            emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+            emp_id : emp_id,
+      num_patent : num_patent ,
+      num_patent_granted : num_patent_granted ,
+      num_patent_liscenced : num_patent_liscenced ,
+      patent_number :  patent_number ,
+      date_award :  date_award ,
+      patent_title ,
         },
       ]);
     });
@@ -178,69 +182,94 @@ function AddTechTransfer() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                ADD TECHNOLOGY TRANSFER DETAILS
+                ADD PATENT DETAILS
               </h2>
               <br />
               <div>
                 <div>
                   <form>
                     <div>
-                      <label>Employee ID: </label>
+                      <label>Employee ID </label>
                       <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setEmp_Id(event.target.value);
                         }}
-                        placeholder="Employee ID"
+                        placeholder="ID"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
+                        Number of Patents:{""}
                         <input
+                          style={{ marginLeft: "105px", width: "400px" }}
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
                           onChange={(event) => {
-                            setNum_Tech_Tran(event.target.value);
+                            setNum_Patent(event.target.value);
                           }}
-                          placeholder="No. of technology transfers done"
+                          placeholder="total numbe of patents"
+                        />
+                      </div>
+                      <div>
+                      Number of Granted Patents:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="number"
+                          onChange={(event) => {
+                            setNum_Patent_Granted(event.target.value);
+                          }}
+                          placeholder="Granted Patents"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Title of Technology Transfer:{""}
+                      Number of Lisenced Patents:{""}
                         <input
-                          style={{ marginLeft: "105px", width: "400px" }}
-                          type="text"
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="number"
                           onChange={(event) => {
-                            setTitle_Tech_Tran(event.target.value);
+                            setNum_Patent_Lisenced(event.target.value);
                           }}
-                          placeholder="Title of Technology Transfer"
+                          placeholder="Lisenced Patents"
                         />
+                        &nbsp;
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                      Patent Number:{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setIndustry_Alliance(event.target.value);
+                            setPatent_Number(event.target.value);
                           }}
-                          placeholder="Industry Alliance"
+                          placeholder="Patent Number"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Number of People Involved:{}
+                      Date of Award:{""}
                         <input
-                          type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
                           onChange={(event) => {
-                            setNum_People_Inloved(event.target.value);
+                            setDate_Award(event.target.value);
                           }}
-                          placeholder="No. of people involved "
+                          placeholder="Date"
                         />
                         &nbsp;
                       </div>
+                      <div>
+                      Patent Title:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setPatent_Title(event.target.value);
+                          }}
+                          placeholder="Paptent title"
+                        />
+                        &nbsp;
+                      </div>
+                      
                       <br />
                       <br />
                     </div>
@@ -248,7 +277,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={addPatent}
                     >
                       Submit
                     </button>
@@ -267,4 +296,4 @@ function AddTechTransfer() {
   );
 }
 
-export default AddTechTransfer;
+export default AddPatent;

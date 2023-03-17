@@ -2,38 +2,45 @@ import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
 
-function AddTechTransfer() {
-  const [emp_id, setEmp_ID] = useState("");
-  const [num_tech_tran, setNum_Tech_Tran] = useState(0);
-  const [title_tech_tran, setTitle_Tech_Tran] = useState("");
-  const [industry_alliance, setIndustry_Alliance] = useState("");
-  const [num_people_inloved, setNum_People_Inloved] = useState(0);
+function AddConsultancy() {
+  const [emp_id, setEmp_Id] = useState("");
+  const [name_consultant_departement, setName_Consultant_Department] = useState("");
+  const [name_consultancy, setName_Consultancy] = useState("");
+  const [consulting_agency, setConsulting_Agency] = useState("");
+  const [revenue_generated, setRevenue_Generated] = useState("");
+  const [grant_released, setGrant_Released] = useState("");
+  const [status, setStatus] = useState("");
+ 
 
-  const [techtransferList, settechtransferList] = useState([]);
+  const [consultancyList, setconsultancyList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
+    console.log(emp_id +	name_consultant_departement +	name_consultancy +	consulting_agency	+ revenue_generated + grant_released + status);
   };
 
 
   
-  const addTechTransfer = () => {
-    Axios.post("http://localhost:3001/AddTechTransfer", {
-      emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+  const addConsultancy = () => {
+    Axios.post("http://localhost:3001/AddConsultancy", {
+     emp_id : emp_id ,
+     name_consultant_departement : name_consultant_departement ,
+     name_consultancy : name_consultancy ,
+     consulting_agency : consulting_agency ,
+     revenue_generated : revenue_generated ,
+     grant_released : grant_released ,
+     status : status ,
     }).then(() => {
       console.log("success");
-      settechtransferList([
-        ...techtransferList,
+      setconsultancyList([
+        ...consultancyList,
         {
             emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+            name_consultant_departement : name_consultant_departement ,
+            name_consultancy : name_consultancy ,
+            consulting_agency : consulting_agency ,
+            revenue_generated : revenue_generated ,
+            grant_released : grant_released ,
+            status : status ,
         },
       ]);
     });
@@ -178,69 +185,94 @@ function AddTechTransfer() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                ADD TECHNOLOGY TRANSFER DETAILS
+                ADD CONSULTANCY DETAILS
               </h2>
               <br />
               <div>
                 <div>
                   <form>
                     <div>
-                      <label>Employee ID: </label>
+                      <label>Employee Id </label>
                       <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setAuthor(event.target.value);
                         }}
-                        placeholder="Employee ID"
+                        placeholder="Employee Id"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
-                        <input
-                          type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
-                          onChange={(event) => {
-                            setNum_Tech_Tran(event.target.value);
-                          }}
-                          placeholder="No. of technology transfers done"
-                        />
-                        &nbsp;
-                      </div>
-                      <div>
-                        Title of Technology Transfer:{""}
+                        Name of Consultant Departement{""}
                         <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setTitle_Tech_Tran(event.target.value);
+                            setName_Consultant_Department(event.target.value);
                           }}
-                          placeholder="Title of Technology Transfer"
+                          placeholder="Consultancy Departement"
                         />
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                        Name of Consultancy:{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setIndustry_Alliance(event.target.value);
+                            setName_Consultancy(event.target.value);
                           }}
-                          placeholder="Industry Alliance"
+                          placeholder="Consultancy"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Number of People Involved:{}
+                       Consulting Agency:{""}
                         <input
-                          type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
                           onChange={(event) => {
-                            setNum_People_Inloved(event.target.value);
+                            setConsulting_Agency(event.target.value);
                           }}
-                          placeholder="No. of people involved "
+                          placeholder="Consulting Agency"
                         />
                         &nbsp;
                       </div>
+                      <div>
+                       Revenue Generated:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setRevenue_Generated(event.target.value);
+                          }}
+                          placeholder="Revenue"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Grant Released:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setGrant_Released(event.target.value);
+                          }}
+                          placeholder="Grant"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Status:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setStatus(event.target.value);
+                          }}
+                          placeholder="Status"
+                        />
+                        &nbsp;
+                      </div>
+                      
                       <br />
                       <br />
                     </div>
@@ -248,7 +280,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={addArticle}
                     >
                       Submit
                     </button>
@@ -267,4 +299,4 @@ function AddTechTransfer() {
   );
 }
 
-export default AddTechTransfer;
+export default AddConsultancy;

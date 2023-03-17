@@ -2,38 +2,50 @@ import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
 
-function AddTechTransfer() {
-  const [emp_id, setEmp_ID] = useState("");
-  const [num_tech_tran, setNum_Tech_Tran] = useState(0);
-  const [title_tech_tran, setTitle_Tech_Tran] = useState("");
-  const [industry_alliance, setIndustry_Alliance] = useState("");
-  const [num_people_inloved, setNum_People_Inloved] = useState(0);
-
-  const [techtransferList, settechtransferList] = useState([]);
+function AddSponsoredResearchProjects() {
+  const [emp_id, setEmp_Id] = useState("");
+  const [project_name, setProject_Name] = useState("");
+  const [funding_agency, setFunding_Agency] = useState("");
+  const [total_grant_sanctioned, setTotal_Grant_Sanctioned] = useState("");
+  const [principal_investigator, setPrincipal_Investigator] = useState("");
+  const [coprincipal_investigator, setCoprincipal_Investigator] = useState("");
+  const [duration, setDuration] = useState("");
+  const [grant_released, setGrant_Released] = useState("");
+  const [status, setStatus] = useState("");
+  
+  const [sponsoredresearchprojectList, setsponsoredresearchprojectsList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
+    console.log(emp_id + project_name + funding_agency + total_grant_sanctioned + principal_investigator + coprincipal_investigator + duration + grant_released + status);
   };
 
 
   
-  const addTechTransfer = () => {
-    Axios.post("http://localhost:3001/AddTechTransfer", {
-      emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+  const addSponsoredResearchProjects = () => {
+    Axios.post("http://localhost:3001/AddSponsoredResearchProjects", {
+     emp_id :emp_id,
+     project_name :project_name,
+     funding_agency : funding_agency,
+     total_grant_sanctioned : total_grant_sanctioned ,
+     principal_ivestigator :  principal_investigator ,
+     coprincipal_investigator :coprincipal_investigator ,
+     duration: duration ,
+     grant_released : grant_released ,
+     status : status,
     }).then(() => {
       console.log("success");
-      settechtransferList([
-        ...techtransferList,
+      setsponsoredresearchprojectsList([
+        ...sponsoredresearchprojectList,
         {
-            emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+          emp_id :emp_id,
+     project_name :project_name,
+     funding_agency : funding_agency,
+     total_grant_sanctioned : total_grant_sanctioned ,
+     principal_ivestigator :  principal_investigator ,
+     coprincipal_investigator :coprincipal_investigator ,
+     duration: duration ,
+     grant_released : grant_released ,
+     status : status,
         },
       ]);
     });
@@ -178,69 +190,119 @@ function AddTechTransfer() {
               <br />
               <br />
               <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                ADD TECHNOLOGY TRANSFER DETAILS
+                ADD SPONSERED RESEARCH PROJECT DETAILS DETAILS
               </h2>
               <br />
               <div>
                 <div>
                   <form>
                     <div>
-                      <label>Employee ID: </label>
+                      <label>EMPLOYEE ID: </label>
                       <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setEmp_Id(event.target.value);
                         }}
-                        placeholder="Employee ID"
+                        placeholder="Employee id"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
-                        <input
-                          type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
-                          onChange={(event) => {
-                            setNum_Tech_Tran(event.target.value);
-                          }}
-                          placeholder="No. of technology transfers done"
-                        />
-                        &nbsp;
-                      </div>
-                      <div>
-                        Title of Technology Transfer:{""}
+                       Project Name:{""}
                         <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setTitle_Tech_Tran(event.target.value);
+                            setProject_Name(event.target.value);
                           }}
-                          placeholder="Title of Technology Transfer"
+                          placeholder="Project Name"
                         />
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                       Funding Agency:{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
-                            setIndustry_Alliance(event.target.value);
+                            setFunding_Agency(event.target.value);
                           }}
-                          placeholder="Industry Alliance"
+                          placeholder="Funding Agency"
                         />
                         &nbsp;
                       </div>
                       <div>
-                        Number of People Involved:{}
+                       Total Grant Sanctioned:{""}
                         <input
-                          type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
                           onChange={(event) => {
-                            setNum_People_Inloved(event.target.value);
+                            setTotal_Grant_Sanctioned(event.target.value);
                           }}
-                          placeholder="No. of people involved "
+                          placeholder="Grant Sanctioned"
                         />
                         &nbsp;
                       </div>
+                      <div>
+                       Principal Investigator:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setPrincipal_Investigator(event.target.value);
+                          }}
+                          placeholder="Principal Investigator"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Co-Principal Investigator:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setCoprincipal_Investigator(event.target.value);
+                          }}
+                          placeholder="Co-principal Investigator"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                       Duration:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setDuration(event.target.value);
+                          }}
+                          placeholder="Duration"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                      Grant Released:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setGrant_Released(event.target.value);
+                          }}
+                          placeholder="Grant Released"
+                        />
+                        &nbsp;
+                      </div>
+                      
+                      <div>
+                       Status:{""}
+                        <input
+                          style={{ marginLeft: "75px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setStatus(event.target.value);
+                          }}
+                          placeholder="Status of Project"
+                        />
+                        &nbsp;
+                      </div>
+                     
                       <br />
                       <br />
                     </div>
@@ -248,7 +310,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={addSponsoredResearchProjects}
                     >
                       Submit
                     </button>
@@ -267,4 +329,4 @@ function AddTechTransfer() {
   );
 }
 
-export default AddTechTransfer;
+export default AddSponsoredResearchProjects;
