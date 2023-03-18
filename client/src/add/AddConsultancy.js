@@ -197,7 +197,7 @@ function AddConsultancy() {
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
-                          setAuthor(event.target.value);
+                          setEmp_Id(event.target.value);
                         }}
                         placeholder="Employee Id"
                       />
@@ -280,7 +280,7 @@ function AddConsultancy() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addArticle}
+                      onClick={addConsultancy}
                     >
                       Submit
                     </button>
