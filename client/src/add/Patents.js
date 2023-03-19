@@ -24,54 +24,16 @@ function Patents() {
   //Search items
   const [searchItem, setSearchItem] = useState("");
   //Filters
-  const [articleAuthorList, setArticleAuthorList] = useState([]);
-  const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
-  const [authorFilterValue, setAuthorFilterValue] = useState("All");
-  const getArticleAuthor = () => {
-    Axios.get("http://localhost:3001/ShowArticleAuthors").then((response) => {
-      // console.log(response);
-      setArticleAuthorList(response.data);
-    });
-    // console.log(articleAuthorList);
-    articleAuthorList.map((val) => {
-      if (val.author.includes(",")) {
-        var tempList = val.author.split(",");
-        tempList.map((value) => {
-          if (individualTempAuthorList.includes(value.trim()) === false) {
-            individualTempAuthorList.push(value.trim());
-          }
-        });
-      } else {
-        if (individualTempAuthorList.includes(val.author) === false) {
-          individualTempAuthorList.push(val.author);
-        }
-      }
-    });
-    console.log(individualTempAuthorList);
-  };
-  // getArticleAuthor();
 
-  const [articlePublisherList, setArticlePublisherList] = useState([]);
-  const [publisherFilterValue, setPublisherFilterValue] = useState("All");
-  const getArticlePublisher = () => {
-    Axios.get("http://localhost:3001/ShowArticlePublishers").then(
-      (response) => {
-        // console.log(response);
-        setArticlePublisherList(response.data);
-      }
-    );
-  };
-  // getArticlePublisher();
-
-  const [articleYearList, setArticleYearList] = useState([]);
-  const [yearFilterValue, setYearFilterValue] = useState("All");
-  const getArticleYear = () => {
-    Axios.get("http://localhost:3001/ShowArticleYear").then((response) => {
-      // console.log(response);
-      setArticleYearList(response.data);
+  const [patentNoList, setPatentNoList] = useState([]);
+  const [patentNoFilterValue, setPatentNoFilterValue] = useState("All");
+  const getpatentNo = () => {
+    Axios.get("http://localhost:3001/ShowPatentNos").then((response) => {
+      console.log(patentNoList);
+      setPatentNoList(response.data);
     });
   };
-  // getArticleYear();
+  getpatentNo();
 
   return (
     <div>
@@ -297,14 +259,21 @@ function Patents() {
                   name="Author"
                   id="Author"
                   onChange={(event) => {
-                    setAuthorFilterValue(event.target.value);
+                    setPatentNoFilterValue(event.target.value);
+                    console.log(patentNoFilterValue);
                   }}
                 >
                   <option value="All" selected>
                     All
                   </option>
-                  {individualTempAuthorList.map((val, key) => {
-                    return <option value={val}>{val}</option>;
+                  {patentNoList.map((val, key) => {
+                    
+                    if(val.patent_number==null){
+                      return;
+                    }
+                    console.log(val.patent_number);
+                    key = val.patent_number;
+                    return <option value={val.patent_number}>{val.patent_number}</option>;
                   })}
                 </select>
               </div>
@@ -317,6 +286,7 @@ function Patents() {
                   width: "500px",
                 }}
               >
+              
                 <table style={tableElements}>
                   <tr>
                     <th style={tableElements}>Emp Id</th>
@@ -330,119 +300,24 @@ function Patents() {
                   </tr>
                   {patentList
                     .filter((val) => {
-                      if (searchItem === "") {
-                        if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
+                      if (searchItem === "" 
+                         ||val.emp_name
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase())
+                         || (val.patent_title!=null && val.patent_title
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase())
+                          )) {
+                        if (patentNoFilterValue === "All") {
                           return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
+                        } else if (patentNoFilterValue === val.patent_number) {
                           return val;
                         }
-                      } else if (
-                        val.emp_name
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) 
-                        /* val.patent_title
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) */
-                      ) {
-                        if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        }
-                      } else {
                       }
                     })
-                    .map((val) => {
+                    .map((val, key) => {
                       return (
-                        <tr>
+                        <tr key={val.emp_id}>
                           <td style={tableElements}>{val.emp_id}</td>
                           <td style={tableElements}>{val.emp_name}</td>
                           <td style={tableElements}>{val.num_patent}</td>

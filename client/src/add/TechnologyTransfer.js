@@ -15,67 +15,31 @@ const tableElements = {
 function TechnologyTransfer() {
   const [techList, setTechList] = useState([]);
   const getTechTransfer = () => {
-    Axios.get("http://localhost:3001/ShowTechnologyTransfer").then((response) => {
-      // console.log(response);
-      setTechList(response.data);
-    });
+    Axios.get("http://localhost:3001/ShowTechnologyTransfer").then(
+      (response) => {
+        // console.log(response);
+        setTechList(response.data);
+      }
+    );
   };
   getTechTransfer();
   //Search items
   const [searchItem, setSearchItem] = useState("");
   //Filters
-  const [articleAuthorList, setArticleAuthorList] = useState([]);
-  const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
-  const [authorFilterValue, setAuthorFilterValue] = useState("All");
-  const getArticleAuthor = () => {
-    Axios.get("http://localhost:3001/ShowArticleAuthors").then((response) => {
-      // console.log(response);
-      setArticleAuthorList(response.data);
-    });
-    // console.log(articleAuthorList);
-    articleAuthorList.map((val) => {
-      if (val.author.includes(",")) {
-        var tempList = val.author.split(",");
-        tempList.map((value) => {
-          if (individualTempAuthorList.includes(value.trim()) === false) {
-            individualTempAuthorList.push(value.trim());
-          }
-        });
-      } else {
-        if (individualTempAuthorList.includes(val.author) === false) {
-          individualTempAuthorList.push(val.author);
-        }
-      }
-    });
-    console.log(individualTempAuthorList);
-  };
-  // getArticleAuthor();
-
-  const [articlePublisherList, setArticlePublisherList] = useState([]);
-  const [publisherFilterValue, setPublisherFilterValue] = useState("All");
-  const getArticlePublisher = () => {
-    Axios.get("http://localhost:3001/ShowArticlePublishers").then(
-      (response) => {
-        // console.log(response);
-        setArticlePublisherList(response.data);
-      }
-    );
-  };
-  // getArticlePublisher();
-
-  const [articleYearList, setArticleYearList] = useState([]);
-  const [yearFilterValue, setYearFilterValue] = useState("All");
-  const getArticleYear = () => {
-    Axios.get("http://localhost:3001/ShowArticleYear").then((response) => {
-      // console.log(response);
-      setArticleYearList(response.data);
+  const [indAllList, setIndAllList] = useState([]);
+  const [indAllFilterValue, setIndAllFilterValue] = useState("All");
+  const getIndAll = () => {
+    Axios.get("http://localhost:3001/ShowIndustryAlliance").then((response) => {
+      setIndAllList(response.data);
     });
   };
-  // getArticleYear();
+  getIndAll();
 
   return (
     <div>
-      <div className="columnLeft"> <div
+      <div className="columnLeft">
+        {" "}
+        <div
           style={{
             margin: "0px",
             width: "200px",
@@ -111,25 +75,19 @@ function TechnologyTransfer() {
             className="topnav"
             style={{ paddingLeft: "40px", top: "270px", color: "black" }}
           >
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/"
-            >
+            <a style={{ color: "black", textDecoration: "none" }} href="/">
               Profile
             </a>
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/"
-            >
+            <a style={{ color: "black", textDecoration: "none" }} href="/">
               Dashboard
             </a>
             <br />
             <br />
             <br />
-           
+
             <a
               style={{ color: "black", textDecoration: "none" }}
               href="/Patents"
@@ -158,22 +116,23 @@ function TechnologyTransfer() {
             <br />
             <br />
             <a
-              style={{ 
+              style={{
                 color: "black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              textDecoration: "underline",}}
+                fontSize: "20px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
               href="/TechnologyTransfer"
             >
-            Technology Transfer
+              Technology Transfer
             </a>
             <br />
             <br />
             <br />
             <a
               style={{
-                
-                color: "black", textDecoration: "none"
+                color: "black",
+                textDecoration: "none",
               }}
               href="/Journal"
             >
@@ -191,11 +150,8 @@ function TechnologyTransfer() {
             <br />
             <br />
             <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Books"
-            >
-             Books
+            <a style={{ color: "black", textDecoration: "none" }} href="/Books">
+              Books
             </a>
             <br />
             <br />
@@ -213,7 +169,7 @@ function TechnologyTransfer() {
               style={{ color: "black", textDecoration: "none" }}
               href="/BookChapter"
             >
-             Book Chapter
+              Book Chapter
             </a>
             <br />
             <br />
@@ -236,26 +192,25 @@ function TechnologyTransfer() {
             <br />
             <br />
             <br />
-            
+
             <a
               style={{ color: "black", textDecoration: "none" }}
               href="/Consolidated"
             >
-             Consolidated
+              Consolidated
             </a>
             <br />
             <br />
             <br />
-           
+
             <a style={{ color: "black", textDecoration: "none" }} href="./">
-            Login
+              Login
             </a>
             <br />
             <br />
             <br />
           </div>
         </div>
-        
         <div className="columnRight">
           <div>
             <div
@@ -286,7 +241,9 @@ function TechnologyTransfer() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>Technology Transfer</h2>
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>
+                Technology Transfer
+              </h2>
               <form>
                 <div>
                   <input
@@ -305,19 +262,25 @@ function TechnologyTransfer() {
                   name="Author"
                   id="Author"
                   onChange={(event) => {
-                    setAuthorFilterValue(event.target.value);
+                    setIndAllFilterValue(event.target.value);
                   }}
                 >
                   <option value="All" selected>
                     All
                   </option>
-                  {individualTempAuthorList.map((val, key) => {
-                    return <option value={val}>{val}</option>;
+                  {indAllList.map((val, key) => {
+                    if (val.industry_alliance == null) {
+                      return;
+                    }
+                    return (
+                      <option value={val.industry_alliance}>
+                        {val.industry_alliance}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
-             
-             
+
               <div
                 style={{
                   marginTop: "100px",
@@ -337,108 +300,20 @@ function TechnologyTransfer() {
                   </tr>
                   {techList
                     .filter((val) => {
-                      if (searchItem === "") {
-                        if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        }
-                      } else if (
+                      if (
+                        searchItem === "" ||
                         val.emp_name
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) 
-                        
+                          .includes(searchItem.toLowerCase()) ||
+                        (val.title_tech_tran != null &&
+                          val.title_tech_tran
+                            .toLowerCase()
+                            .includes(searchItem.toLowerCase()))
                       ) {
-                        if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
+                        if (indAllFilterValue === "All") {
                           return val;
                         } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === val.publisher &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          publisherFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
+                          indAllFilterValue === val.industry_alliance
                         ) {
                           return val;
                         }
@@ -446,17 +321,12 @@ function TechnologyTransfer() {
                     })
                     .map((val) => {
                       return (
-                        <tr >
-                      
+                        <tr key={val.emp_id}>
                           <td style={tableElements}>{val.emp_id}</td>
                           <td style={tableElements}>{val.emp_name}</td>
                           <td style={tableElements}>{val.num_tech_tran}</td>
-                          <td style={tableElements}>
-                            {val.title_tech_tran}
-                          </td>
-                          <td style={tableElements}>
-                            {val.industry_alliance}
-                          </td>
+                          <td style={tableElements}>{val.title_tech_tran}</td>
+                          <td style={tableElements}>{val.industry_alliance}</td>
                           <td style={tableElements}>
                             {val.num_people_inloved}
                           </td>
