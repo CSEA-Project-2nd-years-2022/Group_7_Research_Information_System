@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "admin",
   host: "psg-ris.c8qjejxbwt2k.us-east-1.rds.amazonaws.com",
-  password: "KiReSh2002",
+  password: "",
   database: "Research_info_system",
 });
 
