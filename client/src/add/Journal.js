@@ -16,7 +16,7 @@ function Journal() {
   const [journalList, setJournalList] = useState([]);
   const getJournals = () => {
     Axios.get("http://localhost:3001/ShowJournals").then((response) => {
-      console.log(response);
+      // console.log(response);
       setJournalList(response.data);
     });
   };
@@ -25,237 +25,197 @@ function Journal() {
   const [searchItem, setSearchItem] = useState("");
   //Filters
   const [journalAuthorList, setJournalAuthorList] = useState([]);
-  const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
-  const [authorFilterValue, setAuthorFilterValue] = useState("All");
+  const [journalAuthorFilterValue, setJournalAuthorFilterValue] =
+    useState("All");
   const getJournalAuthor = () => {
-    Axios.get("http://localhost:3001/ShowJournalAuthors").then((response) => {
-      // console.log(response);
+    Axios.get("http://localhost:3001/ShowJournalAuthor").then((response) => {
+      // console.log(response.data);
       setJournalAuthorList(response.data);
     });
-    // console.log(journalAuthorList);
-    journalAuthorList.map((val) => {
-      if (val.author.includes(",")) {
-        var tempList = val.author.split(",");
-        tempList.map((value) => {
-          if (individualTempAuthorList.includes(value.trim()) === false) {
-            individualTempAuthorList.push(value.trim());
-          }
-        });
-      } else {
-        if (individualTempAuthorList.includes(val.author) === false) {
-          individualTempAuthorList.push(val.author);
-        }
-      }
-    });
-    console.log(individualTempAuthorList);
   };
   getJournalAuthor();
 
   const [journalCategoryList, setJournalCategoryList] = useState([]);
-  const [categoryFilterValue, setCategoryFilterValue] = useState("All");
+  const [journalCategoryFilterValue, setJournalCategoryFilterValue] =
+    useState("All");
   const getJournalCategory = () => {
-    Axios.get("http://localhost:3001/ShowJournalCategory").then(
-      (response) => {
-        // console.log(response);
-        setJournalCategoryList(response.data);
-      }
-    );
-  };
-  getJournalCategory();
-
-  const [journalYearList, setJournalYearList] = useState([]);
-  const [yearFilterValue, setYearFilterValue] = useState("All");
-  const getJournalYear = () => {
-    Axios.get("http://localhost:3001/ShowJournalYear").then((response) => {
-      // console.log(response);
-      setJournalYearList(response.data);
+    Axios.get("http://localhost:3001/ShowJournalCategory").then((response) => {
+      console.log(response.data);
+      setJournalCategoryList(response.data);
     });
   };
-  getJournalYear();
+  getJournalCategory();
 
   return (
     <div>
       <div
-          style={{
-            margin: "0px",
-            width: "200px",
-            height: "1800px",
-            background: "#ADD8E6",
-          }}
-        >
-          <div>
-            <h1 style={{ fontSize: "150px", opacity: "15%", margin: "0px" }}>
-              PSG
-            </h1>
-            <nbsp />
-            <h2
-              style={{
-                margin: "10px",
-                fontSize: "35px",
-                opacity: "15%",
-              }}
-            >
-              College of Technology
-            </h2>
-            <br />
-
-            <hr
-              style={{
-                width: "170px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-
-          <div
-            className="topnav"
-            style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+        style={{
+          margin: "0px",
+          width: "200px",
+          height: "1800px",
+          background: "#ADD8E6",
+        }}
+      >
+        <div>
+          <h1 style={{ fontSize: "150px", opacity: "15%", margin: "0px" }}>
+            PSG
+          </h1>
+          <nbsp />
+          <h2
+            style={{
+              margin: "10px",
+              fontSize: "35px",
+              opacity: "15%",
+            }}
           >
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/"
-            >
-              Profile
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/"
-            >
-              Dashboard
-            </a>
-            <br />
-            <br />
-            <br />
-           
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Patents"
-            >
-              Patent
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Citations"
-            >
-              Citations
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/ResearchPublicationCount"
-            >
-              Research Publication Count
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/TechnologyTransfer"
-            >
-            Technology Transfer
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{
-                color: "black",
-                textDecoration: "none",
-                fontSize: "20px",
-                fontWeight: "bold",
-                textDecoration: "underline",
-              }}
-              href="/Journal"
-            >
-              International Journal
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/SponsoredResearchProjects"
-            >
-              Sponsored Research Projects
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Books"
-            >
-             Books
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Consultancy"
-            >
-              Consultancy
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/BookChapter"
-            >
-             Book Chapter
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/MoUsSigned"
-            >
-              MoUs Signed
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Conference"
-            >
-              International Conference
-            </a>
-            <br />
-            <br />
-            <br />
-            
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Consolidated"
-            >
-             Consolidated
-            </a>
-            <br />
-            <br />
-            <br />
-           
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
-            Login
-            </a>
-            <br />
-            <br />
-            <br />
-          </div>
+            College of Technology
+          </h2>
+          <br />
+
+          <hr
+            style={{
+              width: "170px",
+              textAlign: "center",
+            }}
+          />
         </div>
+
+        <div
+          className="topnav"
+          style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+        >
+          <a style={{ color: "black", textDecoration: "none" }} href="/">
+            Profile
+          </a>
+          <br />
+          <br />
+          <br />
+          <a style={{ color: "black", textDecoration: "none" }} href="/">
+            Dashboard
+          </a>
+          <br />
+          <br />
+          <br />
+
+          <a style={{ color: "black", textDecoration: "none" }} href="/Patents">
+            Patent
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Citations"
+          >
+            Citations
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/ResearchPublicationCount"
+          >
+            Research Publication Count
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/TechnologyTransfer"
+          >
+            Technology Transfer
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{
+              color: "black",
+              textDecoration: "none",
+              fontSize: "20px",
+              fontWeight: "bold",
+              textDecoration: "underline",
+            }}
+            href="/Journal"
+          >
+            International Journal
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/SponsoredResearchProjects"
+          >
+            Sponsored Research Projects
+          </a>
+          <br />
+          <br />
+          <br />
+          <a style={{ color: "black", textDecoration: "none" }} href="/Books">
+            Books
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Consultancy"
+          >
+            Consultancy
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/BookChapter"
+          >
+            Book Chapter
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/MoUsSigned"
+          >
+            MoUs Signed
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Conference"
+          >
+            International Conference
+          </a>
+          <br />
+          <br />
+          <br />
+
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Consolidated"
+          >
+            Consolidated
+          </a>
+          <br />
+          <br />
+          <br />
+
+          <a style={{ color: "black", textDecoration: "none" }} href="./">
+            Login
+          </a>
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
       <div className="columnLeft">
-        
         <div className="columnRight">
           <div>
             <div
@@ -300,40 +260,46 @@ function Journal() {
                 </div>
               </form>
               <div class="dropdown1">
-              <label>Author : </label>
+                <label>Author : </label>
                 <select
                   name="Author"
                   id="Author"
                   onChange={(event) => {
-                    setAuthorFilterValue(event.target.value);
+                    setJournalAuthorFilterValue(event.target.value);
                   }}
                 >
                   <option value="All" selected>
                     All
                   </option>
-                  {individualTempAuthorList.map((val, key) => {
-                    return <option value={val}>{val}</option>;
+                  {journalAuthorList.map((val, key) => {
+                    if (val.emp_name == null) {
+                      return;
+                    }
+                    return <option value={val.emp_name}>{val.emp_name}</option>;
                   })}
                 </select>
               </div>
               <div class="dropdown2">
                 <label>Category : </label>
-                <select name="category" id="category" 
-                onChange={(event) => {
-                    setCategoryFilterValue(event.target.value);
+                <select
+                  name="category"
+                  id="category"
+                  onChange={(event) => {
+                    setJournalCategoryFilterValue(event.target.value);
                   }}
                 >
                   <option value="All" selected>
                     All
                   </option>
                   {journalCategoryList.map((val, key) => {
-                    return (
-                      <option value={val.category}>{val.category}</option>
-                    );
+                    if (val.category == null) {
+                      return;
+                    }
+                    return <option value={val.category}>{val.category}</option>;
                   })}
                 </select>
               </div>
-              
+
               <div
                 style={{
                   marginTop: "100px",
@@ -359,113 +325,37 @@ function Journal() {
                   </tr>
                   {journalList
                     .filter((val) => {
-                      if (searchItem === "") {
-                        if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        }
-                      } else if (
+                      if (
+                        searchItem === "" ||
                         val.emp_name
                           .toLowerCase()
-                          .includes(searchItem.toLowerCase()) 
-                       
+                          .includes(searchItem.toLowerCase())
+                        /* || (val.patent_title!=null && val.patent_title
+                          .toLowerCase()
+                          .includes(searchItem.toLowerCase())) */
                       ) {
                         if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === "All"
+                          journalCategoryFilterValue === "All" &&
+                          journalAuthorFilterValue === "All"
                         ) {
                           return val;
                         } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === val.year.toString()
+                          journalAuthorFilterValue === val.emp_name &&
+                          journalCategoryFilterValue == val.category
                         ) {
                           return val;
                         } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === "All"
+                          journalAuthorFilterValue === "All" &&
+                          journalCategoryFilterValue == val.category
                         ) {
                           return val;
                         } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === val.year.toString()
-                        ) {
-                          return val;
-                        } else if (
-                          val.author.includes(authorFilterValue) &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === val.category &&
-                          yearFilterValue === "All"
-                        ) {
-                          return val;
-                        } else if (
-                          authorFilterValue === "All" &&
-                          categoryFilterValue === "All" &&
-                          yearFilterValue === val.year.toString()
+                          journalAuthorFilterValue === val.emp_name &&
+                          journalCategoryFilterValue == "All"
                         ) {
                           return val;
                         }
                       }
-                      else{}
                     })
                     .map((val) => {
                       return (
@@ -481,7 +371,9 @@ function Journal() {
                           <td style={tableElements}>{val.volume_no}</td>
                           <td style={tableElements}>{val.int_issue_num}</td>
                           <td style={tableElements}>{val.category}</td>
-                          <td style={tableElements}>{val.scopus_snip_number}</td>
+                          <td style={tableElements}>
+                            {val.scopus_snip_number}
+                          </td>
                           <td style={tableElements}>{val.ugc_list_number}</td>
                         </tr>
                       );
