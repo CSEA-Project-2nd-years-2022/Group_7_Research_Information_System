@@ -50,11 +50,11 @@ function AddConsultancy() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -106,27 +106,36 @@ function AddConsultancy() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
             </a>
             <br />
             <br />
@@ -139,13 +148,68 @@ function AddConsultancy() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddInternationalConference"
             >
-              Add Research Papers
+              Add International Conference
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>

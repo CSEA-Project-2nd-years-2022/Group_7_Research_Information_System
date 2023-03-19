@@ -65,11 +65,11 @@ function AddInternationalJournal() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -121,27 +121,45 @@ function AddInternationalJournal() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
             </a>
             <br />
             <br />
@@ -154,13 +172,59 @@ function AddInternationalJournal() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddInternationalJournal"
             >
-              Add Research Papers
+              Add International Journal
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -209,7 +273,7 @@ function AddInternationalJournal() {
                   <div>
                   <label>Employee Id: </label>
 <input
-  style={{ marginLeft: "86px", width: "400px" }}
+  style={{ marginLeft: "150px", width: "400px" }}
   type="text"
   onChange={(event) => {
     setEmp_Id(event.target.value);
@@ -219,7 +283,7 @@ function AddInternationalJournal() {
 <div>
   Title of Journal:{""}
   <input
-    style={{ marginLeft: "105px", width: "400px" }}
+    style={{ marginLeft: "135px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setTitle_Of_Paper(event.target.value);
@@ -230,7 +294,7 @@ function AddInternationalJournal() {
 <div>
   Author Names:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "140px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setAuthor_Names(event.target.value);
@@ -242,7 +306,7 @@ function AddInternationalJournal() {
 <div>
   Journal Name:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "140px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setJournal_Name(event.target.value);
@@ -254,7 +318,7 @@ function AddInternationalJournal() {
                      <div>
   Issn_No:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "175px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setIssn_No(event.target.value);
@@ -266,7 +330,7 @@ function AddInternationalJournal() {
                       <div>
   Date of Publication:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "105px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setDop(event.target.value);
@@ -278,7 +342,7 @@ function AddInternationalJournal() {
 <div>
   Page Number:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "140px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setPage_No(event.target.value);
@@ -291,7 +355,7 @@ function AddInternationalJournal() {
   Volume Number:{}
   <input
     type="number"
-    style={{ marginLeft: "83px", width: "400px" }}
+    style={{ marginLeft: "120px", width: "400px" }}
     onChange={(event) => {
       setVolume_No(event.target.value);
     }}
@@ -303,7 +367,7 @@ function AddInternationalJournal() {
   International Issue Number:{}
   <input
     type="number"
-    style={{ marginLeft: "83px", width: "400px" }}
+    style={{ marginLeft: "50px", width: "400px" }}
     onChange={(event) => {
       setInt_Issue_Num(event.target.value);
     }}
@@ -314,7 +378,7 @@ function AddInternationalJournal() {
 <div>
  Category:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "165px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setCategory(event.target.value);
@@ -326,7 +390,7 @@ function AddInternationalJournal() {
 <div>
  Scopus Snip Number:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "85px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setScopus_Snip_Num(event.target.value);
@@ -338,7 +402,7 @@ function AddInternationalJournal() {
 <div>
   UGC List Number:{""}
   <input
-    style={{ marginLeft: "75px", width: "400px" }}
+    style={{ marginLeft: "100px", width: "400px" }}
     type="text"
     onChange={(event) => {
       setUgc_List_Num(event.target.value);

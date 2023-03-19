@@ -36,11 +36,11 @@ function AddCitation() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -92,27 +92,9 @@ function AddCitation() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
-            >
-              Conference
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
-            >
-              Article
+              Add Employee
             </a>
             <br />
             <br />
@@ -125,13 +107,95 @@ function AddCitation() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddCitation"
             >
-              Add Research Papers
+              Add Citations
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBookChapter"
+            >
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -192,7 +256,7 @@ function AddCitation() {
                         No. of Citations:{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "70px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Citations(event.target.value);
                           }}

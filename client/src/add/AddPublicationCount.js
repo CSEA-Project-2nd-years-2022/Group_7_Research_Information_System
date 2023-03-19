@@ -51,11 +51,11 @@ function AddPublicationCount() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -107,27 +107,72 @@ function AddPublicationCount() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
             </a>
             <br />
             <br />
@@ -140,13 +185,32 @@ function AddPublicationCount() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddPublicationCount"
             >
-              Add Research Papers
+              Add Publication Count
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -195,7 +259,7 @@ function AddPublicationCount() {
                     <div>
                       <label>Employee ID : </label>
                       <input
-                        style={{ marginLeft: "86px", width: "400px" }}
+                        style={{ marginLeft: "150px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
                           setEmp_Id(event.target.value);
@@ -206,7 +270,7 @@ function AddPublicationCount() {
                         No. of Internation Journals :{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "67px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Int_Jn(event.target.value);
                           }}
@@ -218,7 +282,7 @@ function AddPublicationCount() {
                         No. of National Journals :{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "85px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Nat_Jn(event.target.value);
                           }}
@@ -230,7 +294,7 @@ function AddPublicationCount() {
                         No. of Internation Conference :{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "50px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Int_Con(event.target.value);
                           }}
@@ -242,7 +306,7 @@ function AddPublicationCount() {
                         No. of National Conference :{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "65px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Nat_Con(event.target.value);
                           }}
@@ -254,7 +318,7 @@ function AddPublicationCount() {
                         No. of Books :{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "155px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Book(event.target.value);
                           }}

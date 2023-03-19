@@ -55,11 +55,11 @@ function AddSponsoredResearchProjects() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -111,27 +111,81 @@ function AddSponsoredResearchProjects() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
             </a>
             <br />
             <br />
@@ -144,13 +198,23 @@ function AddSponsoredResearchProjects() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddSponsoredResearchProjects"
             >
-              Add Research Papers
+              Add Sponsored Research Projects
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -199,7 +263,7 @@ function AddSponsoredResearchProjects() {
                     <div>
                       <label>EMPLOYEE ID: </label>
                       <input
-                        style={{ marginLeft: "86px", width: "400px" }}
+                        style={{ marginLeft: "96px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
                           setEmp_Id(event.target.value);
@@ -209,7 +273,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Project Name:{""}
                         <input
-                          style={{ marginLeft: "105px", width: "400px" }}
+                          style={{ marginLeft: "120px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setProject_Name(event.target.value);
@@ -220,7 +284,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Funding Agency:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "100px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setFunding_Agency(event.target.value);
@@ -232,7 +296,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Total Grant Sanctioned:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "60px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setTotal_Grant_Sanctioned(event.target.value);
@@ -244,7 +308,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Principal Investigator:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "65px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setPrincipal_Investigator(event.target.value);
@@ -256,7 +320,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Co-Principal Investigator:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "45px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setCoprincipal_Investigator(event.target.value);
@@ -268,7 +332,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Duration:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "150px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setDuration(event.target.value);
@@ -280,7 +344,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                       Grant Released:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setGrant_Released(event.target.value);
@@ -293,7 +357,7 @@ function AddSponsoredResearchProjects() {
                       <div>
                        Status:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "160px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setStatus(event.target.value);

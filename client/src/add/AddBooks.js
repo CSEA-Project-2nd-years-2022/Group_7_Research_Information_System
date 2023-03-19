@@ -44,11 +44,11 @@ function AddBooks() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -100,27 +100,27 @@ function AddBooks() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
             </a>
             <br />
             <br />
@@ -133,13 +133,77 @@ function AddBooks() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddBooks"
             >
-              Add Research Papers
+              Add Books
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -188,7 +252,7 @@ function AddBooks() {
                     <div>
                       <label>Employee ID</label>
                       <input
-                        style={{ marginLeft: "86px", width: "400px" }}
+                        style={{ marginLeft: "100px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
                           setEmp_Id(event.target.value);
@@ -198,7 +262,7 @@ function AddBooks() {
                       <div>
                        Title of the Book:{""}
                         <input
-                          style={{ marginLeft: "105px", width: "400px" }}
+                          style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setTitle_Of_Book(event.target.value);
@@ -209,19 +273,19 @@ function AddBooks() {
                       <div>
                        ISBN Number:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "90px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setIsbn_Number(event.target.value);
                           }}
-                          placeholder="Isbn number"
+                          placeholder="ISBN number"
                         />
                         &nbsp;
                       </div>
                       <div>
                       Co-Author:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "110px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setCo_Author(event.target.value);
@@ -233,7 +297,7 @@ function AddBooks() {
                       <div>
                        Year of Publication:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "55px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setYop(event.target.value);
@@ -245,7 +309,7 @@ function AddBooks() {
                       <div>
                       Name of Publisher:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "60px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setName_Of_Publisher(event.target.value);

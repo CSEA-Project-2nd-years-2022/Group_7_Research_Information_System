@@ -12,33 +12,36 @@ function AddTechTransfer() {
   const [techtransferList, settechtransferList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + num_tech_tran + title_tech_tran + industry_alliance + num_people_inloved);
+    console.log(
+      emp_id +
+        num_tech_tran +
+        title_tech_tran +
+        industry_alliance +
+        num_people_inloved
+    );
   };
 
-
-  
   const addTechTransfer = () => {
     Axios.post("http://localhost:3001/AddTechTransfer", {
-      emp_id : emp_id ,
-      num_tech_tran : num_tech_tran ,
-      tile_tech_tran : title_tech_tran ,
-      industry_alliance : industry_alliance ,
-      num_people_inloved : num_people_inloved ,
+      emp_id: emp_id,
+      num_tech_tran: num_tech_tran,
+      tile_tech_tran: title_tech_tran,
+      industry_alliance: industry_alliance,
+      num_people_inloved: num_people_inloved,
     }).then(() => {
       console.log("success");
       settechtransferList([
         ...techtransferList,
         {
-            emp_id : emp_id ,
-            num_tech_tran : num_tech_tran ,
-            tile_tech_tran : title_tech_tran ,
-            industry_alliance : industry_alliance ,
-            num_people_inloved : num_people_inloved ,
+          emp_id: emp_id,
+          num_tech_tran: num_tech_tran,
+          tile_tech_tran: title_tech_tran,
+          industry_alliance: industry_alliance,
+          num_people_inloved: num_people_inloved,
         },
       ]);
     });
   };
-
 
   return (
     <div>
@@ -47,7 +50,7 @@ function AddTechTransfer() {
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -99,27 +102,90 @@ function AddTechTransfer() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
             </a>
             <br />
             <br />
@@ -132,13 +198,14 @@ function AddTechTransfer() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddTechTransfer"
             >
-              Add Research Papers
+              Add Tech Transfer
             </a>
             <br />
             <br />
             <br />
+
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -187,7 +254,7 @@ function AddTechTransfer() {
                     <div>
                       <label>Employee ID: </label>
                       <input
-                        style={{ marginLeft: "86px", width: "400px" }}
+                        style={{ marginLeft: "180px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
                           setEmp_ID(event.target.value);
@@ -195,10 +262,10 @@ function AddTechTransfer() {
                         placeholder="Employee ID"
                       />
                       <div>
-                      Number of techlogy transfers done:{}
+                        Number of techlogy transfers done:{}
                         <input
                           type="number"
-                          style={{ marginLeft: "100px", width: "400px" }}
+                          style={{ marginLeft: "50px", width: "400px" }}
                           onChange={(event) => {
                             setNum_Tech_Tran(event.target.value);
                           }}
@@ -209,7 +276,7 @@ function AddTechTransfer() {
                       <div>
                         Title of Technology Transfer:{""}
                         <input
-                          style={{ marginLeft: "105px", width: "400px" }}
+                          style={{ marginLeft: "90px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setTitle_Tech_Tran(event.target.value);
@@ -218,9 +285,9 @@ function AddTechTransfer() {
                         />
                       </div>
                       <div>
-                       Industry Alliance:{""}
+                        Industry Alliance:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "165px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setIndustry_Alliance(event.target.value);
@@ -233,7 +300,7 @@ function AddTechTransfer() {
                         Number of People Involved:{}
                         <input
                           type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "95px", width: "400px" }}
                           onChange={(event) => {
                             setNum_People_Inloved(event.target.value);
                           }}
