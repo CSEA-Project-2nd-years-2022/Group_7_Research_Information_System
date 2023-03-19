@@ -36,11 +36,11 @@ function AddEmployee() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -91,33 +91,6 @@ function AddEmployee() {
             <br />
             <br />
             <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
-            >
-              Journal
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
-            >
-              Conference
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
-            >
-              Article
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -125,13 +98,104 @@ function AddEmployee() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddEmployee"
             >
-              Add Research Papers
+              Add Employee
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddCitation"
+            >
+              Add Citations
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBookChapter"
+            >
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalConference"
+            >
+              Add International Conference
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -190,7 +254,7 @@ function AddEmployee() {
                       <div>
                        Employee Name:{""}
                         <input
-                          style={{ marginLeft: "105px", width: "400px" }}
+                          style={{ marginLeft: "65px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setEmp_Name(event.target.value);

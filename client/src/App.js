@@ -4,7 +4,7 @@ import AddCitation from "./add/AddCitation";
 import AddPublicationCount from "./add/AddPublicationCount";
 import AddTechTransfer from "./add/AddTechTransfer";
 import AddInternationalJournal from "./add/AddInternationalJournal";
-import AddSponsoredResearchProjects from "./add/AddSponsoredResearchProjets";
+import AddSponsoredResearchProjects from "./add/AddSponsoredResearchProjects";
 import AddBooks from "./add/AddBooks";
 import AddConsultancy from "./add/AddConsultancy";
 import AddBookChapter from "./add/AddBookChapter";

@@ -58,11 +58,11 @@ function AddInternationalConference() {
   return (
     <div>
       <div className="columnLeft">
-        <div
+      <div
           style={{
             margin: "0px",
             width: "200px",
-            height: "1200px",
+            height: "1500px",
             background: "#ADD8E6",
           }}
         >
@@ -114,27 +114,36 @@ function AddInternationalConference() {
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminJournal"
+              href="/Login/AddEmployee"
             >
-              Journal
+              Add Employee
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminConference"
+              href="/Login/AddCitation"
             >
-              Conference
+              Add Citations
             </a>
             <br />
             <br />
             <br />
             <a
               style={{ color: "black", textDecoration: "none" }}
-              href="/Login/AdminArticle"
+              href="/Login/AddBookChapter"
             >
-              Article
+              Add BookChapter
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddBooks"
+            >
+              Add Books
             </a>
             <br />
             <br />
@@ -147,13 +156,68 @@ function AddInternationalConference() {
                 fontWeight: "bold",
                 textDecoration: "underline",
               }}
-              href="/Login/AddResearchPapers"
+              href="/Login/AddInternationalConference"
             >
-              Add Research Papers
+              Add International Conference
             </a>
             <br />
             <br />
             <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddInternationalJournal"
+            >
+              Add International Journal
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddMou"
+            >
+              Add Mou
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPatent"
+            >
+              Add Patent
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddPublicationCount"
+            >
+              Add Publication Count
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddSponsoredResearchProjects"
+            >
+              Add Sponsored Research Projects
+            </a>
+            <br />
+            <br />
+            <br />
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/Login/AddTechTransfer"
+            >
+              Add Tech Transfer
+            </a> 
+            <br />
+            <br />
+            <br />
+            
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -202,7 +266,7 @@ function AddInternationalConference() {
                     <div>
                       <label>Employee ID </label>
                       <input
-                        style={{ marginLeft: "86px", width: "400px" }}
+                        style={{ marginLeft: "190px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
                           setEmp_Id(event.target.value);
@@ -212,7 +276,7 @@ function AddInternationalConference() {
                       <div>
                         Title of Paper:{""}
                         <input
-                          style={{ marginLeft: "105px", width: "400px" }}
+                          style={{ marginLeft: "185px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setPaper_Title(event.target.value);
@@ -223,7 +287,7 @@ function AddInternationalConference() {
                       <div>
                        Names of Co-Authors:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "130px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setCoauthour_Name(event.target.value);
@@ -235,7 +299,7 @@ function AddInternationalConference() {
                       <div>
                       Title of Conference:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "145px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setConference_Title(event.target.value);
@@ -247,7 +311,7 @@ function AddInternationalConference() {
                       <div>
                        Organizing Institution:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "125px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setOrganizing_Institution(event.target.value);
@@ -259,7 +323,7 @@ function AddInternationalConference() {
                       <div>
                       Date of Conference:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "140px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setDate(event.target.value);
@@ -271,7 +335,7 @@ function AddInternationalConference() {
                       <div>
                        Paper Scopus:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "180px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setPaper_Scopus(event.target.value);
@@ -283,7 +347,7 @@ function AddInternationalConference() {
                       <div>
                      Number of Pages:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "155px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setNo_Pages(event.target.value);
@@ -295,7 +359,7 @@ function AddInternationalConference() {
                       <div>
                      Proceedings Title:{""}
                         <input
-                          style={{ marginLeft: "75px", width: "400px" }}
+                          style={{ marginLeft: "155px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setProceedings_Title(event.target.value);
@@ -308,7 +372,7 @@ function AddInternationalConference() {
                         Total Number of Papers Published:{}
                         <input
                           type="number"
-                          style={{ marginLeft: "83px", width: "400px" }}
+                          style={{ marginLeft: "40px", width: "400px" }}
                           onChange={(event) => {
                             setTotal_Num_Published(event.target.value);
                           }}
