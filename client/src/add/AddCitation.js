@@ -9,45 +9,52 @@ function AddCitation() {
   const [citationList, setcitationList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + num_citations );
+    console.log(empIdFilterValue + num_citations);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (emp_id === "") {
-    alert("Employee ID is required");
-    return;
+    if (empIdFilterValue === "") {
+      alert("Employee ID is required");
+      return;
     }
     if (num_citations === 0) {
-    alert("Number Citations is  a required field");
-    return;
+      alert("Number Citations is  a required field");
+      return;
     }
     addCitation();
-    };
-  
+  };
+
   const addCitation = () => {
     Axios.post("http://localhost:3001/AddCitation", {
-      emp_id: emp_id,
+      emp_id: empIdFilterValue,
       num_citations: num_citations,
-     
     }).then(() => {
       console.log("success");
       setcitationList([
         ...citationList,
         {
-          emp_id: emp_id,
+          emp_id: empIdFilterValue,
           num_citations: num_citations,
-         
         },
       ]);
     });
   };
-
+  //Emp Id
+  const [empIdList, setEmpIdList] = useState([]);
+  const [empIdFilterValue, setEmpIdFilterValue] = useState("");
+  const getEmpId = () => {
+    Axios.get("http://localhost:3001/ShowEmpId").then((response) => {
+      console.log(empIdList);
+      setEmpIdList(response.data);
+    });
+  };
+  getEmpId();
 
   return (
     <div>
       <div className="columnLeft">
-      <div
+        <div
           style={{
             margin: "0px",
             width: "200px",
@@ -202,11 +209,11 @@ function AddCitation() {
               href="/Login/AddTechTransfer"
             >
               Add Tech Transfer
-            </a> 
+            </a>
             <br />
             <br />
             <br />
-            
+
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -254,14 +261,37 @@ function AddCitation() {
                   <form>
                     <div>
                       <label>Employee ID: </label>
-                      <input
+                      {/* <input
                         style={{ marginLeft: "86px", width: "400px" }}
                         type="text"
                         onChange={(event) => {
                           setEmp_Id(event.target.value);
                         }}
                         placeholder="Employee ID"
-                      />
+                      /> */}
+                      <select
+                      style={{ marginLeft: "86px"}}
+                        name="EmpId"
+                        id="EmpId"
+                        onChange={(event) => {
+                          setEmpIdFilterValue(event.target.value);
+                          console.log(empIdFilterValue);
+                        }}
+                      >
+                        <option value="" selected>
+                          None Selected
+                        </option>
+                        {empIdList.map((val, key) => {
+                          if (val.emp_id == null) {
+                            return;
+                          }
+                          console.log(val.emp_id);
+                          key = val.emp_id;
+                          return (
+                            <option value={val.emp_id}>{val.emp_id}</option>
+                          );
+                        })}
+                      </select>
 
                       <div>
                         No. of Citations:{}

@@ -4,7 +4,7 @@ import Axios from "axios";
 
 function AddInternationalJournal() {
   const [emp_id, setEmp_Id] = useState("");
-  const [title_of_paper, setTitle_Of_Paper] = useState(""); 
+  const [title_of_paper, setTitle_Of_Paper] = useState("");
   const [author_names, setAuthor_Names] = useState("");
   const [journal_name, setJournal_Name] = useState("");
   const [issn_no, setIssn_No] = useState("");
@@ -15,115 +15,134 @@ function AddInternationalJournal() {
   const [category, setCategory] = useState("");
   const [scopus_snip_num, setScopus_Snip_Num] = useState("");
   const [ugc_list_num, setUgc_List_Num] = useState("");
-  
 
   const [internationaljournalList, setinternationaljournalList] = useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + title_of_paper	 + author_names +	journal_name + issn_no	+ dop +	page_no	+ volume_no	+int_issue_num	+category	+ scopus_snip_num + ugc_list_num);
+    console.log(
+      emp_id +
+        title_of_paper +
+        author_names +
+        journal_name +
+        issn_no +
+        dop +
+        page_no +
+        volume_no +
+        int_issue_num +
+        category +
+        scopus_snip_num +
+        ugc_list_num
+    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (emp_id === "") {
-    alert("Employee ID is required");
-    return;
+      alert("Employee ID is required");
+      return;
     }
     if (title_of_paper === "") {
-    alert("Paper title is required");
-    return;
+      alert("Paper title is required");
+      return;
     }
     if (author_names === "") {
-    alert("Author name is required");
-    return;
+      alert("Author name is required");
+      return;
     }
     if (journal_name === "") {
-    alert("Journal title is required");
-    return;
+      alert("Journal title is required");
+      return;
     }
     if (issn_no === "") {
-    alert("ISSN is required");
-    return;
+      alert("ISSN is required");
+      return;
     }
     if (dop === "") {
       alert("Date of Publish is required");
       return;
-      }
-      if (page_no === "") {
-        alert("Page number is required");
-        return;
-        }
-        if (no_pages === "") {
-          alert("Number of pages is required");
-          return;
-          }
-          if (volume_no === 0) {
-            alert("volume number is required");
-            return;
-            }
-            if (int_issue_num === 0) {
-              alert("International Issue number is required");
-              return;
-              }
-              if (category === "") {
-                alert("Category is required");
-                return;
-                }
-                if (scopus_snip_num === "") {
-                  alert("Scopus is required");
-                  return;
-                  }
-                  if (ugc_list_num=== "") {
-                    alert("UGC number is required");
-                    return;
-                    }
-        
-        
-    addInternationalJournal();
-    };
+    }
+    if (page_no === "") {
+      alert("Page number is required");
+      return;
+    }
+    if (page_no === "") {
+      alert("Number of pages is required");
+      return;
+    }
+    if (volume_no === 0) {
+      alert("volume number is required");
+      return;
+    }
+    if (int_issue_num === 0) {
+      alert("International Issue number is required");
+      return;
+    }
+    if (category === "") {
+      alert("Category is required");
+      return;
+    }
+    if (scopus_snip_num === "") {
+      alert("Scopus is required");
+      return;
+    }
+    if (ugc_list_num === "") {
+      alert("UGC number is required");
+      return;
+    }
 
-  
+    addInternationalJournal();
+  };
+
   const addInternationalJournal = () => {
     Axios.post("http://localhost:3001/AddInternationalJournal", {
-      emp_id : emp_id , 
-      title_of_paper : title_of_paper , 
-      author_names : author_names , 
-      journal_name  : journal_name ,
-      issn_no	: issn_no ,
-       dop : dop	 ,
-       page_no : page_no ,
-       volume_no : volume_no ,
-       int_issue_num	:int_issue_num ,
-       category	: category ,
-       scopus_snip_number :scopus_snip_num ,
-       ugc_list_number : ugc_list_num ,
+      emp_id: empIdFilterValue,
+      title_of_paper: title_of_paper,
+      author_names: author_names,
+      journal_name: journal_name,
+      issn_no: issn_no,
+      dop: dop,
+      page_no: page_no,
+      volume_no: volume_no,
+      int_issue_num: int_issue_num,
+      category: category,
+      scopus_snip_number: scopus_snip_num,
+      ugc_list_number: ugc_list_num,
     }).then(() => {
       console.log("success");
       setinternationaljournalList([
         ...internationaljournalList,
         {
-          emp_id : emp_id , 
-      title_of_paper : title_of_paper , 
-      author_names : author_names , 
-      journal_name  : journal_name ,
-      issn_no	: issn_no ,
-       dop : dop	 ,
-       page_no : page_no ,
-       volume_no : volume_no ,
-       int_issue_num	:int_issue_num ,
-       category	: category ,
-       scopus_snip_number :scopus_snip_num ,
-       ugc_list_number : ugc_list_num ,
+          emp_id: empIdFilterValue,
+          title_of_paper: title_of_paper,
+          author_names: author_names,
+          journal_name: journal_name,
+          issn_no: issn_no,
+          dop: dop,
+          page_no: page_no,
+          volume_no: volume_no,
+          int_issue_num: int_issue_num,
+          category: category,
+          scopus_snip_number: scopus_snip_num,
+          ugc_list_number: ugc_list_num,
         },
       ]);
     });
   };
-
+  //Emp Id
+  const [empIdList, setEmpIdList] = useState([]);
+  const [empIdFilterValue, setEmpIdFilterValue] = useState("");
+  const getEmpId = () => {
+    Axios.get("http://localhost:3001/ShowEmpId").then((response) => {
+      console.log(empIdList);
+      setEmpIdList(response.data);
+    });
+  };
+  getEmpId();
 
   return (
     <div>
       <div className="columnLeft">
-      <div
+        <div
           style={{
             margin: "0px",
             width: "200px",
@@ -278,11 +297,11 @@ function AddInternationalJournal() {
               href="/Login/AddTechTransfer"
             >
               Add Tech Transfer
-            </a> 
+            </a>
             <br />
             <br />
             <br />
-            
+
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -328,147 +347,177 @@ function AddInternationalJournal() {
               <div>
                 <div>
                   <form>
-                  <div>
-                  <label>Employee Id: </label>
-<input
-  style={{ marginLeft: "150px", width: "400px" }}
-  type="text"
-  onChange={(event) => {
-    setEmp_Id(event.target.value);
-  }}
-  placeholder="Employee ID"
-/>
-<div>
-  Title of Journal:{""}
-  <input
-    style={{ marginLeft: "135px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setTitle_Of_Paper(event.target.value);
-    }}
-    placeholder="Title"
-  />
-</div>
-<div>
-  Author Names:{""}
-  <input
-    style={{ marginLeft: "140px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setAuthor_Names(event.target.value);
-    }}
-    placeholder="Author_Names"
-  />
-  &nbsp;
-</div>
-<div>
-  Journal Name:{""}
-  <input
-    style={{ marginLeft: "140px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setJournal_Name(event.target.value);
-    }}
-    placeholder="Journal Name"
-  />
-  &nbsp;
-</div>
-                     <div>
-  Issn_No:{""}
-  <input
-    style={{ marginLeft: "175px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setIssn_No(event.target.value);
-    }}
-    placeholder="Issn Number"
-  />
+                    <div>
+                      <label>Employee Id: </label>
+                      <select
+                        style={{ marginLeft: "150px" }}
+                        name="EmpId"
+                        id="EmpId"
+                        onChange={(event) => {
+                          setEmpIdFilterValue(event.target.value);
+                          console.log(empIdFilterValue);
+                        }}
+                      >
+                        <option value="" selected>
+                          None Selected
+                        </option>
+                        {empIdList.map((val, key) => {
+                          if (val.emp_id == null) {
+                            return;
+                          }
+                          console.log(val.emp_id);
+                          key = val.emp_id;
+                          return (
+                            <option value={val.emp_id}>{val.emp_id}</option>
+                          );
+                        })}
+                      </select>
+                      <div>
+                        Title of Journal:{""}
+                        <input
+                          style={{ marginLeft: "135px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setTitle_Of_Paper(event.target.value);
+                          }}
+                          placeholder="Title"
+                        />
+                      </div>
+                      <div>
+                        Author Names:{""}
+                        <input
+                          style={{ marginLeft: "140px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setAuthor_Names(event.target.value);
+                          }}
+                          placeholder="Author_Names"
+                        />
                         &nbsp;
                       </div>
                       <div>
-  Date of Publication:{""}
-  <input
-    style={{ marginLeft: "105px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setDop(event.target.value);
-    }}
-    placeholder="Date of Publication"
-  />
-  &nbsp;
-</div>
-<div>
-  Page Number:{""}
-  <input
-    style={{ marginLeft: "140px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setPage_No(event.target.value);
-    }}
-    placeholder="Page Numbers"
-  />
-  &nbsp;
-</div>
-<div>
-  Volume Number:{}
-  <input
-    type="number"
-    style={{ marginLeft: "120px", width: "400px" }}
-    onChange={(event) => {
-      setVolume_No(event.target.value);
-    }}
-    placeholder="Volume no."
-  />
-  &nbsp;
-</div>
-<div>
-  International Issue Number:{}
-  <input
-    type="number"
-    style={{ marginLeft: "50px", width: "400px" }}
-    onChange={(event) => {
-      setInt_Issue_Num(event.target.value);
-    }}
-    placeholder="International Issue Number"
-  />
-  &nbsp;
-</div>
-<div>
- Category:{""}
-  <input
-    style={{ marginLeft: "165px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setCategory(event.target.value);
-    }}
-    placeholder="Select Category"
-  />
-  &nbsp;
-</div>
-<div>
- Scopus Snip Number:{""}
-  <input
-    style={{ marginLeft: "85px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setScopus_Snip_Num(event.target.value);
-    }}
-    placeholder="Scopus Snip Number"
-  />
-  &nbsp;
-</div>
-<div>
-  UGC List Number:{""}
-  <input
-    style={{ marginLeft: "100px", width: "400px" }}
-    type="text"
-    onChange={(event) => {
-      setUgc_List_Num(event.target.value);
-    }}
-    placeholder="UGC List Number"
-  />
-  &nbsp;
-</div>
+                        Journal Name:{""}
+                        <input
+                          style={{ marginLeft: "140px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setJournal_Name(event.target.value);
+                          }}
+                          placeholder="Journal Name"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Issn_No:{""}
+                        <input
+                          style={{ marginLeft: "175px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setIssn_No(event.target.value);
+                          }}
+                          placeholder="Issn Number"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Date of Publication:{""}
+                        <input
+                          style={{ marginLeft: "105px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setDop(event.target.value);
+                          }}
+                          placeholder="Date of Publication"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Page Number:{""}
+                        <input
+                          style={{ marginLeft: "140px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setPage_No(event.target.value);
+                          }}
+                          placeholder="Page Numbers"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Volume Number:{}
+                        <input
+                          type="number"
+                          style={{ marginLeft: "120px", width: "400px" }}
+                          onChange={(event) => {
+                            setVolume_No(event.target.value);
+                          }}
+                          placeholder="Volume no."
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        International Issue Number:{}
+                        <input
+                          type="number"
+                          style={{ marginLeft: "50px", width: "400px" }}
+                          onChange={(event) => {
+                            setInt_Issue_Num(event.target.value);
+                          }}
+                          placeholder="International Issue Number"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        Category:{""}
+                        <select
+                          style={{ marginLeft: "165px", width: "400px" }}
+                          value={category}
+                          onChange={(event) => {
+                            setCategory(event.target.value);
+                          }}
+                        >
+                          <option value="">Select Category</option>
+                          <option value="Scopus">Scopus</option>
+                          <option value="SCI & Scopus">SCI & Scopus</option>
+                          <option value="SCIE">SCIE</option>
+                          <option value="SCIE/SSCI">SCIE/SSCI</option>
+                          <option value="Google Scholar">Google Scholar</option>
+                          <option value="UGC CARE">UGC CARE</option>
+                          <option value="Scopus and UGC-CARE">
+                            Scopus and UGC-CARE
+                          </option>
+                          <option value="Scopus Indexed">
+                            Scopus Indexed"
+                          </option>
+                          <option value="Inderscience">Inderscience</option>
+                          {/* Add more options as needed */}
+                        </select>
+                        &nbsp;
+                      </div>
+                      <div>
+                        Scopus Snip Number:{""}
+                        <input
+                          style={{ marginLeft: "85px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setScopus_Snip_Num(event.target.value);
+                          }}
+                          placeholder="Scopus Snip Number"
+                        />
+                        &nbsp;
+                      </div>
+                      <div>
+                        UGC List Number:{""}
+                        <input
+                          style={{ marginLeft: "100px", width: "400px" }}
+                          type="text"
+                          onChange={(event) => {
+                            setUgc_List_Num(event.target.value);
+                          }}
+                          placeholder="UGC List Number"
+                        />
+                        &nbsp;
+                      </div>
                       <br />
                       <br />
                     </div>

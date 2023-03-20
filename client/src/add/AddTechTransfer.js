@@ -46,7 +46,7 @@ function AddTechTransfer() {
     };
   const addTechTransfer = () => {
     Axios.post("http://localhost:3001/AddTechTransfer", {
-      emp_id: emp_id,
+      emp_id: empIdFilterValue,
       num_tech_tran: num_tech_tran,
       tile_tech_tran: title_tech_tran,
       industry_alliance: industry_alliance,
@@ -56,7 +56,7 @@ function AddTechTransfer() {
       settechtransferList([
         ...techtransferList,
         {
-          emp_id: emp_id,
+          emp_id: empIdFilterValue,
           num_tech_tran: num_tech_tran,
           tile_tech_tran: title_tech_tran,
           industry_alliance: industry_alliance,
@@ -65,6 +65,16 @@ function AddTechTransfer() {
       ]);
     });
   };
+  //Emp Id
+  const [empIdList, setEmpIdList] = useState([]);
+  const [empIdFilterValue, setEmpIdFilterValue] = useState("");
+  const getEmpId = () => {
+    Axios.get("http://localhost:3001/ShowEmpId").then((response) => {
+      console.log(empIdList);
+      setEmpIdList(response.data);
+    });
+  };
+  getEmpId();
 
   return (
     <div>
@@ -276,14 +286,29 @@ function AddTechTransfer() {
                   <form>
                     <div>
                       <label>Employee ID: </label>
-                      <input
-                        style={{ marginLeft: "180px", width: "400px" }}
-                        type="text"
+                      <select
+                      style={{ marginLeft: "185px"}}
+                        name="EmpId"
+                        id="EmpId"
                         onChange={(event) => {
-                          setEmp_ID(event.target.value);
+                          setEmpIdFilterValue(event.target.value);
+                          console.log(empIdFilterValue);
                         }}
-                        placeholder="Employee ID"
-                      />
+                      >
+                        <option value="" selected>
+                          None Selected
+                        </option>
+                        {empIdList.map((val, key) => {
+                          if (val.emp_id == null) {
+                            return;
+                          }
+                          console.log(val.emp_id);
+                          key = val.emp_id;
+                          return (
+                            <option value={val.emp_id}>{val.emp_id}</option>
+                          );
+                        })}
+                      </select>
                       <div>
                         Number of techlogy transfers done:{}
                         <input

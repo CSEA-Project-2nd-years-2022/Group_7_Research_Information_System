@@ -12,94 +12,110 @@ function AddSponsoredResearchProjects() {
   const [duration, setDuration] = useState("");
   const [grant_released, setGrant_Released] = useState("");
   const [status, setStatus] = useState("");
-  
-  const [sponsoredresearchprojectList, setsponsoredresearchprojectsList] = useState([]);
+
+  const [sponsoredresearchprojectList, setsponsoredresearchprojectsList] =
+    useState([]);
 
   const displayInfo = () => {
-    console.log(emp_id + project_name + funding_agency + total_grant_sanctioned + principal_investigator + coprincipal_investigator + duration + grant_released + status);
+    console.log(
+      emp_id +
+        project_name +
+        funding_agency +
+        total_grant_sanctioned +
+        principal_investigator +
+        coprincipal_investigator +
+        duration +
+        grant_released +
+        status
+    );
   };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (emp_id === "") {
-    alert("Employee ID is required");
-    return;
+      alert("Employee ID is required");
+      return;
     }
     if (project_name === "") {
-    alert("Project Name is required");
-    return;
+      alert("Project Name is required");
+      return;
     }
     if (funding_agency === "") {
-    alert("Funding Agency is required");
-    return;
+      alert("Funding Agency is required");
+      return;
     }
-    if (total_grant_sanctioned=== "") {
-    alert("Total Gran is Sanctioned is required");
-    return;
+    if (total_grant_sanctioned === "") {
+      alert("Total Gran is Sanctioned is required");
+      return;
     }
     if (principal_investigator === "") {
-    alert("Principal Investigator is required");
-    return;
+      alert("Principal Investigator is required");
+      return;
     }
     if (coprincipal_investigator === "") {
       alert("Co-Principal Investigator is required");
       return;
-      }
-      if (duration === "") {
-        alert("Duration is required");
-        return;
-        }
-        if (grant_released === "") {
-          alert("Grant Released is required");
-          return;
-          }
-          if (status === "") {
-            alert("Status is required");
-            return;
-            }
+    }
+    if (duration === "") {
+      alert("Duration is required");
+      return;
+    }
+    if (grant_released === "") {
+      alert("Grant Released is required");
+      return;
+    }
+    if (status === "") {
+      alert("Status is required");
+      return;
+    }
 
-        
-        
     addSponsoredResearchProjects();
-    };
+  };
 
-  
   const addSponsoredResearchProjects = () => {
     Axios.post("http://localhost:3001/AddSponsoredResearchProjects", {
-     emp_id :emp_id,
-     project_name :project_name,
-     funding_agency : funding_agency,
-     total_grant_sanctioned : total_grant_sanctioned ,
-     principal_ivestigator :  principal_investigator ,
-     coprincipal_investigator :coprincipal_investigator ,
-     duration: duration ,
-     grant_released : grant_released ,
-     status : status,
+      emp_id: empIdFilterValue,
+      project_name: project_name,
+      funding_agency: funding_agency,
+      total_grant_sanctioned: total_grant_sanctioned,
+      principal_ivestigator: principal_investigator,
+      coprincipal_investigator: coprincipal_investigator,
+      duration: duration,
+      grant_released: grant_released,
+      status: status,
     }).then(() => {
       console.log("success");
       setsponsoredresearchprojectsList([
         ...sponsoredresearchprojectList,
         {
-          emp_id :emp_id,
-     project_name :project_name,
-     funding_agency : funding_agency,
-     total_grant_sanctioned : total_grant_sanctioned ,
-     principal_ivestigator :  principal_investigator ,
-     coprincipal_investigator :coprincipal_investigator ,
-     duration: duration ,
-     grant_released : grant_released ,
-     status : status,
+          emp_id: empIdFilterValue,
+          project_name: project_name,
+          funding_agency: funding_agency,
+          total_grant_sanctioned: total_grant_sanctioned,
+          principal_ivestigator: principal_investigator,
+          coprincipal_investigator: coprincipal_investigator,
+          duration: duration,
+          grant_released: grant_released,
+          status: status,
         },
       ]);
     });
   };
-
+  //Emp Id
+  const [empIdList, setEmpIdList] = useState([]);
+  const [empIdFilterValue, setEmpIdFilterValue] = useState("");
+  const getEmpId = () => {
+    Axios.get("http://localhost:3001/ShowEmpId").then((response) => {
+      console.log(empIdList);
+      setEmpIdList(response.data);
+    });
+  };
+  getEmpId();
 
   return (
     <div>
       <div className="columnLeft">
-      <div
+        <div
           style={{
             margin: "0px",
             width: "200px",
@@ -254,11 +270,11 @@ function AddSponsoredResearchProjects() {
               href="/Login/AddTechTransfer"
             >
               Add Tech Transfer
-            </a> 
+            </a>
             <br />
             <br />
             <br />
-            
+
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -306,16 +322,31 @@ function AddSponsoredResearchProjects() {
                   <form>
                     <div>
                       <label>EMPLOYEE ID: </label>
-                      <input
-                        style={{ marginLeft: "96px", width: "400px" }}
-                        type="text"
+                      <select
+                        style={{ marginLeft: "95px" }}
+                        name="EmpId"
+                        id="EmpId"
                         onChange={(event) => {
-                          setEmp_Id(event.target.value);
+                          setEmpIdFilterValue(event.target.value);
+                          console.log(empIdFilterValue);
                         }}
-                        placeholder="Employee id"
-                      />
+                      >
+                        <option value="" selected>
+                          None Selected
+                        </option>
+                        {empIdList.map((val, key) => {
+                          if (val.emp_id == null) {
+                            return;
+                          }
+                          console.log(val.emp_id);
+                          key = val.emp_id;
+                          return (
+                            <option value={val.emp_id}>{val.emp_id}</option>
+                          );
+                        })}
+                      </select>
                       <div>
-                       Project Name:{""}
+                        Project Name:{""}
                         <input
                           style={{ marginLeft: "120px", width: "400px" }}
                           type="text"
@@ -326,19 +357,22 @@ function AddSponsoredResearchProjects() {
                         />
                       </div>
                       <div>
-                       Funding Agency:{""}
-                        <input
-                          style={{ marginLeft: "100px", width: "400px" }}
-                          type="text"
+                        Funding Agency:{""}
+                        <select
+                          style={{ marginLeft: "165px", width: "400px" }}
+                          value={funding_agency}
                           onChange={(event) => {
                             setFunding_Agency(event.target.value);
                           }}
-                          placeholder="Funding Agency"
-                        />
+                        >
+                          <option value="">Select Funding Agency</option>
+                          <option value="DST/SEED/TIDE">DST/SEED/TIDE</option>
+                          <option value="DST/CSRI">DST/CSRI</option>
+                        </select>
                         &nbsp;
                       </div>
                       <div>
-                       Total Grant Sanctioned:{""}
+                        Total Grant Sanctioned:{""}
                         <input
                           style={{ marginLeft: "60px", width: "400px" }}
                           type="text"
@@ -350,7 +384,7 @@ function AddSponsoredResearchProjects() {
                         &nbsp;
                       </div>
                       <div>
-                       Principal Investigator:{""}
+                        Principal Investigator:{""}
                         <input
                           style={{ marginLeft: "65px", width: "400px" }}
                           type="text"
@@ -362,7 +396,7 @@ function AddSponsoredResearchProjects() {
                         &nbsp;
                       </div>
                       <div>
-                       Co-Principal Investigator:{""}
+                        Co-Principal Investigator:{""}
                         <input
                           style={{ marginLeft: "45px", width: "400px" }}
                           type="text"
@@ -374,7 +408,7 @@ function AddSponsoredResearchProjects() {
                         &nbsp;
                       </div>
                       <div>
-                       Duration:{""}
+                        Duration:{""}
                         <input
                           style={{ marginLeft: "150px", width: "400px" }}
                           type="text"
@@ -386,7 +420,7 @@ function AddSponsoredResearchProjects() {
                         &nbsp;
                       </div>
                       <div>
-                      Grant Released:{""}
+                        Grant Released:{""}
                         <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
@@ -397,9 +431,9 @@ function AddSponsoredResearchProjects() {
                         />
                         &nbsp;
                       </div>
-                      
+
                       <div>
-                       Status:{""}
+                        Status:{""}
                         <input
                           style={{ marginLeft: "160px", width: "400px" }}
                           type="text"
@@ -410,7 +444,7 @@ function AddSponsoredResearchProjects() {
                         />
                         &nbsp;
                       </div>
-                     
+
                       <br />
                       <br />
                     </div>

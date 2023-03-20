@@ -9,70 +9,76 @@ function AddBooks() {
   const [co_author, setCo_Author] = useState("");
   const [yop, setYop] = useState("");
   const [name_of_publisher, setName_Of_Publisher] = useState("");
-  
 
   const [booksList, setbooksList] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (emp_id === "") {
-    alert("Employee ID is required");
-    return;
+      alert("Employee ID is required");
+      return;
     }
     if (title_of_book === "") {
-    alert("Title of book is required");
-    return;
+      alert("Title of book is required");
+      return;
     }
     if (isbn_number === "") {
-    alert("ISBN is required");
-    return;
+      alert("ISBN is required");
+      return;
     }
     if (co_author === "") {
-    alert("Co-Author field is required");
-    return;
+      alert("Co-Author field is required");
+      return;
     }
     if (yop === "") {
-    alert("Year of Publication is required");
-    return;
+      alert("Year of Publication is required");
+      return;
     }
     if (name_of_publisher === "") {
       alert("Name of publisher is required");
       return;
-      }
+    }
     addBooks();
-    };
+  };
 
-  
   const addBooks = () => {
     Axios.post("http://localhost:3001/AddBooks", {
-     emp_id : emp_id ,
-     title_of_book : title_of_book ,
-     isbn_number : isbn_number ,
-     co_author : co_author ,
-     yop : yop ,
-     name_of_publisher : name_of_publisher ,
-
+      emp_id: empIdFilterValue,
+      title_of_book: title_of_book,
+      isbn_number: isbn_number,
+      co_author: co_author,
+      yop: yop,
+      name_of_publisher: name_of_publisher,
     }).then(() => {
       console.log("success");
       setbooksList([
         ...booksList,
         {
-            emp_id : emp_id ,
-            title_of_book : title_of_book ,
-            isbn_number : isbn_number ,
-            co_author : co_author ,
-            yop : yop ,
-            name_of_publisher : name_of_publisher ,
+          emp_id: empIdFilterValue,
+          title_of_book: title_of_book,
+          isbn_number: isbn_number,
+          co_author: co_author,
+          yop: yop,
+          name_of_publisher: name_of_publisher,
         },
       ]);
     });
   };
-
+  //Emp Id
+  const [empIdList, setEmpIdList] = useState([]);
+  const [empIdFilterValue, setEmpIdFilterValue] = useState("");
+  const getEmpId = () => {
+    Axios.get("http://localhost:3001/ShowEmpId").then((response) => {
+      console.log(empIdList);
+      setEmpIdList(response.data);
+    });
+  };
+  getEmpId();
 
   return (
     <div>
       <div className="columnLeft">
-      <div
+        <div
           style={{
             margin: "0px",
             width: "200px",
@@ -227,11 +233,11 @@ function AddBooks() {
               href="/Login/AddTechTransfer"
             >
               Add Tech Transfer
-            </a> 
+            </a>
             <br />
             <br />
             <br />
-            
+
             <a style={{ color: "black", textDecoration: "none" }} href="./">
               Logout
             </a>
@@ -279,16 +285,31 @@ function AddBooks() {
                   <form>
                     <div>
                       <label>Employee ID</label>
-                      <input
-                        style={{ marginLeft: "100px", width: "400px" }}
-                        type="text"
+                      <select
+                        style={{ marginLeft: "105px" }}
+                        name="EmpId"
+                        id="EmpId"
                         onChange={(event) => {
-                          setEmp_Id(event.target.value);
+                          setEmpIdFilterValue(event.target.value);
+                          console.log(empIdFilterValue);
                         }}
-                        placeholder="Employee Name"
-                      />
+                      >
+                        <option value="" selected>
+                          None Selected
+                        </option>
+                        {empIdList.map((val, key) => {
+                          if (val.emp_id == null) {
+                            return;
+                          }
+                          console.log(val.emp_id);
+                          key = val.emp_id;
+                          return (
+                            <option value={val.emp_id}>{val.emp_id}</option>
+                          );
+                        })}
+                      </select>
                       <div>
-                       Title of the Book:{""}
+                        Title of the Book:{""}
                         <input
                           style={{ marginLeft: "75px", width: "400px" }}
                           type="text"
@@ -299,7 +320,7 @@ function AddBooks() {
                         />
                       </div>
                       <div>
-                       ISBN Number:{""}
+                        ISBN Number:{""}
                         <input
                           style={{ marginLeft: "90px", width: "400px" }}
                           type="text"
@@ -311,7 +332,7 @@ function AddBooks() {
                         &nbsp;
                       </div>
                       <div>
-                      Co-Author:{""}
+                        Co-Author:{""}
                         <input
                           style={{ marginLeft: "110px", width: "400px" }}
                           type="text"
@@ -323,7 +344,7 @@ function AddBooks() {
                         &nbsp;
                       </div>
                       <div>
-                       Year of Publication:{""}
+                        Year of Publication:{""}
                         <input
                           style={{ marginLeft: "55px", width: "400px" }}
                           type="text"
@@ -335,7 +356,7 @@ function AddBooks() {
                         &nbsp;
                       </div>
                       <div>
-                      Name of Publisher:{""}
+                        Name of Publisher:{""}
                         <input
                           style={{ marginLeft: "60px", width: "400px" }}
                           type="text"
