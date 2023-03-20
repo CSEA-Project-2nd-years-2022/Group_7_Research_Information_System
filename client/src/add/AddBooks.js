@@ -13,6 +13,34 @@ function AddBooks() {
 
   const [booksList, setbooksList] = useState([]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (title_of_book === "") {
+    alert("Title of book is required");
+    return;
+    }
+    if (isbn_number === "") {
+    alert("ISBN is required");
+    return;
+    }
+    if (co_author === "") {
+    alert("Co-Author field is required");
+    return;
+    }
+    if (yop === "") {
+    alert("Year of Publication is required");
+    return;
+    }
+    if (name_of_publisher === "") {
+      alert("Name of publisher is required");
+      return;
+      }
+    addBooks();
+    };
 
   
   const addBooks = () => {
@@ -325,7 +353,7 @@ function AddBooks() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addBooks}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

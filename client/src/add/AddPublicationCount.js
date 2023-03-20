@@ -19,6 +19,39 @@ function AddPublicationCount() {
     console.log(emp_id + num_int_jn + num_nat_jn + num_int_con + num_nat_con + num_book + num_chap);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (num_int_jn === 0) {
+    alert("Number of International Journal is required");
+    return;
+    }
+    if (num_nat_jn === 0) {
+    alert("Number of National Journal is required");
+    return;
+    }
+    if (num_int_con === 0) {
+    alert("Number of International conference is required");
+    return;
+    }
+    if (num_nat_con === 0) {
+    alert("Number of National Conference is required");
+    return;
+    }
+    if (num_book ===0) {
+      alert("Number of Books is required");
+      return;
+      }
+      if (num_chap === "") {
+        alert("Number of Book Chapter is required");
+        return;
+        }
+        
+    addPublicationCount();
+    };
 
   
   const addPublicationCount = () => {
@@ -345,7 +378,7 @@ function AddPublicationCount() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addPublicationCount}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

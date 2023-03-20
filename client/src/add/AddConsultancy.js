@@ -17,7 +17,39 @@ function AddConsultancy() {
   const displayInfo = () => {
     console.log(emp_id +	name_consultant_departement +	name_consultancy +	consulting_agency	+ revenue_generated + grant_released + status);
   };
-
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (name_consultant_departement === "") {
+    alert("Name of consultant department is required");
+    return;
+    }
+    if (name_consultancy === "") {
+    alert("Name of Consultancy is required");
+    return;
+    }
+    if (consulting_agency === "") {
+    alert("Name of Consulting Agency is required is required");
+    return;
+    }
+    if (revenue_generated === "") {
+    alert("Revenue Generated is required");
+    return;
+    }
+    if (grant_released === "") {
+      alert("Grant Released is required");
+      return;
+      }
+      if (status === "") {
+        alert("Status is required");
+        return;
+        }
+    addConsultancy();
+    };
 
   
   const addConsultancy = () => {
@@ -344,7 +376,7 @@ function AddConsultancy() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addConsultancy}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

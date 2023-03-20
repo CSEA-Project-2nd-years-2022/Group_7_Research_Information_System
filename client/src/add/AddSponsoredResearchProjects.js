@@ -20,6 +20,50 @@ function AddSponsoredResearchProjects() {
   };
 
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (project_name === "") {
+    alert("Project Name is required");
+    return;
+    }
+    if (funding_agency === "") {
+    alert("Funding Agency is required");
+    return;
+    }
+    if (total_grant_sanctioned=== "") {
+    alert("Total Gran is Sanctioned is required");
+    return;
+    }
+    if (principal_investigator === "") {
+    alert("Principal Investigator is required");
+    return;
+    }
+    if (coprincipal_investigator === "") {
+      alert("Co-Principal Investigator is required");
+      return;
+      }
+      if (duration === "") {
+        alert("Duration is required");
+        return;
+        }
+        if (grant_released === "") {
+          alert("Grant Released is required");
+          return;
+          }
+          if (status === "") {
+            alert("Status is required");
+            return;
+            }
+
+        
+        
+    addSponsoredResearchProjects();
+    };
+
   
   const addSponsoredResearchProjects = () => {
     Axios.post("http://localhost:3001/AddSponsoredResearchProjects", {
@@ -374,7 +418,7 @@ function AddSponsoredResearchProjects() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addSponsoredResearchProjects}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

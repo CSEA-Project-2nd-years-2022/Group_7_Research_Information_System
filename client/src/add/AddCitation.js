@@ -12,7 +12,18 @@ function AddCitation() {
     console.log(emp_id + num_citations );
   };
 
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (num_citations === 0) {
+    alert("Number Citations is  a required field");
+    return;
+    }
+    addCitation();
+    };
   
   const addCitation = () => {
     Axios.post("http://localhost:3001/AddCitation", {
@@ -271,7 +282,7 @@ function AddCitation() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addCitation}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

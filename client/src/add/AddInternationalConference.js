@@ -18,7 +18,56 @@ function AddInternationalConference() {
   const [internationalconferenceList, setinternationalconferenceList] = useState([]);
 
  
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (paper_title === 0) {
+    alert("Paper title is required");
+    return;
+    }
+    if (coauthour_name === "") {
+    alert("Co-author name is required");
+    return;
+    }
+    if (conference_title === "") {
+    alert("Conference title is required");
+    return;
+    }
+    if (organizing_institution === "") {
+    alert("Name of Organizing Institution is required");
+    return;
+    }
+    if (date === "") {
+      alert("Date is required");
+      return;
+      }
+      if (paper_scopus === "") {
+        alert("Paper Scopus is required");
+        return;
+        }
+        if (no_pages === "") {
+          alert("Number of pages is required");
+          return;
+          }
+          if (proceedings_title === "") {
+            alert("Proceedings title is required");
+            return;
+            }
+            if (total_num_published === 0) {
+              alert("total number of papers published is required");
+              return;
+              }
+              if (category === "") {
+                alert("Category is required");
+                return;
+                }
+        
+        
+    addInternationalConference();
+    };
   
   const addInternationalConference = () => {
     Axios.post("http://localhost:3001/AddInternationalConference", {
@@ -399,7 +448,7 @@ function AddInternationalConference() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addInternationalConference}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

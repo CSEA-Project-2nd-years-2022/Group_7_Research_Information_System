@@ -247,8 +247,10 @@ function AddArticle() {
                     <button
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
+                      
                       type="submit"
                       onClick={addArticle}
+                      
                     >
                       Submit
                     </button>

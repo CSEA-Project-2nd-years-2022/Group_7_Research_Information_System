@@ -17,6 +17,35 @@ function AddMou() {
     console.log(emp_id	+ organization_name	 + date_mou_signed  +	purpose_activities + 	num_participants +	title_mou);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (organization_name === "") {
+    alert("Organization Name  is required");
+    return;
+    }
+    if (date_mou_signed === "") {
+    alert("Date is required");
+    return;
+    }
+    if (purpose_activities=== "") {
+    alert("Purpose is required");
+    return;
+    }
+    if (num_participants === "") {
+    alert("Number of Participants is required");
+    return;
+    }
+    if (title_mou === "") {
+      alert("Title is required");
+      return;
+      }
+  
+    addMou();
+    };
 
   
   const addMou = () => {

@@ -13,7 +13,19 @@ function AddEmployee() {
     console.log(emp_id + emp_name);
   };
 
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (emp_name === "") {
+    alert("Name of Employee is required");
+    return;
+    }
+    
+    addEmployee();
+    };
   
   const addEmployee= () => {
     displayInfo();

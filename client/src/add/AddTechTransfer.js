@@ -20,7 +20,30 @@ function AddTechTransfer() {
         num_people_inloved
     );
   };
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (num_tech_tran === 0) {
+    alert("Number of tech transfers is required");
+    return;
+    }
+    if (title_tech_tran === "") {
+    alert("Title of tech transfer is required");
+    return;
+    }
+    if (industry_alliance === "") {
+    alert("Industry alliance is required");
+    return;
+    }
+    if (num_people_inloved === 0) {
+    alert("Number of people involved is required");
+    return;
+    }
+    addTechTransfer();
+    };
   const addTechTransfer = () => {
     Axios.post("http://localhost:3001/AddTechTransfer", {
       emp_id: emp_id,
@@ -315,7 +338,7 @@ function AddTechTransfer() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addTechTransfer}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

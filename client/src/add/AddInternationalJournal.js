@@ -23,6 +23,64 @@ function AddInternationalJournal() {
     console.log(emp_id + title_of_paper	 + author_names +	journal_name + issn_no	+ dop +	page_no	+ volume_no	+int_issue_num	+category	+ scopus_snip_num + ugc_list_num);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (title_of_paper === "") {
+    alert("Paper title is required");
+    return;
+    }
+    if (author_names === "") {
+    alert("Author name is required");
+    return;
+    }
+    if (journal_name === "") {
+    alert("Journal title is required");
+    return;
+    }
+    if (issn_no === "") {
+    alert("ISSN is required");
+    return;
+    }
+    if (dop === "") {
+      alert("Date of Publish is required");
+      return;
+      }
+      if (page_no === "") {
+        alert("Page number is required");
+        return;
+        }
+        if (no_pages === "") {
+          alert("Number of pages is required");
+          return;
+          }
+          if (volume_no === 0) {
+            alert("volume number is required");
+            return;
+            }
+            if (int_issue_num === 0) {
+              alert("International Issue number is required");
+              return;
+              }
+              if (category === "") {
+                alert("Category is required");
+                return;
+                }
+                if (scopus_snip_num === "") {
+                  alert("Scopus is required");
+                  return;
+                  }
+                  if (ugc_list_num=== "") {
+                    alert("UGC number is required");
+                    return;
+                    }
+        
+        
+    addInternationalJournal();
+    };
 
   
   const addInternationalJournal = () => {
@@ -418,7 +476,7 @@ function AddInternationalJournal() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addInternationalJournal}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

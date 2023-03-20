@@ -13,11 +13,47 @@ function AddPatent() {
   
 
   const [patentList, setpatentList] = useState([]);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (num_patent === 0) {
+    alert("Number of Patents is required");
+    return;
+    }
+    if (num_patent_granted === 0) {
+    alert("Number of Patents Granted is required");
+    return;
+    }
+    if (num_patent_liscenced=== 0) {
+    alert("Numbe rof Lisenced is required");
+    return;
+    }
+    if (patent_number === "") {
+    alert("Patent number is required");
+    return;
+    }
+    if (date_award === "") {
+      alert("Date of Award is required");
+      return;
+      }
+      if (patent_title === "") {
+        alert("Page title is required");
+        return;
+        }
+        
+    addPatent();
+    };
 
- 
+  
+  
 
   
   const addPatent = () => {
+  
     Axios.post("http://localhost:3001/AddPatent", {
       emp_id : emp_id,
       num_patent : num_patent ,
@@ -37,10 +73,11 @@ function AddPatent() {
       num_patent_liscenced : num_patent_liscenced ,
       patent_number :  patent_number ,
       date_award :  date_award ,
-      patent_title ,
+      patent_title: patent_title ,
         },
       ]);
     });
+  
   };
 
 

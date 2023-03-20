@@ -18,7 +18,38 @@ function AddBookChapter() {
     console.log(emp_id +	title_book_chapter +	title_book +	isbn_number	 + co_author	+ yop	 + publisher_name );																		
   };
 
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (emp_id === "") {
+    alert("Employee ID is required");
+    return;
+    }
+    if (title_book_chap === "") {
+    alert("Title of Book Chapter is required");
+    return;
+    }
+    if (title_book === "") {
+    alert("Title of Book is required");
+    return;
+    }
+    if (isbn_number === "") {
+      alert("Industry alliance is required");
+      return;
+      }
+      if (co_author === "") {
+        alert("Co Author Field is required");
+        return;
+        }
+        if (yop === "") {
+          alert("Year of Publish is required");
+          return;
+          }
+          if (publisher_name === "") {
+            alert("Publisher name is required");
+            return;
+            }
+    addBookChapter();
+    };
   
   const addBookChapter = () => {
     Axios.post("http://localhost:3001/AddBookChapter", {
@@ -343,7 +374,7 @@ function AddBookChapter() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addBookChapter}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>
