@@ -55,7 +55,7 @@ function AddPatent() {
   const addPatent = () => {
   
     Axios.post("http://localhost:3001/AddPatent", {
-      emp_id : emp_id,
+      emp_id : empIdFilterValue,
       num_patent : num_patent ,
       num_patent_granted : num_patent_granted ,
       num_patent_liscenced : num_patent_liscenced ,
@@ -67,7 +67,7 @@ function AddPatent() {
       setpatentList([
         ...patentList,
         {
-            emp_id : emp_id,
+            emp_id : empIdFilterValue,
       num_patent : num_patent ,
       num_patent_granted : num_patent_granted ,
       num_patent_liscenced : num_patent_liscenced ,
@@ -79,6 +79,16 @@ function AddPatent() {
     });
   
   };
+  //Emp Id
+  const [empIdList, setEmpIdList] = useState([]);
+  const [empIdFilterValue, setEmpIdFilterValue] = useState("");
+  const getEmpId = () => {
+    Axios.get("http://localhost:3001/ShowEmpId").then((response) => {
+      console.log(empIdList);
+      setEmpIdList(response.data);
+    });
+  };
+  getEmpId();
 
 
   return (
@@ -291,14 +301,29 @@ function AddPatent() {
                   <form>
                     <div>
                       <label>Employee ID </label>
-                      <input
-                        style={{ marginLeft: "140px", width: "400px" }}
-                        type="text"
+                      <select
+                      style={{ marginLeft: "140px"}}
+                        name="EmpId"
+                        id="EmpId"
                         onChange={(event) => {
-                          setEmp_Id(event.target.value);
+                          setEmpIdFilterValue(event.target.value);
+                          console.log(empIdFilterValue);
                         }}
-                        placeholder="ID"
-                      />
+                      >
+                        <option value="" selected>
+                          None Selected
+                        </option>
+                        {empIdList.map((val, key) => {
+                          if (val.emp_id == null) {
+                            return;
+                          }
+                          console.log(val.emp_id);
+                          key = val.emp_id;
+                          return (
+                            <option value={val.emp_id}>{val.emp_id}</option>
+                          );
+                        })}
+                      </select>
                       <div>
                         Number of Patents:{""}
                         <input

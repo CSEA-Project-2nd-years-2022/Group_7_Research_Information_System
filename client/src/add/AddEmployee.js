@@ -281,7 +281,7 @@ function AddEmployee() {
                       class="add-submit"
                       style={{ marginLeft: "170px" }}
                       type="submit"
-                      onClick={addEmployee}
+                      onClick={handleSubmit}
                     >
                       Submit
                     </button>

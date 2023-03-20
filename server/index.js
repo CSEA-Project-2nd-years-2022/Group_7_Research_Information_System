@@ -512,7 +512,7 @@ app.post("/AddBooks", (req, res) => {
 
   db.query(
     "INSERT INTO books(emp_id	 ,title_of_book	, isbn_number ,	co_auhtor ,	yop ,	name_of_publisher) VALUES (?,?,?,?,?,?)",
-    [emp_id, title_of_book, isbn_number, co_auhtor, yop, name_of_publisher],
+    [emp_id, title_of_book, isbn_number, co_author, yop, name_of_publisher],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -719,9 +719,23 @@ app.get("/ShowJournalAuthor", (req, res) => {
     }
   );
 });
+
 app.get("/ShowJournalCategory", (req, res) => {
   db.query(
     "SELECT DISTINCT category FROM international_journal",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowEmpId", (req, res) => {
+  db.query(
+    "SELECT DISTINCT emp_id FROM employees ORDER BY emp_id",
     (err, result) => {
       if (err) {
         console.log(err);
