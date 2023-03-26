@@ -1,6 +1,8 @@
 import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function AddPatent() {
   const [emp_id, setEmp_Id] = useState("");
@@ -373,13 +375,19 @@ function AddPatent() {
                       </div>
                       <div>
                       Date of Award:{""}
-                        <input
+                        {/* <input
                           style={{ marginLeft: "130px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setDate_Award(event.target.value);
                           }}
                           placeholder="Date"
+                        /> */}
+                        <DatePicker
+                          // style={{ marginLeft: "205px", width: "400px" }}
+                          selected={date_award}
+                          onChange={(date) => setDate_Award(date)}
+                          dateFormat="yyyy-MM-dd"
                         />
                         &nbsp;
                       </div>

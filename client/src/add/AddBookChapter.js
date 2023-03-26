@@ -1,6 +1,8 @@
 import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function AddBookChapter() {
   const [emp_id, setEmp_Id] = useState("");
@@ -370,13 +372,19 @@ function AddBookChapter() {
                       </div>
                       <div>
                      Year of Publication:{""}
-                        <input
+                        {/* <input
                           style={{ marginLeft: "55px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setYop(event.target.value);
                           }}
                           placeholder="Year"
+                        /> */}
+                        <DatePicker
+                          // style={{ marginLeft: "205px", width: "400px" }}
+                          selected={yop}
+                          onChange={(date) => setYop(date)}
+                          dateFormat="yyyy-MM-dd" 
                         />
                         &nbsp;
                       </div>

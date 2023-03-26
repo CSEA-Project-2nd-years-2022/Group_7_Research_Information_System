@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "admin",
   host: "psg-ris.c8qjejxbwt2k.us-east-1.rds.amazonaws.com",
-  password: "KiReSh2002",
+  password: "",
   database: "Research_info_system",
 });
 
@@ -429,7 +429,7 @@ app.post("/AddInternationalJournal", (req, res) => {
   console.log(req.body);
   const emp_id = req.body.emp_id;
   const title_of_paper = req.body.title_of_paper;
-  const author_names = req.body.author_name;
+  const author_names = req.body.author_names;
   const journal_name = req.body.journal_name;
   const issn_no = req.body.issn_no;
   const dop = req.body.dop;
@@ -736,6 +736,121 @@ app.get("/ShowJournalCategory", (req, res) => {
 app.get("/ShowEmpId", (req, res) => {
   db.query(
     "SELECT DISTINCT emp_id FROM employees ORDER BY emp_id",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowInternationalJournalCount2022", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM international_journal WHERE YEAR(dop)='2022'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowInternationalJournalCount2021", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM international_journal WHERE YEAR(dop)='2021'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowBookChaptersCount2022", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM book_chapter WHERE YEAR(yop)='2022'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowBookChaptersCount2021", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM book_chapter WHERE YEAR(yop)='2021'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowBooksCount2020", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM books WHERE YEAR(yop)='2020'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowBooksCount2021", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM books WHERE YEAR(yop)='2021'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+app.get("/ShowBooksCount2022", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM books WHERE YEAR(yop)='2022'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/ShowPatentsCount2022", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM patent WHERE YEAR(date_award)='2022'",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+app.get("/ShowPatentsCount2021", (req, res) => {
+  db.query(
+    "SELECT COUNT(*) as c FROM patent WHERE YEAR(date_award)='2021'",
     (err, result) => {
       if (err) {
         console.log(err);
