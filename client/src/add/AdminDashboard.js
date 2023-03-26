@@ -241,9 +241,6 @@ function AdminDashboard() {
                 WELCOME BACK ADMIN...
               </h2>
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>
-                RECENT PUBLICATIONS(Journals)
-              </h2>
 
               <div
                 style={{
@@ -252,120 +249,7 @@ function AdminDashboard() {
                   marginRight: "250px",
                 }}
               >
-                <table style={tableElements}>
-                  <tr>
-                    <th style={tableElements}>Sno</th>
-                    <th style={tableElements}>Author</th>
-                    <th style={tableElements}>Title</th>
-                    <th style={tableElements}>Category</th>
-                    <th style={tableElements}>Journal Name</th>
-                    <th style={tableElements}>Year</th>
-                  </tr>
-                  {journalList.map((val, key) => {
-                    return (
-                      <tr key={val.s_no}>
-                        <td style={tableElements}>{val.s_no}</td>
-                        <td style={tableElements}>{val.author}</td>
-                        <td style={tableElements}>{val.title}</td>
-                        <td style={tableElements}>{val.category}</td>
-                        <td style={tableElements}>{val.journal_name}</td>
-                        <td style={tableElements}>{val.year}</td>
-                      </tr>
-                    );
-                  })}
-                </table>
-              </div>
-            </div>
-            <div>
-              <div
-                style={{
-                  top: "200px",
-                  position: "absolute",
-                  right: "60px",
-                }}
-              >
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    height: "80px",
-                    width: "90px",
-                    margin: "30px",
-                    padding: "10px 10px 10px 30px",
-                    border: "solid black",
-                    backgroundColor: "#FFFACD",
-                    fontFamily: "Google Sans",
-                  }}
-                >
-                  <h1
-                    style={{
-                      marginTop: "5px",
-                      fontSize: "40px",
-                      marginBottom: "2px",
-                      marginLeft: "20px",
-                    }}
-                  >
-                    {journalList.length}
-                  </h1>
-                  <h3 style={{ marginTop: "0px", fontWeight: "bold" }}>
-                    Journals
-                  </h3>
-                </div>
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    height: "80px",
-                    width: "90px",
-                    margin: "30px",
-                    padding: "10px 10px 10px 30px",
-                    border: "solid black",
-                    backgroundColor: "#FFE4B5",
-                  }}
-                >
-                  <h1
-                    style={{
-                      marginTop: "5px",
-                      fontSize: "40px",
-                      marginBottom: "2px",
-                      marginLeft: "25px",
-                    }}
-                  >
-                    {conferenceList.length}
-                  </h1>
-                  <h3 style={{ marginTop: "0px", fontWeight: "bold" }}>
-                    Conference
-                  </h3>
-                </div>
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    height: "80px",
-                    width: "90px",
-                    margin: "30px",
-                    padding: "10px 10px 10px 30px",
-                    border: "solid black",
-                    backgroundColor: "#FFC0CB",
-                  }}
-                >
-                  <h1
-                    style={{
-                      marginTop: "5px",
-                      fontSize: "40px",
-                      marginBottom: "2px",
-                      marginLeft: "25px",
-                    }}
-                  >
-                    {articleList.length}
-                  </h1>
-                  <h3
-                    style={{
-                      marginTop: "0px",
-                      fontWeight: "bold",
-                      marginLeft: "10px",
-                    }}
-                  >
-                    Articles
-                  </h3>
-                </div>
+
               </div>
             </div>
           </div>

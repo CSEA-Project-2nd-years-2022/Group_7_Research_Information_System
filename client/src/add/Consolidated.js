@@ -13,249 +13,265 @@ const tableElements = {
 };
 
 function Consolidated() {
-  const [journalList, setJournalList] = useState([]);
-  const getJournals = () => {
-    Axios.get("http://localhost:3001/ShowJournals").then((response) => {
-      console.log(response);
-      setJournalList(response.data);
-    });
-  };
-  getJournals();
-  //Search items
-  const [searchItem, setSearchItem] = useState("");
-  //Filters
-  const [journalAuthorList, setJournalAuthorList] = useState([]);
-  const [individualTempAuthorList, setIndividualTempAuthorList] = useState([]);
-  const [authorFilterValue, setAuthorFilterValue] = useState("All");
-  const getJournalAuthor = () => {
-    Axios.get("http://localhost:3001/ShowJournalAuthors").then((response) => {
-      // console.log(response);
-      setJournalAuthorList(response.data);
-    });
-    // console.log(journalAuthorList);
-    journalAuthorList.map((val) => {
-      if (val.author.includes(",")) {
-        var tempList = val.author.split(",");
-        tempList.map((value) => {
-          if (individualTempAuthorList.includes(value.trim()) === false) {
-            individualTempAuthorList.push(value.trim());
-          }
-        });
-      } else {
-        if (individualTempAuthorList.includes(val.author) === false) {
-          individualTempAuthorList.push(val.author);
-        }
-      }
-    });
-    console.log(individualTempAuthorList);
-  };
-  getJournalAuthor();
-
-  const [journalCategoryList, setJournalCategoryList] = useState([]);
-  const [categoryFilterValue, setCategoryFilterValue] = useState("All");
-  const getJournalCategory = () => {
-    Axios.get("http://localhost:3001/ShowJournalCategory").then(
+  const [yearFilterValue, setYearFilterValue] = useState("All");
+  const [internationalJournalCount2022, setInternationalJournalCount2022] =
+    useState(0);
+  const getIntJourCount2022All = () => {
+    Axios.get("http://localhost:3001/ShowInternationalJournalCount2022").then(
       (response) => {
-        // console.log(response);
-        setJournalCategoryList(response.data);
+        setInternationalJournalCount2022(response.data[0].c);
       }
     );
   };
-  getJournalCategory();
+  getIntJourCount2022All();
 
-  const [journalYearList, setJournalYearList] = useState([]);
-  const [yearFilterValue, setYearFilterValue] = useState("All");
-  const getJournalYear = () => {
-    Axios.get("http://localhost:3001/ShowJournalYear").then((response) => {
-      // console.log(response);
-      setJournalYearList(response.data);
-    });
+  const [internationalJournalCount2021, setInternationalJournalCount2021] =
+    useState(0);
+  const getIntJourCount2021All = () => {
+    Axios.get("http://localhost:3001/ShowInternationalJournalCount2021").then(
+      (response) => {
+        setInternationalJournalCount2021(response.data[0].c);
+      }
+    );
   };
-  getJournalYear();
+  getIntJourCount2021All();
 
+const [bookChaptersCount2021, setBookChaptersCount2021] =useState(0);
+const getBookChapCount2021All = () => {
+  Axios.get("http://localhost:3001/ShowBookChaptersCount2021").then(
+    (response) => {
+      setBookChaptersCount2021(response.data[0].c);
+    }
+  );
+};
+getBookChapCount2021All();
+const [bookChaptersCount2022, setBookChaptersCount2022] =useState(0);
+const getBookChapCount2022All = () => {
+  Axios.get("http://localhost:3001/ShowBookChaptersCount2022").then(
+    (response) => {
+      setBookChaptersCount2022(response.data[0].c);
+    }
+  );
+};
+getBookChapCount2022All();
+
+const [booksCount2020, setBooksCount2020] =useState(0);
+const getBooksCount2020All = () => {
+  Axios.get("http://localhost:3001/ShowBooksCount2020").then(
+    (response) => {
+      setBooksCount2020(response.data[0].c);
+    }
+  );
+};
+getBooksCount2020All();
+
+const [booksCount2021, setBooksCount2021] =useState(0);
+const getBooksCount2021All = () => {
+  Axios.get("http://localhost:3001/ShowBooksCount2021").then(
+    (response) => {
+      setBooksCount2021(response.data[0].c);
+    }
+  );
+};
+getBooksCount2021All();
+
+const [booksCount2022, setBooksCount2022] =useState(0);
+const getBooksCount2022All = () => {
+  Axios.get("http://localhost:3001/ShowBooksCount2022").then(
+    (response) => {
+      setBooksCount2022(response.data[0].c);
+    }
+  );
+};
+getBooksCount2022All();
+
+const [patentsCount2022, setPatentsCount2022] =useState(0);
+const getPatentsCount2022All = () => {
+  Axios.get("http://localhost:3001/ShowPatentsCount2022").then(
+    (response) => {
+      setPatentsCount2022(response.data[0].c);
+    }
+  );
+};
+getPatentsCount2022All();
+
+const [patentsCount2021, setPatentsCount2021] =useState(0);
+const getPatentsCount2021All = () => {
+  Axios.get("http://localhost:3001/ShowPatentsCount2021").then(
+    (response) => {
+      setPatentsCount2021(response.data[0].c);
+    }
+  );
+};
+getPatentsCount2021All();
+  
   return (
     <div>
       <div
-          style={{
-            margin: "0px",
-            width: "200px",
-            height: "1800px",
-            background: "#ADD8E6",
-          }}
-        >
-          <div>
-            <h1 style={{ fontSize: "150px", opacity: "15%", margin: "0px" }}>
-              PSG
-            </h1>
-            <nbsp />
-            <h2
-              style={{
-                margin: "10px",
-                fontSize: "35px",
-                opacity: "15%",
-              }}
-            >
-              College of Technology
-            </h2>
-            <br />
-
-            <hr
-              style={{
-                width: "170px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-
-          <div
-            className="topnav"
-            style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+        style={{
+          margin: "0px",
+          width: "200px",
+          height: "1800px",
+          background: "#ADD8E6",
+        }}
+      >
+        <div>
+          <h1 style={{ fontSize: "150px", opacity: "15%", margin: "0px" }}>
+            PSG
+          </h1>
+          <nbsp />
+          <h2
+            style={{
+              margin: "10px",
+              fontSize: "35px",
+              opacity: "15%",
+            }}
           >
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/"
-            >
-              Profile
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/"
-            >
-              Dashboard
-            </a>
-            <br />
-            <br />
-            <br />
-           
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Patents"
-            >
-              Patent
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Citations"
-            >
-              Citations
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/ResearchPublicationCount"
-            >
-              Research Publication Count
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/TechnologyTransfer"
-            >
+            College of Technology
+          </h2>
+          <br />
+
+          <hr
+            style={{
+              width: "170px",
+              textAlign: "center",
+            }}
+          />
+        </div>
+
+        <div
+          className="topnav"
+          style={{ paddingLeft: "40px", top: "270px", color: "black" }}
+        >
+          <a style={{ color: "black", textDecoration: "none" }} href="/">
+            Profile
+          </a>
+          <br />
+          <br />
+          <br />
+          <a style={{ color: "black", textDecoration: "none" }} href="/">
+            Dashboard
+          </a>
+          <br />
+          <br />
+          <br />
+
+          <a style={{ color: "black", textDecoration: "none" }} href="/Patents">
+            Patent
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Citations"
+          >
+            Citations
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/ResearchPublicationCount"
+          >
+            Research Publication Count
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/TechnologyTransfer"
+          >
             Technology Transfer
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{color: "black", textDecoration: "none"
-                
-              }}
-              href="/Journal"
-            >
-              International Journal
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/SponsoredResearchProjects"
-            >
-              Sponsored Research Projects
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Books"
-            >
-             Books
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Consultancy"
-            >
-              Consultancy
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/BookChapter"
-            >
-             Book Chapter
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/MoUsSigned"
-            >
-              MoUs Signed
-            </a>
-            <br />
-            <br />
-            <br />
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/Conference"
-            >
-              International Conference
-            </a>
-            <br />
-            <br />
-            <br />
-            
-            <a
-              style={{  color: "black",
+          </a>
+          <br />
+          <br />
+          <br />
+          <a style={{ color: "black", textDecoration: "none" }} href="/Journal">
+            International Journal
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/SponsoredResearchProjects"
+          >
+            Sponsored Research Projects
+          </a>
+          <br />
+          <br />
+          <br />
+          <a style={{ color: "black", textDecoration: "none" }} href="/Books">
+            Books
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Consultancy"
+          >
+            Consultancy
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/BookChapter"
+          >
+            Book Chapter
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/MoUsSigned"
+          >
+            MoUs Signed
+          </a>
+          <br />
+          <br />
+          <br />
+          <a
+            style={{ color: "black", textDecoration: "none" }}
+            href="/Conference"
+          >
+            International Conference
+          </a>
+          <br />
+          <br />
+          <br />
+
+          <a
+            style={{
+              color: "black",
               textDecoration: "none",
               fontSize: "20px",
               fontWeight: "bold",
-              textDecoration: "underline",}}
-              href="/Consolidated"
-            >
-             Consolidated
-            </a>
-            <br />
-            <br />
-            <br />
-           
-            <a style={{ color: "black", textDecoration: "none" }} href="./">
+              textDecoration: "underline",
+            }}
+            href="/Consolidated"
+          >
+            Consolidated
+          </a>
+          <br />
+          <br />
+          <br />
+
+          <a style={{ color: "black", textDecoration: "none" }} href="./">
             Login
-            </a>
-            <br />
-            <br />
-            <br />
-          </div>
+          </a>
+          <br />
+          <br />
+          <br />
         </div>
+      </div>
       <div className="columnLeft">
-        
         <div className="columnRight">
           <div>
             <div
@@ -286,21 +302,220 @@ function Consolidated() {
               <hr style={{ width: "750px", textAlign: "center" }} />
               <br />
               <br />
-              <h2 style={{ opacity: "100%", fontSize: "30px" }}>CONSOLIDATED</h2>
-              <form>
-                <div>
-                  <input
-                    style={{ width: "600px", borderRadius: "14px" }}
-                    type="text"
-                    placeholder="Type to search"
-                    onChange={(event) => {
-                      setSearchItem(event.target.value);
-                    }}
-                  />
-                </div>
-              </form>
-              
-             
+              <h2 style={{ opacity: "100%", fontSize: "30px" }}>
+                CONSOLIDATED
+              </h2>
+              <div className="dropdown1">
+                <label>Year : </label>
+                <select
+                  name="Author"
+                  id="Author"
+                  onChange={(event) => {
+                    setYearFilterValue(event.target.value);
+                  }}
+                >
+                  <option value="All" selected>
+                    All
+                  </option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                </select>
+              </div>
+              <div
+                style={{
+                  marginTop: "200px",
+                  marginLeft: "0px",
+                  marginRight: "250px",
+                  width: "500px",
+                }}
+              >
+                <table style={tableElements}>
+                  {yearFilterValue === "All" ? (
+                    <div>
+                      <tr>
+                        <th style={tableElements}>Item</th>
+                        <th style={tableElements}>Count</th>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of International Journals in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {internationalJournalCount2022}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Book Chapters in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {bookChaptersCount2022}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Books in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {booksCount2022}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Patents Awarded in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {patentsCount2022}
+                        </td>
+                      </tr>
+                      {/*
+                      */}
+
+                      <tr>
+                        <td style={tableElements}>
+                          No. of International Journals in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {internationalJournalCount2021}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Book Chapters in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {bookChaptersCount2021}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Books in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {booksCount2021}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Patents Awarded in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {patentsCount2021}
+                        </td>
+                      </tr>
+                      {/*
+                      */}
+
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Books in 2020
+                        </td>
+                        <td style={tableElements}>
+                          {booksCount2020}
+                        </td>
+                      </tr>
+
+                    </div>
+                  ) : null}
+                  {yearFilterValue === "2022" ? (
+                    <div>
+                      <tr>
+                        <th style={tableElements}>Item</th>
+                        <th style={tableElements}>Count</th>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of International Journals in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {internationalJournalCount2022}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Book Chapters in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {bookChaptersCount2022}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Books in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {booksCount2022}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Patents Awarded in 2022
+                        </td>
+                        <td style={tableElements}>
+                          {patentsCount2022}
+                        </td>
+                      </tr>
+                    </div>
+                  ) : null}
+                  {yearFilterValue === "2021" ? (
+                    <div>
+                      <tr>
+                        <th style={tableElements}>Item</th>
+                        <th style={tableElements}>Count</th>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of International Journals in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {internationalJournalCount2021}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Book Chapters in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {bookChaptersCount2021}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Books in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {booksCount2021}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Patents Awarded in 2021
+                        </td>
+                        <td style={tableElements}>
+                          {patentsCount2021}
+                        </td>
+                      </tr>
+                    </div>
+                  ) : null}
+                  {yearFilterValue === "2020" ? (
+                    <div>
+                      <tr>
+                        <th style={tableElements}>Item</th>
+                        <th style={tableElements}>Count</th>
+                      </tr>
+                      <tr>
+                        <td style={tableElements}>
+                          No. of Books in 2020
+                        </td>
+                        <td style={tableElements}>
+                          {booksCount2020}
+                        </td>
+                      </tr>
+                    </div>
+                  ) : null}
+                </table>
+              </div>
             </div>
           </div>
         </div>

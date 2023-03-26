@@ -1,6 +1,8 @@
 import "./styles.css";
 import { useState } from "react";
 import Axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function AddInternationalJournal() {
   const [emp_id, setEmp_Id] = useState("");
@@ -37,7 +39,7 @@ function AddInternationalJournal() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (emp_id === "") {
+    if (emp_id === "" && empIdFilterValue==="") {
       alert("Employee ID is required");
       return;
     }
@@ -365,6 +367,9 @@ function AddInternationalJournal() {
                           if (val.emp_id == null) {
                             return;
                           }
+                          if (val.emp_id == "") {
+                            return;
+                          }
                           console.log(val.emp_id);
                           key = val.emp_id;
                           return (
@@ -421,13 +426,19 @@ function AddInternationalJournal() {
                       </div>
                       <div>
                         Date of Publication:{""}
-                        <input
+                        {/* <input
                           style={{ marginLeft: "105px", width: "400px" }}
                           type="text"
                           onChange={(event) => {
                             setDop(event.target.value);
                           }}
                           placeholder="Date of Publication"
+                        /> */}
+                        <DatePicker
+                          // style={{ marginLeft: "205px", width: "400px" }}
+                          selected={dop}
+                          onChange={(date) => setDop(date)}
+                          dateFormat="yyyy-MM-dd" 
                         />
                         &nbsp;
                       </div>
@@ -470,7 +481,7 @@ function AddInternationalJournal() {
                       <div>
                         Category:{""}
                         <select
-                          style={{ marginLeft: "165px", width: "400px" }}
+                          style={{ marginLeft: "165px" }}
                           value={category}
                           onChange={(event) => {
                             setCategory(event.target.value);
