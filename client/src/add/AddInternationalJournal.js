@@ -39,7 +39,7 @@ function AddInternationalJournal() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (emp_id === "" && empIdFilterValue==="") {
+    if (emp_id === "" && empIdFilterValue === "") {
       alert("Employee ID is required");
       return;
     }
@@ -438,7 +438,7 @@ function AddInternationalJournal() {
                           // style={{ marginLeft: "205px", width: "400px" }}
                           selected={dop}
                           onChange={(date) => setDop(date)}
-                          dateFormat="yyyy-MM-dd" 
+                          dateFormat="yyyy-MM-dd"
                         />
                         &nbsp;
                       </div>
@@ -490,17 +490,11 @@ function AddInternationalJournal() {
                           <option value="">Select Category</option>
                           <option value="Scopus">Scopus</option>
                           <option value="SCI & Scopus">SCI & Scopus</option>
-                          <option value="SCIE">SCIE</option>
-                          <option value="SCIE/SSCI">SCIE/SSCI</option>
                           <option value="Google Scholar">Google Scholar</option>
                           <option value="UGC CARE">UGC CARE</option>
                           <option value="Scopus and UGC-CARE">
                             Scopus and UGC-CARE
                           </option>
-                          <option value="Scopus Indexed">
-                            Scopus Indexed"
-                          </option>
-                          <option value="Inderscience">Inderscience</option>
                           {/* Add more options as needed */}
                         </select>
                         &nbsp;
